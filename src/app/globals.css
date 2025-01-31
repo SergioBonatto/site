@@ -19,3 +19,16 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.retro-border {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #fff #aaa #aaa #fff;
+  box-shadow: inset 1px 1px 0 0 #aaa, inset -1px -1px 0 0 #fff;
+}
+
+.container {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
