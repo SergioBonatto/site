@@ -1,10 +1,13 @@
-import Navbar from "../components/navbar";
+import Navbar from "@/components/Nav";
+import SolarSystem from "@/components/solarSystem";
+import MusicPlayer from "@/components/musicPlayer";
 
 export default function Home() {
   return (
-    <div >
+    <div className="bg-teal-600">
       <Navbar />
-
-    </div >
+      <MusicPlayer />
+      <SolarSystem />
+    </div>
   );
 }

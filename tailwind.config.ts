@@ -12,6 +12,20 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        'orbit': 'orbit linear infinite',
+        'moon-orbit': 'moonOrbit linear infinite 2.5s',
+      },
+      keyframes: {
+        orbit: {
+          'from': { transform: 'rotate(0deg) translate(-50%, -50%)' },
+          'to': { transform: 'rotate(360deg) translate(-50%, -50%)' }
+        },
+        moonOrbit: {
+          'from': { transform: 'rotate(0deg) translate(20px)' },
+          'to': { transform: 'rotate(360deg) translate(20px)' }
+        }
+      }
     },
   },
   plugins: [],

@@ -32,3 +32,23 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translate(-50%, -50%);
+  }
+
+  to {
+    transform: rotate(360deg) translate(-50%, -50%);
+  }
+}
+
+@keyframes moonOrbit {
+  from {
+    transform: rotate(0deg) translate(20px);
+  }
+
+  to {
+    transform: rotate(360deg) translate(20px);
+  }
+}
