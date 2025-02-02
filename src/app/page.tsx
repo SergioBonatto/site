@@ -1,6 +1,7 @@
 import Navbar from "@/components/Nav";
 import SolarSystem from "@/components/solarSystem";
 import MusicPlayer from "@/components/musicPlayer";
+import About from "@/components/About/about";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <MusicPlayer />
       <SolarSystem />
+      <About />
     </div>
   );
 }

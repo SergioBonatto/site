@@ -7,7 +7,7 @@ import ToggleButtons from './ToggleButtons';
 import MusicPlayer from '../musicPlayer';
 
 const navItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '#Home' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#Contact' },
     { name: 'Blog', href: '#Blog' },
@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <header className={`fixed top-10 left-0 w-full border border-gray-300 flex z-50 bg-gray-200 ${isScrolled ? 'shadow-lg' : ''} retro-border`}>
+        <header className={`fixed top-5 left-0 w-full border border-gray-300 flex z-50 bg-gray-200 ${isScrolled ? 'shadow-lg' : ''} retro-border`}>
             <nav className="w-screen h-16 flex items-center justify-between bg-gray-200 relative">
                 <a href="#" className="font-bold text-2xl text-gray-900 ml-6">
                     <span className="text-blue-800">Bonatto</span>
