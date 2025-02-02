@@ -33,6 +33,16 @@ body {
   margin-right: auto;
 }
 
+
+
+a:hover {
+  color: #551a8b;
+}
+
+button, input, select, textarea {
+  font-family: 'MS Sans Serif', Arial, Helvetica, sans-serif;
+}
+
 @keyframes orbit {
   from {
     transform: rotate(0deg) translate(-50%, -50%);
