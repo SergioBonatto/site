@@ -7,7 +7,7 @@ import ToggleButtons from './ToggleButtons';
 import MusicPlayer from '../musicPlayer';
 
 const navItems = [
-    { name: 'Home', href: '#Home' },
+    { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#Contact' },
     { name: 'Blog', href: '#Blog' },
