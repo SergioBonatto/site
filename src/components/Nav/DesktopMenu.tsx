@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import NavItem from "./NavItem"; // Importe o componente NavItem
+import React, { useRef } from "react";
+import NavItem from "./NavItem";
 
 interface DesktopMenuProps {
     navItems: { name: string; href: string }[];
