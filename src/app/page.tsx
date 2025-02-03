@@ -27,7 +27,6 @@ export const metadata: Metadata = {
     description:
       'Dev, frontend, formal proofs, Brasilia,lambda calculus, Haskell, JavaScript, kind, kindelia, Time Traveler, Higher Order Company, HVM, UwU tech',
     images: ['Imagens/cards.png'],
-    url: 'https://sergiobonatto.github.io/',
   },
 };
 
