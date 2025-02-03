@@ -3,6 +3,7 @@ import SolarSystem from "@/components/solarSystem";
 import MusicPlayer from "@/components/musicPlayer";
 import About from "@/components/About/about";
 import Contact from "@/components/Contact/contact";
+import Footer from "@/components/Footer/footer";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <SolarSystem />
       <About />
       <Contact />
+      <Footer />
     </div>
   );
 }

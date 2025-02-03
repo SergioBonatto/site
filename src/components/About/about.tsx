@@ -52,7 +52,7 @@ const About: React.FC<AboutProps> = ({
       id="about"
       className={cn(
         "w-4/5 mx-auto bg-[#c0c0c0]",
-        "border-2",
+        "border-2 mt-5",
         WIN95_BORDERS.raised,
         "p-3",
         className

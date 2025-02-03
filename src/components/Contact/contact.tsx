@@ -74,7 +74,7 @@ const Contact: React.FC<ContactProps> = ({
     <section
       id="Contact"
       className={cn(
-        "w-4/5 mx-auto bg-[#c0c0c0]",
+        "w-4/5 mx-auto bg-[#c0c0c0] mt-5",
         "border-2",
         WIN95_BORDERS.raised,
         "p-3",
