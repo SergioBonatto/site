@@ -11,16 +11,6 @@ export default function MusicPlayer() {
         }
     }, []);
 
-    const handlePlayPause = () => {
-        if (audioRef.current) {
-            if (audioRef.current.paused) {
-                audioRef.current.play();
-            } else {
-                audioRef.current.pause();
-            }
-        }
-    };
-
     return (
         <div>
             <audio ref={audioRef} src="/music.mp3" loop />

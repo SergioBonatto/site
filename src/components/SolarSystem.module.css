@@ -1,35 +1,4 @@
-:root {
-    --primary-color: #000080;
-    --secondary-color: #c0c0c0;
-    --text-color: #000;
-    --background-color: #008080;
-    --link-color: #0000EE;
-    --visited-link-color: #551A8B;
-    --active-link-color: #FF0000;
-    --system-scale: 1;
-    --orbit-scale: 1;
-}
 
-@media (max-width: 1200px) {
-    :root {
-        --system-scale: 0.6;
-        --orbit-scale: 2;
-    }
-}
-
-@media (max-width: 768px) {
-    :root {
-        --system-scale: 0.6;
-        --orbit-scale: 2;
-    }
-}
-
-@media (max-width: 480px) {
-    :root {
-        --system-scale: 0.6;
-        --orbit-scale: 2;
-    }
-}
 
 /* Solar System */
 #solar-system {

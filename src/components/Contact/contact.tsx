@@ -10,18 +10,6 @@ interface ContactProps extends React.HTMLAttributes<HTMLElement> {
   whatsappNumber?: string;
 }
 
-const WIN95_COLORS = {
-  background: '#c0c0c0',
-  white: '#ffffff',
-  gray: '#808080',
-  darkGray: '#404040',
-  navy: '#000080',
-  button: '#dfdfdf',
-  buttonHover: '#efefef',
-  buttonActive: '#c0c0c0',
-  input: '#ececec',
-} as const;
-
 const WIN95_BORDERS = {
   raised: "border-t-white border-l-white border-r-gray-800 border-b-gray-800",
   sunken: "border-t-gray-800 border-l-gray-800 border-r-white border-b-white",

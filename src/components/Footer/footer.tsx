@@ -1,12 +1,6 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { cn } from '@/lib/utils';
-
-const WIN95_BORDERS = {
-  raised: "border-t-white border-l-white border-r-gray-800 border-b-gray-800",
-  sunken: "border-t-gray-800 border-l-gray-800 border-r-white border-b-white",
-} as const;
 
 const updateFooterYear = () => {
   const yearElement = document.getElementById('footer-year');
@@ -29,12 +23,12 @@ const Footer: React.FC = () => {
           <a href="#home" className="text-3xl font-bold text-[#000080]">
             <span>Bonatto</span>
           </a>
-          <p id="footer-year" className="text-sm mt-2">Bonatto&trade; 2025</p>
+          <p id="footer-year" className="text-md mt-2">Bonatto&trade; 2025</p>
           <p className="text-sm">All rights reserved.</p>
         </div>
 
         {/* Social Section */}
-        <div className="social grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4 md:mt-7 ">
+        <div className="social grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4 md:mt-7 text-md">
           <a href="https://www.instagram.com/Sergio_Bonatto/" target="_blank" className="text-[#000080]">
             Instagram
           </a>
