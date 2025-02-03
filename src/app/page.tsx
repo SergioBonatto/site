@@ -11,11 +11,11 @@ import Footer from '@/components/Footer/footer';
 export const metadata: Metadata = {
   title: 'Sergio Bonatto - Full Stack Developer',
   description:
-      'Dev, frontend, formal proofs, Brasilia,lambda calculus, Haskell, JavaScript, kind, kindelia, Time Traveler, Higher Order Company, HVM, UwU tech',
+      'Dev, frontend, formal proofs, Brasilia,lambda calculus, Haskell, JavaScript, Python, Time Traveler, Fibo',
   openGraph: {
     title: 'Sergio Bonatto - Full Stack Developer',
     description:
-      'Dev, frontend, formal proofs, Brasilia,lambda calculus, Haskell, JavaScript, kind, kindelia, Time Traveler, Higher Order Company, HVM, UwU tech',
+      'Dev, frontend, formal proofs, Brasilia,lambda calculus, Haskell, JavaScript, Python, Time Traveler, Fibo',
     images: ['Imagens/cards.png'],
     url: 'https://sergiobonatto.github.io/',
   },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     creator: '@fibonatto',
     title: 'Sergio Bonatto - Full Stack Developer',
     description:
-      'Dev, frontend, formal proofs, Brasilia,lambda calculus, Haskell, JavaScript, kind, kindelia, Time Traveler, Higher Order Company, HVM, UwU tech',
+      'Dev, frontend, formal proofs, Brasilia,lambda calculus, Haskell, JavaScript, Python, Fibo, Time Traveler',
     images: ['Imagens/cards.png'],
   },
 };
