@@ -1,49 +1,124 @@
 'use client';
 
-import React, { useEffect } from 'react';
-
-const updateFooterYear = () => {
-  const yearElement = document.getElementById('footer-year');
-  if (yearElement) {
-    const currentYear = new Date().getFullYear();
-    yearElement.textContent = `Bonatto™ ${currentYear}`;
-  }
-};
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [currentTime, setCurrentTime] = useState('');
+
   useEffect(() => {
-    updateFooterYear();
+    setCurrentYear(new Date().getFullYear());
+    setCurrentTime(new Date().toLocaleTimeString());
+    const timer = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <footer className={`left-0 w-full border border-gray-300 flex z-50 bg-gray-200 retro-border p-5 mt-5`}>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Brand Section */}
-        <div className="brand">
-          <a href="#home" className="text-3xl font-bold text-[#000080]">
-            <span>Bonatto</span>
-          </a>
-          <p id="footer-year" className="text-md mt-2">Bonatto&trade; 2025</p>
-          <p className="text-sm">All rights reserved.</p>
+    <div
+      className={
+        "bottom-0 left-0 w-full bg-[#c0c0c0] border-t-2 border-white " +
+        "border-l-2 border-r-2 border-b-0 border-solid shadow-[3px_3px_0_0_\\#808080]"
+      }
+    >
+      <div className="container mx-auto px-4 py-2">
+        {/* Desktop Version */}
+        <div className="hidden sm:flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <div
+              className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
+            >
+              <Image
+                src="/pcgrey.png"
+                alt="Start"
+                className="mr-2 w-6 h-6"
+                width={24}
+                height={24}
+              />
+              <span className="font-bold text-black">Start</span>
+            </div>
+            <div className="text-xs text-black">
+              Bonatto™ {currentYear}
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            {[
+              { name: 'Instagram', icon: '/instagram.png' },
+              { name: 'GitHub', icon: '/github.png' },
+              { name: 'X', icon: '/twitter.png' },
+              { name: 'LinkedIn', icon: '/linkedin.png' }
+            ].map((social) => (
+              <div
+                key={social.name}
+                className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white p-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
+              >
+                <Image
+                  src={social.icon}
+                  alt={social.name}
+                  className="w-5 h-5 object-contain"
+                  width={20}
+                  height={20}
+                />
+              </div>
+            ))}
+            <div className="bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1">
+              {currentTime}
+            </div>
+          </div>
         </div>
 
-        {/* Social Section */}
-        <div className="social grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4 md:mt-7 text-md">
-          <a href="https://www.instagram.com/Sergio_Bonatto/" target="_blank" className="text-[#000080]">
-            Instagram
-          </a>
-          <a href="https://github.com/SergioBonatto/" target="_blank" className="text-[#000080]">
-            Github
-          </a>
-          <a href="https://x.com/fiBonatto" target="_blank" className="text-[#000080]">
-            X
-          </a>
-          <a href="https://www.linkedin.com/in/sergiobonatto/" target="_blank" className="text-[#000080]">
-            Linkedin
-          </a>
+        {/* Mobile Version */}
+        <div className="sm:hidden flex flex-col">
+          {/* Linha 1: Start à esquerda e ícones à direita */}
+          <div className="flex items-center justify-between">
+            <div
+              className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
+            >
+              <Image
+                src="/pcgrey.png"
+                alt="Start"
+                className="mr-2 w-6 h-6"
+                width={24}
+                height={24}
+              />
+              <span className="font-bold text-black">Start</span>
+            </div>
+            <div className="flex items-center space-x-4">
+              {[
+                { name: 'Instagram', icon: '/instagram.png' },
+                { name: 'GitHub', icon: '/github.png' },
+                { name: 'X', icon: '/twitter.png' },
+                { name: 'LinkedIn', icon: '/linkedin.png' }
+              ].map((social) => (
+                <div
+                  key={social.name}
+                  className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white p-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
+                >
+                  <Image
+                    src={social.icon}
+                    alt={social.name}
+                    className="w-5 h-5 object-contain"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Linha 2: Trademark à esquerda e relógio à direita */}
+          <div className="flex items-center justify-between mt-2">
+            <div className="text-xs text-black">
+              Bonatto™ {currentYear}
+            </div>
+            <div className="bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1">
+              {currentTime}
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 };
 

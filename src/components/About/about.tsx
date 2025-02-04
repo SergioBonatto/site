@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import React from 'react';
@@ -79,8 +80,8 @@ const About: React.FC<AboutProps> = ({
             "border-2",
             WIN95_BORDERS.sunken
           )}>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-['MS Sans Serif'] text-[#000080] mb-4 md:mb-6 select-none">
-              About me
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-[&apos;MS Sans Serif&apos;] text-[#000080] mb-4 md:mb-6 select-none">
+              About me {/* eslint-disable-line react/no-unescaped-entities */}
             </h2>
 
             <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800">
