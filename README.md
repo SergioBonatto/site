@@ -108,30 +108,10 @@ Additionally, the application includes a music player, a solar system animation,
 
 ## Development
 
-- **Editing Pages & Components**: Modify the pages located in
-
-page.tsx
-
- or individual components (see
-
-src/components/Footer/footer.tsx
-
-) for a live-update experience.
-- **Styling with Tailwind CSS**: Update styles or the configuration via
-
-tailwind.config.ts
-
- and
-
-globals.css
-
-.
+- **Editing Pages & Components**: Modify the pages located in `page.tsx` or individual components (see `src/components/Footer/footer.tsx`) for a live-update experience.
+- **Styling with Tailwind CSS**: Update styles or the configuration via `tailwind.config.ts` and `globals.css`.
 - **TypeScript**: Ensure code quality by leveraging TypeScript. Use the provided type definitions to maintain clarity and robustness.
-- **ESLint**: Follow the defined linting rules that extend
-
-next/core-web-vitals
-
-.
+- **ESLint**: Follow the defined linting rules that extend `next/core-web-vitals`.
 
 ## Deployment
 
