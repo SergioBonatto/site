@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import SocialLinks from './SocialLinks';
 
 const Footer: React.FC = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -17,17 +19,13 @@ const Footer: React.FC = () => {
   }, []);
 
   return (
-    <div
-      className={
-        "bottom-0 left-0 w-full bg-[#c0c0c0] border-t-2 border-white " +
-        "border-l-2 border-r-2 border-b-0 border-solid shadow-[3px_3px_0_0_\\#808080]"
-      }
-    >
+    <div className="bottom-0 left-0 w-full bg-[#c0c0c0] border-t-2 border-white border-l-2 border-r-2 border-b-0 border-solid shadow-[3px_3px_0_0_\\#808080]">
       <div className="container mx-auto px-4 py-2">
         {/* Desktop Version */}
         <div className="hidden sm:flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div
+            <Link
+              href="/#"
               className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
             >
               <Image
@@ -38,32 +36,19 @@ const Footer: React.FC = () => {
                 height={24}
               />
               <span className="font-bold text-black">Start</span>
-            </div>
+            </Link>
             <div className="text-xs text-black">
               Bonatto™ {currentYear}
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            {[
-              { name: 'Instagram', icon: '/instagram.png' },
-              { name: 'GitHub', icon: '/github.png' },
-              { name: 'X', icon: '/twitter.png' },
-              { name: 'LinkedIn', icon: '/linkedin.png' }
-            ].map((social) => (
-              <div
-                key={social.name}
-                className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white p-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
-              >
-                <Image
-                  src={social.icon}
-                  alt={social.name}
-                  className="w-5 h-5 object-contain"
-                  width={20}
-                  height={20}
-                />
-              </div>
-            ))}
-            <div className="bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1">
+            <SocialLinks />
+            <div
+              className={
+                "bg-[#c0c0c0] border-2 border-white border-l-[#808080] " +
+                "border-t-[#808080] border-r-white border-b-white px-2 py-1"
+              }
+            >
               {currentTime}
             </div>
           </div>
@@ -73,7 +58,8 @@ const Footer: React.FC = () => {
         <div className="sm:hidden flex flex-col">
           {/* Linha 1: Start à esquerda e ícones à direita */}
           <div className="flex items-center justify-between">
-            <div
+            <Link
+              href="/#"
               className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
             >
               <Image
@@ -84,27 +70,9 @@ const Footer: React.FC = () => {
                 height={24}
               />
               <span className="font-bold text-black">Start</span>
-            </div>
+            </Link>
             <div className="flex items-center space-x-4">
-              {[
-                { name: 'Instagram', icon: '/instagram.png' },
-                { name: 'GitHub', icon: '/github.png' },
-                { name: 'X', icon: '/twitter.png' },
-                { name: 'LinkedIn', icon: '/linkedin.png' }
-              ].map((social) => (
-                <div
-                  key={social.name}
-                  className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white p-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
-                >
-                  <Image
-                    src={social.icon}
-                    alt={social.name}
-                    className="w-5 h-5 object-contain"
-                    width={20}
-                    height={20}
-                  />
-                </div>
-              ))}
+              <SocialLinks />
             </div>
           </div>
           {/* Linha 2: Trademark à esquerda e relógio à direita */}
@@ -112,7 +80,12 @@ const Footer: React.FC = () => {
             <div className="text-xs text-black">
               Bonatto™ {currentYear}
             </div>
-            <div className="bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1">
+            <div
+              className={
+                "bg-[#c0c0c0] border-2 border-white border-l-[#808080] " +
+                "border-t-[#808080] border-r-white border-b-white px-2 py-1"
+              }
+            >
               {currentTime}
             </div>
           </div>
