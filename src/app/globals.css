@@ -91,3 +91,15 @@ button, input, select, textarea {
     transform: rotate(360deg) translate(20px);
   }
 }
+
+@media (max-width: 640px) {
+  @keyframes moonOrbit {
+    from {
+      transform: rotate(0deg) translate(10px);
+    }
+
+    to {
+      transform: rotate(360deg) translate(10px);
+    }
+  }
+}
