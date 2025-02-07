@@ -37,6 +37,11 @@ const DesktopSolarSystem: React.FC<{ systemScale: number }> = ({ systemScale }) 
     { name: 'uranus', size: 30, color: '#5F9EA0', orbitRadius: 700, animationDuration: 22 },
     { name: 'neptune', size: 30, color: '#4682B4', orbitRadius: 850, animationDuration: 27 }
   ];
+  const stars = Array.from({ length: 150 }, () => ({
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 2 + 1
+  }));
 
   const renderPlanet = (planet: typeof planets[0]) => {
     const planetStyle = {
@@ -93,6 +98,20 @@ const DesktopSolarSystem: React.FC<{ systemScale: number }> = ({ systemScale }) 
       className="relative w-full max-w-6xl h-[80vh] bg-black mx-auto my-10 flex justify-center items-center overflow-hidden border-2 border-[#d4d0c8] p-4 mb-[5rem]"
       style={{ transform: 'translateY(4rem)' }}
     >
+      {/* Stars */}
+{stars.map((star, index) => (
+  <div
+    key={`star-${index}`}
+    className="absolute bg-white rounded-full"
+    style={{
+      width: `${star.size}px`,
+      height: `${star.size}px`,
+      left: `${star.x}%`,
+      top: `${star.y}%`,
+      opacity: Math.random() * 0.7 + 0.3
+    }}
+  />
+))}
       {/* Sun */}
       <div
         className="absolute rounded-full z-10"
@@ -179,6 +198,11 @@ const MobileSolarSystem: React.FC = () => {
     { name: 'uranus', size: 30, color: '#5F9EA0', orbitRadius: 1000, animationDuration: 22 },
     { name: 'neptune', size: 30, color: '#4682B4', orbitRadius: 1200, animationDuration: 27 }
   ];
+    const stars = Array.from({ length: 150 }, () => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1
+    }));
 
   const renderPlanet = (planet: typeof planets[0]) => {
     const planetStyle = {
@@ -235,6 +259,20 @@ const MobileSolarSystem: React.FC = () => {
       className="relative w-full max-w-6xl h-[80vh] bg-black mx-auto my-10 flex justify-center items-center overflow-hidden border-2 border-[#d4d0c8] p-4 mb-[5rem]"
       style={{ transform: 'translateY(4rem)' }}
     >
+{/* Stars */}
+{stars.map((star, index) => (
+  <div
+    key={`star-${index}`}
+    className="absolute bg-white rounded-full"
+    style={{
+      width: `${star.size}px`,
+      height: `${star.size}px`,
+      left: `${star.x}%`,
+      top: `${star.y}%`,
+      opacity: Math.random() * 0.7 + 0.3
+    }}
+  />
+))}
       {/* Sun */}
       <div
         className="absolute rounded-full z-10"
