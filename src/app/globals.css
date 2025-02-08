@@ -103,3 +103,18 @@ button, input, select, textarea {
     }
   }
 }
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1s infinite;
+}

@@ -7,6 +7,7 @@ const SolarSystem: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+
   useEffect(() => {
     setMounted(true);
     // Responsive scaling based on screen size
@@ -28,6 +29,11 @@ const SolarSystem: React.FC = () => {
 };
 
 const DesktopSolarSystem: React.FC<{ systemScale: number }> = ({ systemScale }) => {
+  const [isSunPulsing, setIsSunPulsing] = useState(false);
+  const [sunGlowIntensity, setSunGlowIntensity] = useState(1);
+  const [isUfoVisible, setIsUfoVisible] = useState(false);
+  const [ufoPosition, setUfoPosition] = useState(0);
+
   const planets = [
     { name: 'mercury', size: 10, color: '#9E9E9E', orbitRadius: 100, animationDuration: 5 },
     { name: 'venus', size: 20, color: '#F5CBA7', orbitRadius: 150, animationDuration: 7 },
@@ -37,11 +43,14 @@ const DesktopSolarSystem: React.FC<{ systemScale: number }> = ({ systemScale }) 
     { name: 'uranus', size: 30, color: '#5F9EA0', orbitRadius: 700, animationDuration: 22 },
     { name: 'neptune', size: 30, color: '#4682B4', orbitRadius: 850, animationDuration: 27 }
   ];
-  const stars = Array.from({ length: 150 }, () => ({
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 2 + 1
-  }));
+  const stars = React.useMemo(() =>
+    Array.from({ length: 150 }, () => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      opacity: Math.random() * 0.7 + 0.3
+    }))
+  , []);
 
   const renderPlanet = (planet: typeof planets[0]) => {
     const planetStyle = {
@@ -93,36 +102,109 @@ const DesktopSolarSystem: React.FC<{ systemScale: number }> = ({ systemScale }) 
     );
   };
 
+  const handleSunClick = () => {
+    setIsSunPulsing(true);
+    setSunGlowIntensity(2.5);
+    setIsUfoVisible(true);
+
+    const pulseInterval = setInterval(() => {
+      setSunGlowIntensity(prev => {
+        if (prev > 1) return prev - 0.1;
+        clearInterval(pulseInterval);
+        return 1;
+      });
+    }, 50);
+
+   // UFO animation
+    setTimeout(() => {
+      setUfoPosition(200); // Move UFO to the right
+    }, 100);
+
+    setTimeout(() => {
+      setUfoPosition(0); // Move UFO back to the left
+      setTimeout(() => {
+        setIsUfoVisible(false); // Hide UFO
+      }, 1000);
+    }, 1500);
+  };
+
   return (
-    <div
-      className="relative w-full max-w-6xl h-[80vh] bg-black mx-auto my-10 flex justify-center items-center overflow-hidden border-2 border-[#d4d0c8] p-4 mb-[5rem]"
-      style={{ transform: 'translateY(4rem)' }}
-    >
+    <div className="relative w-full max-w-6xl h-[80vh] bg-black mx-auto my-10 flex justify-center items-center overflow-hidden border-2 border-[#d4d0c8] p-4 mb-[5rem]"
+      style={{ transform: 'translateY(4rem)' }}>
       {/* Stars */}
-{stars.map((star, index) => (
-  <div
-    key={`star-${index}`}
-    className="absolute bg-white rounded-full"
-    style={{
-      width: `${star.size}px`,
-      height: `${star.size}px`,
-      left: `${star.x}%`,
-      top: `${star.y}%`,
-      opacity: Math.random() * 0.7 + 0.3
-    }}
-  />
-))}
+      {stars.map((star, index) => (
+        <div
+          key={`star-${index}`}
+          className="absolute bg-white rounded-full"
+          style={{
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            opacity: star.opacity
+          }}
+        />
+      ))}
+      {/* UFO */}
+      <div
+        className={`absolute z-20 transition-all duration-1000 ease-in-out
+          ${isUfoVisible ? 'opacity-100' : 'opacity-0'}`}
+        style={{
+          width: `${30 * systemScale}px`,
+          height: `${15 * systemScale}px`,
+          top: '50%',
+          left: '50%',
+          transform: `translate(calc(-50% + ${ufoPosition}px), -50%)`,
+        }}
+      >
+        {/* UFO Body */}
+        <div
+          className="absolute w-full h-1/2 bottom-0 rounded-full"
+          style={{
+            backgroundColor: '#303030',
+            boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)',
+          }}
+        />
+        {/* UFO Dome */}
+        <div
+          className="absolute w-[60%] h-[60%] bottom-[40%] left-1/2 -translate-x-1/2 rounded-full"
+          style={{
+            backgroundColor: 'rgba(0, 255, 255, 0.3)',
+            border: '2px solid #505050',
+          }}
+        />
+        {/* UFO Lights */}
+        <div className="absolute w-full bottom-0 flex justify-around">
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className="w-[4px] h-[4px] rounded-full animate-pulse"
+              style={{
+                backgroundColor: 'rgba(0, 255, 255, 0.8)',
+                boxShadow: '0 0 5px rgba(0, 255, 255, 0.8)',
+              }}
+            />
+          ))}
+        </div>
+      </div>
       {/* Sun */}
       <div
-        className="absolute rounded-full z-10"
+        className={`absolute rounded-full z-10 cursor-pointer transition-all duration-300
+          ${isSunPulsing ? 'scale-110' : ''}`}
+        onClick={handleSunClick}
         style={{
           width: `${40 * systemScale}px`,
           height: `${40 * systemScale}px`,
           backgroundColor: '#FFD700',
-          boxShadow: `0 0 ${25 * systemScale}px rgba(255, 255, 0, 0.5)`,
+          boxShadow: `
+            0 0 ${50 * sunGlowIntensity}px rgba(255, 200, 0, ${0.3 * sunGlowIntensity}),
+            0 0 ${100 * sunGlowIntensity}px rgba(255, 160, 0, ${0.2 * sunGlowIntensity}),
+            0 0 ${150 * sunGlowIntensity}px rgba(255, 120, 0, ${0.1 * sunGlowIntensity})
+          `,
           top: '50%',
           left: '50%',
-          transform: 'translate(-50%, -50%)'
+          transform: `translate(-50%, -50%) scale(${isSunPulsing ? 1.1 : 1})`,
+          filter: `brightness(${sunGlowIntensity})`,
         }}
       />
 
@@ -172,6 +254,10 @@ const MobileSolarSystem: React.FC = () => {
   const [systemScale, setSystemScale] = useState(1);
   const [orbitScale, setOrbitScale] = useState(1);
   const [planetSpacing, setPlanetSpacing] = useState(1);
+  const [isSunPulsing, setIsSunPulsing] = useState(false);
+  const [sunGlowIntensity, setSunGlowIntensity] = useState(1);
+  const [isUfoVisible, setIsUfoVisible] = useState(false);
+  const [ufoPosition, setUfoPosition] = useState(0);
 
   useEffect(() => {
     // Responsive scaling based on screen size
@@ -198,11 +284,14 @@ const MobileSolarSystem: React.FC = () => {
     { name: 'uranus', size: 30, color: '#5F9EA0', orbitRadius: 1000, animationDuration: 22 },
     { name: 'neptune', size: 30, color: '#4682B4', orbitRadius: 1200, animationDuration: 27 }
   ];
-    const stars = Array.from({ length: 150 }, () => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 1
-    }));
+    const stars = React.useMemo(() =>
+      Array.from({ length: 150 }, () => ({
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.7 + 0.3
+      }))
+    , []);
 
   const renderPlanet = (planet: typeof planets[0]) => {
     const planetStyle = {
@@ -253,29 +342,96 @@ const MobileSolarSystem: React.FC = () => {
       />
     );
   };
+  const handleSunClick = () => {
+    setIsSunPulsing(true);
+    setSunGlowIntensity(2.5);
+    setIsUfoVisible(true);
 
+    const pulseInterval = setInterval(() => {
+      setSunGlowIntensity(prev => {
+        if (prev > 1) return prev - 0.1;
+        clearInterval(pulseInterval);
+        return 1;
+      });
+    }, 50);
+
+    // UFO animation
+    setTimeout(() => {
+      setUfoPosition(200);
+    }, 100);
+
+    setTimeout(() => {
+      setUfoPosition(0);
+      setTimeout(() => {
+        setIsUfoVisible(false);
+      }, 1000);
+    }, 1500);
+  };
   return (
-    <div
-      className="relative w-full max-w-6xl h-[80vh] bg-black mx-auto my-10 flex justify-center items-center overflow-hidden border-2 border-[#d4d0c8] p-4 mb-[5rem]"
-      style={{ transform: 'translateY(4rem)' }}
-    >
-{/* Stars */}
-{stars.map((star, index) => (
-  <div
-    key={`star-${index}`}
-    className="absolute bg-white rounded-full"
-    style={{
-      width: `${star.size}px`,
-      height: `${star.size}px`,
-      left: `${star.x}%`,
-      top: `${star.y}%`,
-      opacity: Math.random() * 0.7 + 0.3
-    }}
-  />
-))}
+    <div className="relative w-full max-w-6xl h-[80vh] bg-black mx-auto my-10 flex justify-center items-center overflow-hidden border-2 border-[#d4d0c8] p-4 mb-[5rem]"
+      style={{ transform: 'translateY(4rem)' }}>
+      {/* Stars */}
+      {stars.map((star, index) => (
+        <div
+          key={`star-${index}`}
+          className="absolute bg-white rounded-full"
+          style={{
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            opacity: star.opacity
+          }}
+        />
+      ))}
+      {/* UFO */}
+      <div
+        className={`absolute z-20 transition-all duration-1000 ease-in-out
+          ${isUfoVisible ? 'opacity-100' : 'opacity-0'}`}
+        style={{
+          width: `${30 * systemScale}px`,
+          height: `${15 * systemScale}px`,
+          top: '50%',
+          left: '50%',
+          transform: `translate(calc(-50% + ${ufoPosition}px), -50%)`,
+        }}
+      >
+        {/* UFO Body */}
+        <div
+          className="absolute w-full h-1/2 bottom-0 rounded-full"
+          style={{
+            backgroundColor: '#303030',
+            boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)',
+          }}
+        />
+        {/* UFO Dome */}
+        <div
+          className="absolute w-[60%] h-[60%] bottom-[40%] left-1/2 -translate-x-1/2 rounded-full"
+          style={{
+            backgroundColor: 'rgba(0, 255, 255, 0.3)',
+            border: '2px solid #505050',
+          }}
+        />
+        {/* UFO Lights */}
+        <div className="absolute w-full bottom-0 flex justify-around">
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className="w-[4px] h-[4px] rounded-full animate-pulse"
+              style={{
+                backgroundColor: 'rgba(0, 255, 255, 0.8)',
+                boxShadow: '0 0 5px rgba(0, 255, 255, 0.8)',
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Sun */}
       <div
-        className="absolute rounded-full z-10"
+        className={`absolute rounded-full z-10 cursor-pointer transition-all duration-300
+          ${isSunPulsing ? 'scale-110' : ''}`}
+        onClick={handleSunClick}
         style={{
           width: `${40 * systemScale}px`,
           height: `${40 * systemScale}px`,
