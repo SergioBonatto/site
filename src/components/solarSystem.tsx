@@ -342,6 +342,7 @@ const MobileSolarSystem: React.FC = () => {
       />
     );
   };
+
   const handleSunClick = () => {
     setIsSunPulsing(true);
     setSunGlowIntensity(2.5);
@@ -436,10 +437,11 @@ const MobileSolarSystem: React.FC = () => {
           width: `${40 * systemScale}px`,
           height: `${40 * systemScale}px`,
           backgroundColor: '#FFD700',
-          boxShadow: `0 0 ${25 * systemScale}px rgba(255, 255, 0, 0.5)`,
           top: '50%',
           left: '50%',
-          transform: 'translate(-50%, -50%)'
+          transform: 'translate(-50%, -50%)',
+          boxShadow: `0 0 ${50 * sunGlowIntensity}px rgba(255, 200, 0, ${0.3 * sunGlowIntensity})
+`,
         }}
       />
 
