@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useRef } from "react";
-import NavItem from "./NavItem";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface DesktopMenuProps {
     navItems: { name: string; href: string }[];
@@ -11,12 +12,28 @@ interface DesktopMenuProps {
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ navItems, isPlaying, handlePlayPause }) => {
     const audioRef = useRef<HTMLAudioElement>(null);
+    const pathname = usePathname();
+
+    const handleLinkClick = (href: string) => {
+        if (href === '/') {
+            window.location.href = '/';
+        }
+    };
 
     return (
-        <nav>
-            <ul className="hidden md:flex md:gap-8 mr-6">
+        <nav className="hidden md:flex items-center space-x-4 mr-6">
+            <ul className="flex items-center space-x-4">
                 {navItems.map((item) => (
-                    <NavItem key={item.name} name={item.name} href={item.href} />
+                    <li key={item.name}>
+                        <Link
+                            href={item.href}
+                            className="text-gray-900 hover:text-blue-800"
+                            scroll={item.href !== '/'}
+                            onClick={() => handleLinkClick(item.href)}
+                        >
+                            {item.name}
+                        </Link>
+                    </li>
                 ))}
                 <li className="text-center">
                     <button

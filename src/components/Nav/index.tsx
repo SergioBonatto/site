@@ -5,13 +5,15 @@ import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 import ToggleButtons from './ToggleButtons';
 import MusicPlayer from '../musicPlayer';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const navItems = [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#Contact' },
-    { name: 'Blog', href: '#Blog' },
-    { name: 'Portfolio', href: '#Portfolio' }
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/#about' },
+    { name: 'Contact', href: '/#Contact' },
+    { name: 'Blog', href: '/#Blog' },
+    { name: 'Portfolio', href: '/#Portfolio' }
 ];
 
 const Navbar: React.FC = () => {
@@ -44,9 +46,9 @@ const Navbar: React.FC = () => {
     return (
         <header className={`fixed top-5 left-0 w-full border border-gray-300 flex z-50 bg-gray-200 ${isScrolled ? 'shadow-lg' : ''} retro-border`}>
             <nav className="w-screen h-16 flex items-center justify-between bg-gray-200 relative">
-                <a href="#" className="font-bold text-2xl text-gray-900 ml-6">
-                    <span className="text-blue-800">Bonatto</span>
-                </a>
+            <Link href="/" className="font-bold text-2xl text-gray-900 ml-6">
+  <span className="text-blue-800">Bonatto</span>
+</Link>
                 <DesktopMenu navItems={navItems} isPlaying={isPlaying} handlePlayPause={handlePlayPause} />
                 <MobileMenu navItems={navItems} isPlaying={isPlaying} handlePlayPause={handlePlayPause} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
                 <ToggleButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

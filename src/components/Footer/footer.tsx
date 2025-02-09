@@ -1,22 +1,30 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SocialLinks from './SocialLinks';
+import { useEffect, useState } from 'react';
 
 const Footer: React.FC = () => {
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [mounted, setMounted] = useState(false);
+  const [currentYear, setCurrentYear] = useState('');
   const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-    setCurrentTime(new Date().toLocaleTimeString());
-    const timer = setInterval(() => {
+    setMounted(true);
+    setCurrentYear(new Date().getFullYear().toString());
+    const updateTime = () => {
       setCurrentTime(new Date().toLocaleTimeString());
-    }, 1000);
+    };
+    updateTime();
+    const timer = setInterval(updateTime, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  if (!mounted) {
+    return null; // ou um placeholder
+  }
 
   return (
     <div className="bottom-0 left-0 w-full bg-[#c0c0c0] border-t-2 border-white border-l-2 border-r-2 border-b-0 border-solid shadow-[3px_3px_0_0_\\#808080]">
@@ -59,7 +67,7 @@ const Footer: React.FC = () => {
           {/* Linha 1: Start à esquerda e ícones à direita */}
           <div className="flex items-center justify-between">
             <Link
-              href="/#"
+              href="/"
               className="flex items-center bg-[#c0c0c0] border-2 border-white border-l-[#808080] border-t-[#808080] border-r-white border-b-white px-2 py-1 cursor-pointer hover:bg-[#a0a0a0] active:border-[#808080] active:border-l-white active:border-t-white"
             >
               <Image
