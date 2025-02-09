@@ -5,7 +5,6 @@ import DesktopMenu from './DesktopMenu';
 import MobileMenu from './MobileMenu';
 import ToggleButtons from './ToggleButtons';
 import MusicPlayer from '../musicPlayer';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 const navItems = [

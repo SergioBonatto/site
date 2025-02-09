@@ -1,5 +1,4 @@
 import React from 'react';
-import NavItem from './NavItem';
 import Link from 'next/link';
 
 

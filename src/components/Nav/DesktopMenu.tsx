@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 interface DesktopMenuProps {
     navItems: { name: string; href: string }[];
@@ -12,7 +11,6 @@ interface DesktopMenuProps {
 
 const DesktopMenu: React.FC<DesktopMenuProps> = ({ navItems, isPlaying, handlePlayPause }) => {
     const audioRef = useRef<HTMLAudioElement>(null);
-    const pathname = usePathname();
 
     const handleLinkClick = (href: string) => {
         if (href === '/') {
