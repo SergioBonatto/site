@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import SEO from '@/components/SEO';
 import Navbar from '@/components/Nav';
 import MusicPlayer from '@/components/musicPlayer';
-import SolarSystem from '@/components/solarSystem';
+import SolarSystem from '@/components/solarSystem/components/SolarSystem';
 import About from '@/components/About/about';
 import Contact from '@/components/Contact/contact';
 import Footer from '@/components/Footer/footer';
