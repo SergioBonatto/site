@@ -51,22 +51,23 @@ const About: React.FC<AboutProps> = ({
         {/* Left Panel - Image */}
         <div className="w-full md:w-1/3">
           <div className={cn(
-            "bg-[#c0c0c0] h-full p-2 md:p-4",
-            "border-2",
+            "bg-[#c0c0c0] h-full p-1 md:p-1",
+            "border-1",
             WIN95_BORDERS.raised
           )}>
             <div className={cn(
-              "relative w-full aspect-square",
-              "border-2",
-              WIN95_BORDERS.sunken,
-              "bg-white p-1"
-            )}>
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                fill
-                priority
-                className="object-contain"
+  "relative w-full",
+  "h-[600px]",
+  "border-2",
+  WIN95_BORDERS.sunken,
+  "bg-white p-1"
+)}>
+  <Image
+    src={imageSrc}
+    alt={imageAlt}
+    fill
+    priority
+    className="object-cover"
               />
             </div>
           </div>
