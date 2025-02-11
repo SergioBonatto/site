@@ -10,6 +10,7 @@ import { useStars } from '../hooks/useStars';
 import { useResponsiveScale } from '../hooks/useResponsiveScale';
 import { desktopPlanets, mobilePlanets } from '../data/planets';
 
+
 const SolarSystem: React.FC = () => {
   const [mounted, setMounted] = useState(false);
   const { systemScale, orbitScale, planetSpacing, isMobile } = useResponsiveScale();
@@ -19,12 +20,6 @@ const SolarSystem: React.FC = () => {
   const [sunGlowIntensity, setSunGlowIntensity] = useState(1);
   const [isUfoVisible, setIsUfoVisible] = useState(false);
   const [ufoPosition, setUfoPosition] = useState(0);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   const handleSunClick = () => {
     setIsSunPulsing(true);
@@ -68,7 +63,7 @@ const SolarSystem: React.FC = () => {
         glowIntensity={sunGlowIntensity}
         onClick={handleSunClick}
       />
-       <EarthSystem
+      <EarthSystem
         systemScale={systemScale}
         orbitScale={orbitScale}
         planetSpacing={planetSpacing}
