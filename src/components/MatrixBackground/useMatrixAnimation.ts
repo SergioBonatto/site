@@ -16,7 +16,7 @@ export function useMatrixAnimation(
     canvas.height = window.innerHeight;
 
     return { canvas, ctx };
-  }, []);
+  }, [canvasRef]);
 
   useEffect(() => {
     const setup = setupCanvas();

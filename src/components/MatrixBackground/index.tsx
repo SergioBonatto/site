@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useMatrixAnimation } from './useMatrixAnimation';
 import { ClientOnly } from '../ClientOnly';
 

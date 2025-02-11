@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Stars } from './Stars';
 import { UFO } from './UFO';
 import { Sun } from './Sun';
@@ -12,7 +12,6 @@ import { desktopPlanets, mobilePlanets } from '../data/planets';
 
 
 const SolarSystem: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
   const { systemScale, orbitScale, planetSpacing, isMobile } = useResponsiveScale();
   const stars = useStars(150);
 
