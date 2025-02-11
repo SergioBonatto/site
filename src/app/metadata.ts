@@ -3,13 +3,15 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   metadataBase: new URL('https://bonatto.vercel.app'),
   title: 'Sergio Bonatto - Full Stack Developer',
-  description: 'Developer specialized in full stack development, formal proofs, lambda calculus, Haskell, JavaScript, Python. Based in Brasilia, Brazil.',
+  description: 'Sérgio Bonatto - Full Stack Developer in Brasília specializing in formal proofs, lambda calculus, Haskell, JavaScript, Python, and computational logic. Expert in software architecture, functional programming, web development, and algorithm optimization. Passionate about problem-solving, formal verification, and building scalable web applications.'
+,
   authors: [{ name: 'Sergio Bonatto', url: 'https://bonatto.vercel.app' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
     title: 'Sergio Bonatto - Full Stack Developer',
-    description: 'Developer specialized in full stack development, formal proofs, lambda calculus, Haskell, JavaScript, Python. Based in Brasilia, Brazil.',
+    description: 'Sérgio Bonatto - Full Stack Developer in Brasília specializing in formal proofs, lambda calculus, Haskell, JavaScript, Python, and computational logic. Expert in software architecture, functional programming, web development, and algorithm optimization. Passionate about problem-solving, formal verification, and building scalable web applications.',
+
     images: [
       {
         url: '/cards.png',
@@ -25,7 +27,8 @@ export const metadata: Metadata = {
     site: '@fibonatto',
     creator: '@fibonatto',
     title: 'Sergio Bonatto - Full Stack Developer',
-    description: 'Developer specialized in full stack development, formal proofs, lambda calculus, Haskell, JavaScript, Python. Based in Brasilia, Brazil.',
+    description: 'Sérgio Bonatto - Full Stack Developer in Brasília specializing in formal proofs, lambda calculus, Haskell, JavaScript, Python, and computational logic. Expert in software architecture, functional programming, web development, and algorithm optimization. Passionate about problem-solving, formal verification, and building scalable web applications.'
+,
     images: ['/cards.png'],
   },
   robots: {
@@ -33,6 +36,10 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: '/favicon.png',
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon.png', type: 'image/png', sizes: '32x32' }
+    ]
   }
 };
