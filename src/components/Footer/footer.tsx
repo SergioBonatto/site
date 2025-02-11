@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
   }, []);
 
   if (!mounted) {
-    return null; // ou um placeholder
+    return null;
   }
 
   return (
@@ -64,7 +64,6 @@ const Footer: React.FC = () => {
 
         {/* Mobile Version */}
         <div className="sm:hidden flex flex-col">
-          {/* Linha 1: Start à esquerda e ícones à direita */}
           <div className="flex items-center justify-between">
             <Link
               href="/"
@@ -83,7 +82,6 @@ const Footer: React.FC = () => {
               <SocialLinks />
             </div>
           </div>
-          {/* Linha 2: Trademark à esquerda e relógio à direita */}
           <div className="flex items-center justify-between mt-2">
             <div className="text-xs text-black">
               Bonatto™ {currentYear}
