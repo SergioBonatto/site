@@ -59,14 +59,12 @@ export const GalacticStars: React.FC = () => {
         }
 
         resizeHandler = () => {
-          // Usa as dimensões reais do container
           const containerWidth = containerRef.current?.clientWidth || window.innerWidth;
           const containerHeight = containerRef.current?.clientHeight || window.innerHeight;
           p.resizeCanvas(containerWidth, containerHeight);
         };
 
         p.setup = () => {
-          // Usa as dimensões reais do container
           const containerWidth = containerRef.current?.clientWidth || window.innerWidth;
           const containerHeight = containerRef.current?.clientHeight || window.innerHeight;
           p.createCanvas(containerWidth, containerHeight).parent(containerRef.current!);
@@ -80,7 +78,6 @@ export const GalacticStars: React.FC = () => {
 
         p.draw = () => {
           p.background(0, 20);
-          // Centraliza baseado nas dimensões atuais do canvas
           p.translate(p.width / 2, p.height / 2);
 
           for (const star of stars) {

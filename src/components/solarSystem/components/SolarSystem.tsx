@@ -12,7 +12,6 @@ import { desktopPlanets, mobilePlanets } from '../data/planets';
 
 const SolarSystem: React.FC = () => {
   const { systemScale, orbitScale, planetSpacing, isMobile } = useResponsiveScale();
-  // const stars = useStars(150);
 
   const [isSunPulsing, setIsSunPulsing] = useState(false);
   const [sunGlowIntensity, setSunGlowIntensity] = useState(1);
