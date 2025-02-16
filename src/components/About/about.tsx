@@ -16,7 +16,11 @@ const WIN95_BORDERS = {
   sunken: "border-t-gray-800 border-l-gray-800 border-r-white border-b-white",
 } as const;
 
-const Win95Link: React.FC<React.ComponentProps<typeof Link>> = ({ className, children, ...props }) => (
+const Win95Link: React.FC<React.ComponentProps<typeof Link>> = ({
+  className,
+  children,
+  ...props
+}) => (
   <Link
     className={cn(
       "text-blue-800 hover:text-blue-600 visited:text-purple-800",
@@ -50,25 +54,30 @@ const About: React.FC<AboutProps> = ({
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
         {/* Left Panel - Image */}
         <div className="w-full md:w-1/3">
-          <div className={cn(
-            "bg-[#c0c0c0] h-full p-1 md:p-1",
-            "border-1",
-            WIN95_BORDERS.raised
-          )}>
-            <div className={cn(
-  "relative w-full",
-  "h-[600px]",
-  "border-2",
-  WIN95_BORDERS.sunken,
-  "bg-white p-1"
-)}>
-  <Image
-    src={imageSrc}
-    alt={imageAlt}
-    fill
-    priority
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-    className="object-cover"
+          <div
+            className={cn(
+              "bg-[#c0c0c0] h-full p-1 md:p-1",
+              "border-1",
+              WIN95_BORDERS.raised
+            )}
+          >
+            <div
+              className={cn(
+                "relative w-full",
+                "h-[600px]",
+                "border-2",
+                WIN95_BORDERS.sunken,
+                "bg-white p-1"
+              )}
+            >
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                width={800}
+                height={600}
+                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover w-full h-full"
               />
             </div>
           </div>
@@ -76,11 +85,13 @@ const About: React.FC<AboutProps> = ({
 
         {/* Right Panel - Content */}
         <div className="w-full md:w-2/3">
-          <div className={cn(
-            "bg-white h-full p-4 md:p-6",
-            "border-2",
-            WIN95_BORDERS.sunken
-          )}>
+          <div
+            className={cn(
+              "bg-white h-full p-4 md:p-6",
+              "border-2",
+              WIN95_BORDERS.sunken
+            )}
+          >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-[&apos;MS Sans Serif&apos;] text-[#000080] mb-4 md:mb-6 select-none">
               About me
             </h2>

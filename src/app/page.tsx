@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SEO from '@/components/SEO';
 import Navbar from '@/components/Nav';
 import MusicPlayer from '@/components/musicPlayer';
@@ -15,8 +15,21 @@ import useDevTools from '@/lib/useDevtools';
 export default function Home() {
   const isDevToolsOpen = useDevTools();
 
-  useEffect(() => {
-  }, [isDevToolsOpen]);
+    useEffect(() => {
+      if (isDevToolsOpen) {
+        console.log(`
+          🕵️‍♂️ Hey there, curious developer!
+
+          While I appreciate your investigative spirit,
+          I'm afraid I can't let you peek behind the curtain.
+
+          But since you're here, why not grab a coffee ☕️ and visit:
+          https://github.com/SergioBonatto
+
+          PS: The cake is a lie! 🍰
+        `);
+      }
+    }, [isDevToolsOpen]);
 
   return (
     <main className={`relative min-h-screen bg-teal-600`}>
