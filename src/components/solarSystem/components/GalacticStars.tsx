@@ -23,7 +23,7 @@ export const GalacticStars: React.FC = () => {
       let resizeHandler: () => void;
 
       const sketch = (p: p5) => {
-        let stars: Star[] = [];
+        const stars: Star[] = [];
 
         class Star {
           pos: p5.Vector;
@@ -31,8 +31,8 @@ export const GalacticStars: React.FC = () => {
           brightness: number;
 
           constructor(p: p5) {
-            let angle = p.random(p.TWO_PI);
-            let radius = p.random(STAR_CONFIG.MIN_RADIUS, STAR_CONFIG.MAX_RADIUS);
+            const angle = p.random(p.TWO_PI);
+            const radius = p.random(STAR_CONFIG.MIN_RADIUS, STAR_CONFIG.MAX_RADIUS);
             this.pos = p.createVector(
               p.cos(angle) * radius,
               p.sin(angle) * radius
@@ -45,11 +45,10 @@ export const GalacticStars: React.FC = () => {
           }
 
           update(p: p5) {
-            let angle = p.atan2(this.pos.y, this.pos.x);
-            let radius = this.pos.mag();
-            angle += this.vel;
-            this.pos.x = p.cos(angle) * radius;
-            this.pos.y = p.sin(angle) * radius;
+            const angle = p.atan2(this.pos.y, this.pos.x);
+            const radius = this.pos.mag();
+            this.pos.x = p.cos(angle + this.vel) * radius;
+            this.pos.y = p.sin(angle + this.vel) * radius;
           }
 
           show(p: p5) {
@@ -84,7 +83,7 @@ export const GalacticStars: React.FC = () => {
           // Centraliza baseado nas dimensões atuais do canvas
           p.translate(p.width / 2, p.height / 2);
 
-          for (let star of stars) {
+          for (const star of stars) {
             star.update(p);
             star.show(p);
           }
