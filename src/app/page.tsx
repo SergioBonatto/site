@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import SEO from '@/components/SEO';
 import Navbar from '@/components/Nav';
 import MusicPlayer from '@/components/musicPlayer';
