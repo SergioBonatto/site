@@ -6,7 +6,6 @@ import { UFO } from './UFO';
 import { Sun } from './Sun';
 import { EarthSystem } from './EarthSystem';
 import { PlanetComponent } from './Planet';
-import { useStars } from '../hooks/useStars';
 import { useResponsiveScale } from '../hooks/useResponsiveScale';
 import { desktopPlanets, mobilePlanets } from '../data/planets';
 
