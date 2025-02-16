@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Stars } from './Stars';
+import { GalacticStars } from './GalacticStars';
 import { UFO } from './UFO';
 import { Sun } from './Sun';
 import { EarthSystem } from './EarthSystem';
@@ -13,7 +13,7 @@ import { desktopPlanets, mobilePlanets } from '../data/planets';
 
 const SolarSystem: React.FC = () => {
   const { systemScale, orbitScale, planetSpacing, isMobile } = useResponsiveScale();
-  const stars = useStars(150);
+  // const stars = useStars(150);
 
   const [isSunPulsing, setIsSunPulsing] = useState(false);
   const [sunGlowIntensity, setSunGlowIntensity] = useState(1);
@@ -50,7 +50,7 @@ const SolarSystem: React.FC = () => {
   return (
     <div className="relative w-full max-w-6xl h-[80vh] bg-black mx-auto my-10 flex justify-center items-center overflow-hidden border-2 border-[#d4d0c8] p-4 mb-[5rem]"
       style={{ transform: 'translateY(4rem)' }}>
-      <Stars stars={stars} />
+      <GalacticStars />
       <UFO
         isVisible={isUfoVisible}
         position={ufoPosition}
