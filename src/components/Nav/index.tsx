@@ -12,7 +12,8 @@ const navItems = [
     { name: 'About', href: '/#about' },
     { name: 'Contact', href: '/#Contact' },
     { name: 'Blog', href: '/#Blog' },
-    { name: 'Portfolio', href: '/#Portfolio' }
+    { name: 'Portfolio', href: '/#Portfolio' },
+    { name: 'Login', href: '/login' },
 ];
 
 const Navbar: React.FC = () => {
