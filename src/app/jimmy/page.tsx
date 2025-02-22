@@ -10,10 +10,10 @@ const generateAscii = (imageData: ImageData): string => {
   const width = imageData.width;
   const height = imageData.height;
 
-  // Determina o passo baseado no tamanho da tela
+  // Determine step size based on screen size
   const isPortrait = window.innerHeight > window.innerWidth;
-  const yStep = isPortrait ? 4 : 2; // Pula mais linhas no modo retrato
-  const xStep = isPortrait ? 2 : 1; // Pula mais colunas no modo retrato
+  const yStep = isPortrait ? 4 : 2; // Skip more lines in portrait mode
+  const xStep = isPortrait ? 2 : 1; // Skip more columns in portrait mode
 
   for (let y = 0; y < height; y += yStep) {
     for (let x = 0; x < width; x += xStep) {
@@ -56,13 +56,12 @@ export default function JimmyPage() {
       const fullWidth = firstFrame.frameInfo.width;
       const height = firstFrame.frameInfo.height;
 
-      // Detecta se a tela está no modo retrato
+      // Detect if screen is in portrait mode
       const isPortrait = window.innerHeight > window.innerWidth;
 
-      // Se for modo retrato, pega apenas 60% da largura total, começando a 40% do início
-      const cropX = isPortrait ? Math.floor(fullWidth * 0.2) : 0; // Começa a 40% da largura
-      const cropWidth = isPortrait ? Math.floor(fullWidth * 0.6) : fullWidth; // Pega 60% da largura
-
+      // In portrait mode, take only 60% of total width, starting at 40% from the beginning
+      const cropX = isPortrait ? Math.floor(fullWidth * 0.2) : 0; // Start at 20% of width
+      const cropWidth = isPortrait ? Math.floor(fullWidth * 0.6) : fullWidth; // Take 60% of width
 
       canvas.width = cropWidth;
       canvas.height = height;
@@ -126,7 +125,7 @@ export default function JimmyPage() {
             </pre>
           ) : (
             <h2 className="text-2xl font-bold">
-              why are you gay?
+              Why are you gay?
             </h2>
           )}
         </div>
