@@ -2,16 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Nav';
-import Footer from '@/components/Footer/footer';
-
-const gifFrames = require('gif-frames') as (options: {
-  url: string;
-  frames: 'all' | number[];
-  outputType: string;
-}) => Promise<Array<{
-  frameInfo: { width: number; height: number };
-  getImage(): HTMLCanvasElement;
-}>>;
+import gifFrames from 'gif-frames';
 
 const generateAscii = (imageData: ImageData): string => {
   const characters = '@#8&OLI)i=+;:,. ';  // From darkest to lightest
@@ -113,7 +104,6 @@ export default function JimmyPage() {
           )}
         </div>
       </main>
-      {/* <Footer /> */}
     </div>
   );
 }
