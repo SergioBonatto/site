@@ -10,8 +10,13 @@ const generateAscii = (imageData: ImageData): string => {
   const width = imageData.width;
   const height = imageData.height;
 
-  for (let y = 0; y < height; y += 2) {
-    for (let x = 0; x < width; x++) {
+  // Determina o passo baseado no tamanho da tela
+  const isPortrait = window.innerHeight > window.innerWidth;
+  const yStep = isPortrait ? 4 : 2; // Pula mais linhas no modo retrato
+  const xStep = isPortrait ? 2 : 1; // Pula mais colunas no modo retrato
+
+  for (let y = 0; y < height; y += yStep) {
+    for (let x = 0; x < width; x += xStep) {
       const idx = (y * width + x) * 4;
       const [r, g, b] = [
         imageData.data[idx],
@@ -33,6 +38,7 @@ export default function JimmyPage() {
   const [mounted, setMounted] = useState(false);
   const [asciiFrames, setAsciiFrames] = useState<string[]>([]);
   const [currentFrame, setCurrentFrame] = useState(0);
+  const [isPortrait, setIsPortrait] = useState(false);
 
   const convertGifToAscii = async () => {
     try {
@@ -47,13 +53,34 @@ export default function JimmyPage() {
       if (!ctx) return;
 
       const firstFrame = frameData[0];
-      canvas.width = firstFrame.frameInfo.width;
-      canvas.height = firstFrame.frameInfo.height;
+      const fullWidth = firstFrame.frameInfo.width;
+      const height = firstFrame.frameInfo.height;
+
+      // Detecta se a tela está no modo retrato
+      const isPortrait = window.innerHeight > window.innerWidth;
+
+      // Se for modo retrato, pega apenas 60% da largura total, começando a 40% do início
+      const cropX = isPortrait ? Math.floor(fullWidth * 0.2) : 0; // Começa a 40% da largura
+      const cropWidth = isPortrait ? Math.floor(fullWidth * 0.6) : fullWidth; // Pega 60% da largura
+
+
+      canvas.width = cropWidth;
+      canvas.height = height;
 
       const frames = frameData.map(frame => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(frame.getImage(), 0, 0);
-        return generateAscii(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        ctx.drawImage(
+          frame.getImage(),
+          cropX,
+          0,
+          cropWidth,
+          height,
+          0,
+          0,
+          cropWidth,
+          height
+        );
+        return generateAscii(ctx.getImageData(0, 0, cropWidth, height));
       });
 
       setAsciiFrames(frames);
@@ -82,7 +109,7 @@ export default function JimmyPage() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1 flex items-center justify-center text-white text-center bg-black">
-        <div className="mt-auto pb-8 w-full">
+        <div className={`w-full ${isPortrait ? 'mb-[20vh]' : 'pb-8'}`}>
           {asciiFrames.length > 0 ? (
             <pre
               className="text-green-400 font-mono text-[0.5em] md:text-[0.6em] whitespace-pre overflow-hidden"
