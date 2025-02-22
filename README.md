@@ -66,8 +66,8 @@ src/
 
 1. **Clone and install:**
 ```bash
-git clone https://github.com/username/portfolio
-cd portfolio
+git clone https://github.com/SergioBonatto/site.git
+cd site
 npm install
 ```
 
