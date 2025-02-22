@@ -38,7 +38,7 @@ export default function JimmyPage() {
   const [mounted, setMounted] = useState(false);
   const [asciiFrames, setAsciiFrames] = useState<string[]>([]);
   const [currentFrame, setCurrentFrame] = useState(0);
-  const [isPortrait, setIsPortrait] = useState(false);
+  const [isPortrait] = useState(false);
 
   const convertGifToAscii = async () => {
     try {
