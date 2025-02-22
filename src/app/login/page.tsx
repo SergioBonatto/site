@@ -4,7 +4,6 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import Navbar from '@/components/Nav';
 import YouTube, { YouTubeEvent, YouTubePlayer } from 'react-youtube';
 
-
 interface PlayerVars {
   autoplay: number;
   controls: number;
@@ -37,7 +36,7 @@ const baseVideoOptions = {
       enablejsapi: 1,
       iv_load_policy: 3,
       playlist: 'dQw4w9WgXcQ',
-      mute: 1, // Inicialmente mutado para permitir autoplay
+      mute: 1, // Initially muted to allow autoplay
     } as PlayerVars,
 };
 
@@ -72,7 +71,7 @@ export default function VideoPage() {
           setHackingStage((prev) => {
             if (prev >= hackingStages.length - 1) {
               clearInterval(interval);
-              setTimeout(() => setShowVideo(true), 1000); // Pequeno delay antes de mostrar o vídeo
+              setTimeout(() => setShowVideo(true), 1000); // Small delay before showing video
               return prev;
             }
             return prev + 1;
@@ -89,25 +88,26 @@ export default function VideoPage() {
           const player = playerRef.current;
           isInitializedRef.current = true;
 
-          // Inicia o vídeo
+          // Start video
           player.playVideo();
 
-          // Espera um tempo antes de verificar se o player realmente pode aceitar comandos
+          // Wait before checking if player can accept commands
           setTimeout(() => {
             if (player && typeof player.unMute === 'function') {
               player.unMute();
               player.setVolume(100);
             } else {
-              console.warn('Player ainda não está pronto para aceitar comandos.');
+              console.warn('Player not ready to accept commands yet.');
             }
           }, 1000);
 
         } catch (error) {
-          console.error('Erro ao inicializar player:', error);
+          console.error('Error initializing player:', error);
           setVideoError(true);
         }
       }, []);
-      // Efeito para inicializar o player após a animação terminar, com atraso extra
+
+      // Effect to initialize player after animation ends, with extra delay
       useEffect(() => {
         if (showVideo && playerRef.current) {
           const timeout = setTimeout(() => {
@@ -118,32 +118,25 @@ export default function VideoPage() {
         }
       }, [showVideo, initializePlayer]);
 
-
-
-
-
-
       const handleVideoReady = (event: YouTubeEvent) => {
         const player = event.target;
         playerRef.current = player;
 
-        // Começa mutado
+        // Start muted
         player.mute();
         player.playVideo();
 
-        // Tenta desmutar após 500ms
+        // Try to unmute after 500ms
         setTimeout(() => {
           if (player.isMuted()) {
             player.unMute();
             player.setVolume(100);
           }
-        }, 500);
+        }, 100);
       };
 
-
-
     const handleStateChange = useCallback((event: YouTubeEvent) => {
-      // Se o vídeo parar por qualquer motivo, tenta reproduzir novamente
+      // If video stops for any reason, try to play again
       if (event.data === YouTube.PlayerState.ENDED ||
           event.data === YouTube.PlayerState.PAUSED) {
         event.target.playVideo();
