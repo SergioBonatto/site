@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    site: '@fibonatto',
+    site: 'https://bonatto.vercel.app',
     creator: 'fibonatto',
     title: 'Sergio Bonatto - Full Stack Developer',
     description: 'Sergio Bonatto - Full Stack Developer in Brasília specializing in formal proofs, lambda calculus, Haskell, JavaScript, Python, and computational logic. Expert in software architecture, functional programming, web development, and algorithm optimization. Passionate about problem-solving, formal verification, and building scalable web applications.'

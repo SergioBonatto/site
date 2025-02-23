@@ -21,7 +21,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, url }) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
 
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@fibonatto" />
       <meta name="twitter:creator" content="@fibonatto" />
       <meta name="twitter:title" content={title} />
