@@ -5,8 +5,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SocialLinks from './SocialLinks';
 import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
-const Footer: React.FC = () => {
+
+interface FooterProps {
+  className?: string;
+}
+
+const Footer: React.FC<FooterProps> = ({ className }) => {
   const [mounted, setMounted] = useState(false);
   const [currentYear, setCurrentYear] = useState('');
   const [currentTime, setCurrentTime] = useState('');
@@ -27,7 +33,7 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <div className="bottom-0 left-0 w-full bg-[#c0c0c0] border-t-2 border-white border-l-2 border-r-2 border-b-0 border-solid shadow-[3px_3px_0_0_\\#808080]">
+    <div className={cn("bottom-0 left-0 w-full bg-[#c0c0c0] border-t-2 border-white border-l-2 border-r-2 border-b-0 border-solid shadow-[3px_3px_0_0_\\#808080]", className)}>
       <div className="container mx-auto px-4 py-2">
         {/* Desktop Version */}
         <div className="hidden sm:flex items-center justify-between">

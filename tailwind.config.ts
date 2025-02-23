@@ -11,10 +11,18 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'win95-window': '#c0c0c0',
+        'win95-border': '#858585',
       },
       animation: {
         'orbit': 'orbit linear infinite',
         'moon-orbit': 'moonOrbit linear infinite 2.5s',
+      },
+      boxShadow: {
+        'win95': 'inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #c0c0c0',
+      },
+      backgroundColor: {
+        'win95-titlebar': '#000080',
       },
       keyframes: {
         orbit: {
@@ -28,5 +36,5 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 } satisfies Config;
