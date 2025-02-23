@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Nav';
 import Footer from '@/components/Footer/footer';
