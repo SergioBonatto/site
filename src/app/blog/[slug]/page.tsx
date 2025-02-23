@@ -44,7 +44,7 @@ export default async function BlogPost({ params }: Props) {
       return (
         <div className=" flex flex-col min-h-screen bg-teal-600">
           <Navbar />
-          <main className="relative flex-grow pt-20 pb-10"> {/* Ajustado para evitar sobreposição */}
+          <main className="relative flex-grow pt-10 pb-10"> {/* Ajustado para evitar sobreposição */}
             <SEO
               title="Post não encontrado - Sergio Bonatto"
               description="Full Stack Developer, formal proofs, lambda calculus, Haskell, JavaScript, Python"
@@ -85,7 +85,7 @@ export default async function BlogPost({ params }: Props) {
           url={`https://bonatto.vercel.app/blog/${slug}`}
         />
         <Navbar />
-        <main className=" relative flex-grow pt-40 pb-10"> {/* Ajustado para evitar sobreposição */}
+        <main className=" relative flex-grow pt-10 pb-10"> {/* Ajustado para evitar sobreposição */}
           <section className={cn(
             "w-full max-w-6xl mx-auto bg-[#c0c0c0] border-2 md:w-4/5",
             WIN95_BORDERS.raised,
@@ -125,7 +125,7 @@ export default async function BlogPost({ params }: Props) {
     return (
       <div className="flex flex-col min-h-screen bg-teal-600">
         <Navbar />
-        <main className="relative flex-grow pt-20 pb-10"> {/* Ajustado para evitar sobreposição */}
+        <main className="relative flex-grow pt-10 pb-10"> {/* Ajustado para evitar sobreposição */}
           <SEO
             title="Erro - Sergio Bonatto"
             description="Full Stack Developer, formal proofs, lambda calculus, Haskell, JavaScript, Python"

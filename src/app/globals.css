@@ -14,7 +14,7 @@
   --system-scale: 1;
   --orbit-scale: 1;
   --background: #0d9488;;
-  --foreground: #ffffff;
+  --foreground: #000;
 }
 
 @media (max-width: 1200px) {

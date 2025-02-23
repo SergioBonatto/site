@@ -5,6 +5,12 @@ import SEO from '@/components/SEO';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { cn } from '@/lib/utils';
+
+const WIN95_BORDERS = {
+  raised: "border-t-white border-l-white border-r-gray-800 border-b-gray-800",
+  sunken: "border-t-gray-800 border-l-gray-800 border-r-white border-b-white",
+} as const;
 
 interface Post {
   slug: string;
@@ -42,51 +48,52 @@ export default async function BlogIndex() {
   const posts = await getPosts();
 
   return (
-    <main className="relative min-h-screen bg-teal-600">
-      <div className="relative z-10">
-        <SEO
-          title="Blog - Sergio Bonatto"
-          description="Posts sobre desenvolvimento, provas formais e outras coisas interessantes"
-          image="/cards.png"
-          url="https://bonatto.vercel.app/blog"
-        />
-        <Navbar />
-        <div className="container mx-auto mt-8 p-4">
-          <div className="bg-win95-window border-2 border-win95-border shadow-win95">
-            <div className="bg-win95-titlebar px-2 py-1">
-              <span className="text-black font-bold">Blog Posts</span>
-            </div>
-            <div className="p-4">
-              {posts.length > 0 ? (
-                <div className="space-y-4">
-                  {posts.map(post => (
-                    <div
-                      key={post.slug}
-                      className="bg-win95-window border-2 border-win95-border shadow-win95"
-                    >
-                      <div className="p-4">
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="block hover:text-blue-300"
-                        >
-                          <h2 className="text-lg font-bold text-white">{post.title}</h2>
-                        </Link>
-                        <p className="text-sm text-gray-300 mt-1">{post.date}</p>
-                        <p className="text-white mt-2">{post.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-white text-center py-8">
-                  Nenhum post encontrado.
-                </div>
-              )}
-            </div>
+    <div className="flex flex-col min-h-screen bg-teal-600">
+      <SEO
+        title="Blog - Sergio Bonatto"
+        description="Posts sobre desenvolvimento, provas formais e outras coisas interessantes"
+        image="/cards.png"
+        url="https://bonatto.vercel.app/blog"
+      />
+      <Navbar />
+      <main className="relative flex-grow pt-40 pb-10">
+        <section className={cn(
+          "w-full max-w-6xl mx-auto bg-[#c0c0c0] border-2 md:w-4/5",
+          WIN95_BORDERS.raised,
+          "p-3 md:p-4 lg:p-5"
+        )}>
+          <div className={cn(
+            "bg-white h-full p-4 md:p-6 border-2",
+            WIN95_BORDERS.sunken
+          )}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-['MS Sans Serif'] text-[#000080] mb-4 md:mb-6 select-none">
+              Blog Posts
+            </h2>
+            {posts.length > 0 ? (
+              <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800">
+                {posts.map(post => (
+                  <div key={post.slug} className={cn(
+                    "border-2",
+                    WIN95_BORDERS.sunken,
+                    "bg-[#ececec] p-2 md:p-3"
+                  )}>
+                    <Link href={`/blog/${post.slug}`} className="block hover:text-blue-600">
+                      <h3 className="text-lg font-bold text-[#000080]">{post.title}</h3>
+                    </Link>
+                    <p className="text-sm text-gray-600 mt-1">{post.date}</p>
+                    <p className="mt-2">{post.description}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-gray-800 text-center py-8 font-['MS Sans Serif']">
+                Nenhum post encontrado.
+              </div>
+            )}
           </div>
-        </div>
-        <Footer />
-      </div>
-    </main>
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }
