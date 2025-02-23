@@ -78,9 +78,9 @@ export default async function BlogIndex() {
                     "bg-[#ececec] p-2 md:p-3"
                   )}>
                     <Link href={`/blog/${post.slug}`} className="block hover:text-blue-600">
-                      <h3 className="text-lg font-bold text-[#000080]">{post.title}</h3>
+                      <h3 className="md:text-lg font-bold text-[#000080]">{post.title}</h3>
                     </Link>
-                    <p className="text-sm text-gray-600 mt-1">{post.date}</p>
+                    <p className="md:text-base text-gray-600 mt-1">{post.date}</p>
                     <p className="mt-2">{post.description}</p>
                   </div>
                 ))}

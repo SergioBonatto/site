@@ -42,11 +42,11 @@ export default async function BlogPost({ params }: Props) {
 
     if (!fs.existsSync(filePath)) {
       return (
-        <div className=" flex flex-col min-h-screen bg-teal-600">
+        <div className="flex flex-col min-h-screen bg-teal-600">
           <Navbar />
-          <main className="relative flex-grow pt-40 pb-10"> {/* Ajustado para evitar sobreposição */}
+          <main className="relative flex-grow pt-40 pb-10"> {/* Adjusted to avoid overlap */}
             <SEO
-              title="Post não encontrado - Sergio Bonatto"
+              title="Post not found - Sergio Bonatto"
               description="Full Stack Developer, formal proofs, lambda calculus, Haskell, JavaScript, Python"
               image="/cards.png"
               url="https://bonatto.vercel.app/"
@@ -61,12 +61,12 @@ export default async function BlogPost({ params }: Props) {
                 WIN95_BORDERS.sunken
               )}>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-['MS Sans Serif'] text-[#000080] mb-4 md:mb-6 select-none">
-                  Post não encontrado
+                  Post not found
                 </h2>
               </div>
             </section>
           </main>
-          <Footer /> {/* Agora o footer sempre estará na parte inferior */}
+          <Footer /> {/* Footer will always be at the bottom */}
         </div>
       );
     }
@@ -85,7 +85,7 @@ export default async function BlogPost({ params }: Props) {
           url={`https://bonatto.vercel.app/blog/${slug}`}
         />
         <Navbar />
-        <main className=" relative flex-grow pt-40 pb-10"> {/* Ajustado para evitar sobreposição */}
+        <main className="relative flex-grow pt-40 pb-10"> {/* Adjusted to avoid overlap */}
           <section className={cn(
             "w-full max-w-6xl mx-auto bg-[#c0c0c0] border-2 md:w-4/5",
             WIN95_BORDERS.raised,
@@ -98,7 +98,7 @@ export default async function BlogPost({ params }: Props) {
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-['MS Sans Serif'] text-[#000080] mb-4 md:mb-6 select-none">
                 {(data as PostData).title}
               </h2>
-              <div className="text-sm text-gray-600 mb-4 font-['MS Sans Serif']">
+              <div className="text-base text-gray-600 mb-4 font-['MS Sans Serif']">
                 {(data as PostData).date}
               </div>
               <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800 prose max-w-none">
@@ -108,7 +108,7 @@ export default async function BlogPost({ params }: Props) {
                   "bg-[#ececec] p-2 md:p-3"
                 )}>
                   <div
-                    className="leading-relaxed text-sm md:text-base"
+                    className="leading-relaxed text-base md:text-lg"
                     dangerouslySetInnerHTML={{ __html: contentHtml }}
                   />
                 </div>
@@ -121,13 +121,13 @@ export default async function BlogPost({ params }: Props) {
     );
 
   } catch (error) {
-    console.error('Erro ao carregar o post:', error);
+    console.error('Error loading post:', error);
     return (
       <div className="flex flex-col min-h-screen bg-teal-600">
         <Navbar />
-        <main className="relative flex-grow pt-40 pb-10"> {/* Ajustado para evitar sobreposição */}
+        <main className="relative flex-grow pt-40 pb-10"> {/* Adjusted to avoid overlap */}
           <SEO
-            title="Erro - Sergio Bonatto"
+            title="Error - Sergio Bonatto"
             description="Full Stack Developer, formal proofs, lambda calculus, Haskell, JavaScript, Python"
             image="/cards.png"
             url="https://bonatto.vercel.app/"
@@ -142,7 +142,7 @@ export default async function BlogPost({ params }: Props) {
               WIN95_BORDERS.sunken
             )}>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-['MS Sans Serif'] text-[#000080] mb-4 md:mb-6 select-none">
-                Erro ao carregar o post
+                Error loading post
               </h2>
             </div>
           </section>

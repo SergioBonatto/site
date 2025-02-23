@@ -96,7 +96,7 @@ const About: React.FC<AboutProps> = ({
               About me
             </h2>
 
-            <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800">
+            <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800 md:text-lg">
               {[
                 "I'm a software developer transitioning into full-stack web development, combining a passion for clean, scalable frontend experiences with robust backend systems. My focus is on building user-centric applications with modern frameworks and maintaining strong coding standards.",
                 "With a background in formal verification and functional programming, I bring a methodical approach to problem-solving and code quality. I have experience crafting efficient algorithms, exploring formal proofs, and leveraging decentralized technologies to create innovative solutions.",
@@ -111,7 +111,7 @@ const About: React.FC<AboutProps> = ({
                     "bg-[#ececec] p-2 md:p-3"
                   )}
                 >
-                  <p className="leading-relaxed text-sm md:text-base">
+                  <p className="leading-relaxed text-base md:text-lg">
                     {index === 3 ? (
                       <>
                         On my{' '}

@@ -2,7 +2,7 @@
 
 title: "Your Terminal Can Be Much More Productive, Beautiful, and User-Friendly!"
 date: "2024-03-19"
-
+description: "Transform your terminal into a powerful tool! If you're still using a plain and uncustomized terminal, you're missing out on productivity. In this article, you'll learn how to make your terminal more efficient, beautiful, and practical for everyday use."
 ---
 ## Transform your terminal into a powerful tool!
 ### If you're still using a plain and uncustomized terminal, you're missing out on productivity.
