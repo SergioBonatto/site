@@ -11,7 +11,7 @@ const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/#about' },
     { name: 'Contact', href: '/#Contact' },
-    { name: 'Blog', href: '/#Blog' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Portfolio', href: '/#Portfolio' },
     { name: 'Login', href: '/login' },
 ];
@@ -47,8 +47,8 @@ const Navbar: React.FC = () => {
         <header className={`fixed top-5 left-0 w-full border border-gray-300 flex z-50 bg-gray-200 ${isScrolled ? 'shadow-lg' : ''} retro-border`}>
             <nav className="w-screen h-16 flex items-center justify-between bg-gray-200 relative">
             <Link href="/" className="font-bold text-2xl text-gray-900 ml-6">
-  <span className="text-blue-800">Bonatto</span>
-</Link>
+            <span className="text-blue-800">Bonatto</span>
+            </Link>
                 <DesktopMenu navItems={navItems} isPlaying={isPlaying} handlePlayPause={handlePlayPause} />
                 <MobileMenu navItems={navItems} isPlaying={isPlaying} handlePlayPause={handlePlayPause} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
                 <ToggleButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

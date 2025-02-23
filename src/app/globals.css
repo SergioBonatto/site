@@ -7,12 +7,14 @@
   --primary-color: #000080;
   --secondary-color: #c0c0c0;
   --text-color: #000;
-  --background-color: #008080;
+  --background-color: #0d9488;
   --link-color: #0000EE;
   --visited-link-color: #551A8B;
   --active-link-color: #FF0000;
   --system-scale: 1;
   --orbit-scale: 1;
+  --background: #0d9488;;
+  --foreground: #ffffff;
 }
 
 @media (max-width: 1200px) {
@@ -40,6 +42,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: larger;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 .retro-border {
