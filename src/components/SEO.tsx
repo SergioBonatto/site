@@ -7,8 +7,8 @@ interface SEOProps {
   url: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, image, url }) => {
-  const fullImageUrl = `https://bonatto.vercel.app${image}`;
+const SEO: React.FC<SEOProps> = ({ title, description, url }) => {
+  const fullImageUrl = `https://bonatto.vercel.app/card.png`;
 
   return (
     <Head>
@@ -26,7 +26,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, image, url }) => {
       <meta name="twitter:creator" content="@fibonatto" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={fullImageUrl} />
+      <meta name="twitter:image" content="https://bonatto.vercel.app/card.png" />
     </Head>
   );
 };
