@@ -1,6 +1,7 @@
 ---
 title: "Vivendo para a Glória de Deus"
 date: "2019-12-15"
+description: "Descubra como os milagres de Cristo e a salvação revelam que tudo existe para a glória de Deus. Uma reflexão sobre viver cada momento para louvar Aquele que nos criou e redimiu."
 ---
 
 "Mas, para que saibais que o Filho do Homem tem poder sobre a terra para perdoar pecados (ele disse então ao paralítico): Levanta-te, toma o teu leito e vai para tua casa. E ele, levantando-se, foi para sua casa." (Mateus 9:6-7)
