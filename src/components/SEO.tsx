@@ -5,13 +5,18 @@ interface SEOProps {
   description: string;
   image: string;
   url: string;
+  keywords?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, url }) => {
-  const fullImageUrl = `https://bonatto.vercel.app/card.png`;
+const SEO: React.FC<SEOProps> = ({ title, description, image, url, keywords }) => {
+  const fullImageUrl = `https://bonatto.vercel.app${image}`;
 
   return (
     <Head>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
+
       <meta property="og:type" content="website" />
       <meta property="og:image" content={fullImageUrl} />
       <meta property="og:image:width" content="1200" />
@@ -26,7 +31,9 @@ const SEO: React.FC<SEOProps> = ({ title, description, url }) => {
       <meta name="twitter:creator" content="@fibonatto" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="https://bonatto.vercel.app/card.png" />
+      <meta name="twitter:image" content={fullImageUrl} />
+
+      <link rel="canonical" href={url} />
     </Head>
   );
 };

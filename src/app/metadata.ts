@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://bonatto.vercel.app/cards.png',
-        width: 1200,
+        width: 630,
         height: 630,
         alt: 'Sergio Bonatto - Full Stack Developer Portfolio',
       }
