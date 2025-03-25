@@ -3,7 +3,7 @@ title: "Culpa implícita"
 date: "2025-03-25"
 description: "Uma análise crítica do conceito de 'culpa implícita' no sistema judiciário brasileiro, onde indivíduos são condenados por associação a grupos em vez de por suas ações concretas, comprometendo princípios fundamentais de justiça e do Estado de Direito."
 ---
-![perdeu mané](/public/blog/perdeu%20mane.webp)
+![perdeu mané](/blog/perdeu%20mane.webp)
 
 No catolicismo romano, existe o conceito de fé implícita, segundo o qual o leigo é justificado por seguir a orientação do sacerdote. De maneira análoga, nosso judiciário parece ter inaugurado a culpa implícita, na qual um indivíduo pode ser condenado simplesmente por pertencer a um grupo.
 
