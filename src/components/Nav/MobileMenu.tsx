@@ -3,7 +3,11 @@ import Link from 'next/link';
 
 
 interface MobileMenuProps {
-    navItems: { name: string; href: string }[];
+    navItems: {
+        name: string;
+        href: string,
+        target?: string;
+    }[];
     isPlaying: boolean;
     handlePlayPause: () => void;
     isMenuOpen: boolean;
@@ -28,6 +32,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navItems, isPlaying, handlePlay
                             href={item.href}
                             className="text-xl text-gray-900 hover:text-blue-800 transition-colors"
                             onClick={() => setIsMenuOpen(false)}
+                            target='_blank'
                         >
                             {item.name}
                         </Link>

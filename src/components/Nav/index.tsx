@@ -14,6 +14,10 @@ const navItems = [
     { name: 'Blog', href: '/blog' },
     { name: 'Portfolio', href: '/#Portfolio' },
     { name: 'Login', href: '/login' },
+    {   name: 'KindBook',
+        href: 'https://sergiobonatto.github.io/Software-Foundations-in-Kind/docs/Kind/index.html',
+        target: '_blank',
+    }
 ];
 
 const Navbar: React.FC = () => {

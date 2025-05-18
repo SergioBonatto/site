@@ -4,7 +4,11 @@ import React, { useRef } from "react";
 import Link from "next/link";
 
 interface DesktopMenuProps {
-    navItems: { name: string; href: string }[];
+    navItems: {
+        name: string;
+        href: string;
+        target?: string;
+    }[];
     isPlaying: boolean;
     handlePlayPause: () => void;
 }
@@ -28,6 +32,7 @@ const DesktopMenu: React.FC<DesktopMenuProps> = ({ navItems, isPlaying, handlePl
                             className="text-gray-900 hover:text-blue-800"
                             scroll={item.href !== '/'}
                             onClick={() => handleLinkClick(item.href)}
+                            target={item.target}
                         >
                             {item.name}
                         </Link>
