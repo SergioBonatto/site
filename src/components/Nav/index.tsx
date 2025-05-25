@@ -17,6 +17,7 @@ const navItems = [
     {   name: 'KindBook',
         href: 'https://sergiobonatto.github.io/Software-Foundations-in-Kind/docs/Kind/index.html',
         target: '_blank',
+        rel:"noopener noreferrer",
     }
 ];
 

@@ -56,7 +56,7 @@ const Contact: React.FC<ContactProps> = ({
   ...props
 }) => {
   const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/${whatsappNumber}`, '_blank');
+    window.open(`https://wa.me/${whatsappNumber}`, '_blank', 'noopener,noreferrer');
   };
 
   return (

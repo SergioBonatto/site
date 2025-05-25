@@ -33,6 +33,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ navItems, isPlaying, handlePlay
                             className="text-xl text-gray-900 hover:text-blue-800 transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                             target='_blank'
+                            rel="noopener noreferrer"
                         >
                             {item.name}
                         </Link>
