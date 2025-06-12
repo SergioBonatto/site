@@ -1,0 +1,23 @@
+---
+title: "Cristo, Tributos e Liberdade: Uma Perspectiva Libertária Cristã"
+date: "2025-06-12"
+description: "Uma análise bíblica da postura de Cristo e da Igreja Primitiva em relação aos impostos e autoridade estatal, apresentando uma visão libertária cristã baseada nas Escrituras e na história."
+---
+
+Cristo não pagava impostos. Nem seus discípulos. Em Mateus 17:24-27, os coletores do imposto do templo perguntam a Pedro se Jesus paga o tributo. Pedro responde que sim, talvez por cautela, mas Jesus o corrige dizendo: “os filhos estão isentos” (v. 26). Ainda assim, para não causar escândalo, orienta Pedro a pescar um peixe com uma moeda na boca, suficiente para cobrir o tributo (v. 27). Isso mostra que, por direito, Jesus não devia nada ao sistema humano. Ele apenas escolheu evitar conflito, sem reconhecer qualquer legitimidade da cobrança.
+
+Quando questionado se era lícito pagar tributo a César, Jesus pede uma moeda: “Mostrai-me a moeda do tributo” (Mateus 22:19). Ele não a tinha consigo, evidenciando que não participava do sistema econômico estatal. Sua resposta, “Dai, pois, a César o que é de César, e a Deus o que é de Deus” (v. 21), não legitima César, mas separa claramente o Reino de Deus das estruturas humanas. Tudo pertence a Deus; nada, por direito, é de César. Cristo não era súdito de império algum. Sua lealdade, e a dos que o seguem, pertence exclusivamente a Deus.
+
+No Antigo Testamento, essa rejeição à autoridade humana é evidente. Em 1 Samuel 8, quando o povo pede um rei “como todas as nações” (v. 5), Deus responde que não rejeitaram Samuel, mas a Ele: “para que eu não reine sobre eles” (v. 7). O desejo por um governo humano foi visto como rebeldia. O resultado foi opressão: o rei tomaria filhos, filhas, bens, servos e imporia tributos (vv. 11-17). A centralização de poder, a cobrança de impostos e a submissão ao domínio humano são frutos da rejeição do reinado divino.
+
+### Liberdade Cristã e a Rejeição aos Sistemas Estatais
+
+A postura de Cristo em relação aos impostos reforça sua rejeição aos sistemas humanos. Em Mateus 17:24-27, a isenção dos “filhos” mostra que nem Ele nem Pedro pagavam tributos regularmente, pois sua lealdade era ao Reino de Deus, não a instituições humanas. O pagamento do imposto, providenciado milagrosamente, foi apenas para evitar escândalo, ecoando 1 Coríntios 8:9, onde o termo grego exousia (ἐξουσία) é traduzido como “liberdade”: “Vede, porém, que essa vossa liberdade [exousia] não se torne um tropeço para os fracos”. Cristo exerceu sua liberdade divina, mas optou por não causar conflito, sem endossar a legitimidade do tributo.
+
+Essa liberdade também se manifesta na recusa de Cristo em usar a moeda estatal. Em Mateus 22:19, ao pedir para ver a moeda do tributo, Ele revela que não a carregava, indicando sua independência do sistema econômico romano. Romanos 13:1-7, frequentemente mal interpretado como apoio a governos humanos, usa o mesmo termo exousia para “autoridade”. Segundo o Strong’s Exhaustive Concordance, exousia significa “poder”, “jurisdição”, “liberdade” ou “privilégio”, não necessariamente governantes estatais. No contexto bíblico, refere-se à liberdade e à justiça delegadas por Deus, como no sistema de juízes do Antigo Testamento. Antes de 1 Samuel 8, Israel vivia sem reis, com juízes como Moisés e Samuel aplicando a Lei divina em uma ordem descentralizada, sem tributação opressiva ou coerção estatal.
+
+### Anarquismo Teonômico e o Agorismo Cristão
+
+A rejeição de Cristo aos impostos e à moeda estatal aponta para uma ordem social anarquista-teonômica, onde Deus é o único Rei. Nesse modelo, a exousia é a liberdade de viver sob a Lei divina, exercida com responsabilidade para não escandalizar, como em 1 Coríntios 8:9. O sistema de juízes, que garantia justiça sem um governo centralizado, reflete essa visão. O agorismo, com sua ênfase em mercados livres e interações voluntárias, alinha-se a esse ideal. Assim como Cristo não dependia da moeda de César, o agorismo propõe uma economia livre de coerção estatal. Os juízes bíblicos, resolvendo disputas com base na Lei de Deus, são análogos à arbitragem voluntária agorista, que mantém a justiça sem necessidade de um estado.
+
+Portanto, a visão bíblica rejeita governantes humanos, tributos e sistemas econômicos estatais. Cristo, ao não pagar impostos regularmente, não usar a moeda de César e apenas ceder para evitar escândalo, demonstra uma liberdade radical que desafia qualquer autoridade terrena. Combinada com a advertência de 1 Samuel 8 contra a centralização de poder, essa perspectiva aponta para uma sociedade anarquista-teonômica, onde a soberania de Deus garante liberdade e justiça, em harmonia com os princípios agoristas.
