@@ -12,7 +12,6 @@ const navItems = [
     { name: 'About', href: '/#about' },
     { name: 'Contact', href: '/#Contact' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Portfolio', href: '/#Portfolio' },
     { name: 'Login', href: '/login' },
     {   name: 'KindBook',
         href: 'https://sergiobonatto.github.io/Software-Foundations-in-Kind/docs/Kind/index.html',

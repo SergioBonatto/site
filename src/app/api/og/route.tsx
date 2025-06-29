@@ -1,6 +1,6 @@
-/** @jsxImportSource react */
 import { NextRequest } from 'next/server';
 import { ImageResponse } from 'next/og';
+import React from 'react';
 
 export const runtime = 'edge';
 
