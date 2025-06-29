@@ -104,6 +104,8 @@ const About: React.FC<AboutProps> = ({
 
                 "Philosophy and reformed theology aren't academic exercises, they're the bedrock of coherent thinking. Van Til's presuppositionalism, Kant's categories, Aristotelian logic. These frameworks eliminate the fog that plagues both worldviews and codebases. Clear thinking produces clear systems.",
 
+                "From Austrian praxeology to reformed soteriology, from presuppositional epistemology to formal proofs in computation theory, each discipline informs the others. I understand that free markets and sovereign grace operate under principles that transcend human conventions. This synthesis isn't eclecticism; it's intellectual architecture.",
+
                 "Everything I create serves a deeper purpose: building for a future where my children inherit freedom, not chains. I craft custom Vim tooling because corporate defaults assume dependence. I write to crystallize thought, build to own my tools, learn to reject borrowed assumptions that weaken foundations.",
 
                 "This site reveals my approach: logic-driven code, principled architecture, systems that answer to no master. Signal over noise. Truth over trends. Tools built to endure. Explore carefully, there are easter eggs that reward attention. Want to see more? Check my blog, GitHub, and X. Challenge the defaults and build something that matters."
