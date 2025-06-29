@@ -120,21 +120,9 @@ const About: React.FC<AboutProps> = ({
                     "bg-[#ececec] p-2 md:p-3"
                   )}
                 >
-                  {/* <p className="leading-relaxed text-base md:text-lg">
-                    {index === 3 ? (
-                      <>
-                        On my{' '}
-                        <Win95Link href="/blog">
-                          blog
-                        </Win95Link>
-                        , you&apos;ll find articles about web development, formal proofs,
-                        and tech trends, as well as insights into things that inspire me
-                        or make life easier.
-                      </>
-                    ) : (
-                      text
-                    )}
-                  </p> */}
+                  <p className="leading-relaxed text-base md:text-lg">
+                    {text}
+                  </p>
                 </div>
               ))}
             </div>
