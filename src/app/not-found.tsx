@@ -44,7 +44,7 @@ export default function NotFound() {
           <div className="text-left space-y-4 p-4 max-w-xl w-full text-green-400">
             <div>
               <span className="text-white">C:\Projects\poetry&gt;</span>{' '}
-              <span className="text-yellow-300">cargo run --bin="{currentPath}"</span>
+              <span className="text-yellow-300">cargo run --bin=&quot;{currentPath}&quot;</span>
             </div>
 
             <div className="text-red-500">

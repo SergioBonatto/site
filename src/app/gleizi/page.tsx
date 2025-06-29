@@ -47,7 +47,7 @@ export default function GleiziPage() {
     }, 1500);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [poemLines.length]);
 
   useEffect(() => {
     const cursorTimer = setInterval(() => {
@@ -62,23 +62,87 @@ export default function GleiziPage() {
       <Navbar />
       <main className="flex-1 flex items-center justify-center px-4 pt-24 pb-8">
         <div className="max-w-4xl w-full mt-8">
-          <div className={WIN95_CLASSES.window} style={WIN95_INLINE_STYLES.windowRaised}>
-            <div className={WIN95_CLASSES.titleBar}>
+          {/* Win95 Window */}
+          <div
+            className="bg-gray-300"
+            style={{
+              borderTop: '2px solid #ffffff',
+              borderLeft: '2px solid #ffffff',
+              borderRight: '2px solid #808080',
+              borderBottom: '2px solid #808080',
+              boxShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+            }}
+          >
+            <div
+              className="px-3 py-1 flex items-center justify-between"
+              style={{
+                background: 'linear-gradient(to right, #0040a0, #4080d0)',
+                borderBottom: '1px solid #000080'
+              }}
+            >
               <div className="flex items-center space-x-2">
-                <div className={WIN95_CLASSES.titleBarIcon}>
-                  <span className="text-black">📄</span>
+                <div
+                  className="w-4 h-4 flex items-center justify-center text-xs"
+                  style={{
+                    backgroundColor: '#c0c0c0',
+                    borderTop: '1px solid #ffffff',
+                    borderLeft: '1px solid #ffffff',
+                    borderRight: '1px solid #808080',
+                    borderBottom: '1px solid #808080'
+                  }}
+                >
+                  <span style={{ color: '#000', fontSize: '8px' }}>📄</span>
                 </div>
-                <span className={WIN95_CLASSES.titleBarText}>main.rs - MS-DOS Prompt</span>
+                <span className="text-white text-sm font-bold">main.rs - MS-DOS Prompt</span>
               </div>
               <div className="flex space-x-1">
-                <button className={WIN95_CLASSES.windowButton} style={WIN95_INLINE_STYLES.windowRaised}>
-                  <span className="text-black">_</span>
+                <button
+                  className="w-5 h-4 flex items-center justify-center text-xs font-bold hover:bg-gray-200 active:border-inset"
+                  style={{
+                    backgroundColor: '#c0c0c0',
+                    borderTop: '1px solid #ffffff',
+                    borderLeft: '1px solid #ffffff',
+                    borderRight: '1px solid #808080',
+                    borderBottom: '1px solid #808080',
+                    color: '#000',
+                    fontSize: '10px',
+                    lineHeight: '1',
+                    fontFamily: 'monospace'
+                  }}
+                >
+                  −
                 </button>
-                <button className={WIN95_CLASSES.windowButton} style={WIN95_INLINE_STYLES.windowRaised}>
-                  <span className="text-black">□</span>
+                <button
+                  className="w-5 h-4 flex items-center justify-center text-xs font-bold hover:bg-gray-200 active:border-inset"
+                  style={{
+                    backgroundColor: '#c0c0c0',
+                    borderTop: '1px solid #ffffff',
+                    borderLeft: '1px solid #ffffff',
+                    borderRight: '1px solid #808080',
+                    borderBottom: '1px solid #808080',
+                    color: '#000',
+                    fontSize: '10px',
+                    lineHeight: '1',
+                    fontFamily: 'monospace'
+                  }}
+                >
+                  ◻
                 </button>
-                <button className={WIN95_CLASSES.windowButton} style={WIN95_INLINE_STYLES.windowRaised}>
-                  <span className="text-black">×</span>
+                <button
+                  className="w-5 h-4 flex items-center justify-center text-xs font-bold hover:bg-gray-200 active:border-inset"
+                  style={{
+                    backgroundColor: '#c0c0c0',
+                    borderTop: '1px solid #ffffff',
+                    borderLeft: '1px solid #ffffff',
+                    borderRight: '1px solid #808080',
+                    borderBottom: '1px solid #808080',
+                    color: '#000',
+                    fontSize: '10px',
+                    lineHeight: '1',
+                    fontFamily: 'monospace'
+                  }}
+                >
+                  ✕
                 </button>
               </div>
             </div>
