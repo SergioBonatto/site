@@ -24,14 +24,14 @@ interface Props {
 async function getPostData(slug: string): Promise<{ data: PostData; content: string } | null> {
   try {
     const filePath = path.join(process.cwd(), 'content/blog', `${slug}.md`);
-    
+
     if (!fs.existsSync(filePath)) {
       return null;
     }
 
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { data, content } = matter(fileContents);
-    
+
     return {
       data: data as PostData,
       content
@@ -45,7 +45,7 @@ async function getPostData(slug: string): Promise<{ data: PostData; content: str
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const postData = await getPostData(slug);
-  
+
   if (!postData) {
     return generateSEOMetadata({
       title: 'Post Not Found - Sergio Bonatto',
