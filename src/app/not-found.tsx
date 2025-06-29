@@ -22,7 +22,7 @@ export default function NotFound() {
         className="flex-1 flex items-center justify-center text-white text-center"
         style={{
           backgroundColor: 'grey',
-          backgroundImage: 'url(https://media.giphy.com/media/TqxcgjbXsId4Qj3wIU/giphy.gif)',
+          backgroundImage: 'url(/buzz-no-signs-of-intelligent-life.gif)',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundBlendMode: 'multiply',
