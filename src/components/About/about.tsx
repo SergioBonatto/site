@@ -35,7 +35,7 @@ const WIN95_BORDERS = {
 
 const About: React.FC<AboutProps> = ({
   className,
-  imageSrc = "/image.png",
+  imageSrc = "/eu.jpeg",
   imageAlt = "Photo of me with a red book",
   ...props
 }) => {
@@ -98,19 +98,15 @@ const About: React.FC<AboutProps> = ({
 
             <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800 md:text-lg">
               {[
-                "I don’t just write code. I forge systems with the precision of logic, the depth of theology, the rigor of philosophy, and an unrelenting refusal to compromise on truth. I’m a self-taught polymath, a full-stack developer, a Calvinist, a philosopher, a Cypherpunk, and an Agorist, building tools for a world that values freedom over conformity.",
+                "Code is just the surface. I forge systems with the precision of logic, the depth of theology, and the rigor of philosophy. Self-taught polymath, full-stack developer, Calvinist, philosopher, Cypherpunk, and Agorist. These aren't just titles. Every choice in this site's architecture proves it.",
 
-                "My work spans formal verification, functional programming, and decentralized infrastructure. I’ve architected smart contracts with ironclad guarantees, crafted interpreters from scratch, built developer tooling for those who demand control, and launched Agoriz, a decentralized payment processor designed to make transactions as unstoppable as ideas should be. I created a local-first finance app because financial autonomy deserves better than bloated platforms or fragile spreadsheets. When no search engine could deliver truth without noise, I built my own to cut through the chaos with unrelenting clarity.",
+                "This foundation shapes everything I build. Smart contracts with mathematical guarantees, interpreters that respect formal semantics, decentralized systems that embody sovereignty. My payment processor Agoriz exists because centralized solutions compromise freedom. When existing search engines buried signal in noise, I built clarity from first principles.",
 
-                "Every line of code reflects my principles: clarity that slices through complexity, independence that rejects dependence, and resilience that thrives under pressure. My creations are not just functional. They’re declarations of sovereignty, built for those who refuse to be managed by middlemen or manipulated by design.",
+                "Philosophy and reformed theology aren't academic exercises, they're the bedrock of coherent thinking. Van Til's presuppositionalism, Kant's categories, Aristotelian logic. These frameworks eliminate the fog that plagues both worldviews and codebases. Clear thinking produces clear systems.",
 
-                "I’m not just a software engineer. I’m a philosopher and reformed theologian who wrestles with metaphysics, epistemology, and sovereignty. I’ve studied Van Til, Kant, and Aristotle, written on the nature of knowledge, and debated freedom versus determinism with a clarity that leaves no room for ambiguity. A foggy worldview breeds foggy systems. I reject both.",
+                "Everything I create serves a deeper purpose: building for a future where my children inherit freedom, not chains. I craft custom Vim tooling because corporate defaults assume dependence. I write to crystallize thought, build to own my tools, learn to reject borrowed assumptions that weaken foundations.",
 
-                "I’m a father who builds not just for today but for a future where my children inherit freedom, not chains. I’m a non-practicing vegan and a cosmopolite who thrives on ideas, not trends. I craft my own Vim tooling because I trust my process over corporate defaults. I write to think clearly, build to own what I use, and learn because I refuse to live by borrowed assumptions.",
-
-                "My projects, like Agoriz, exist because they had to, not for profit, but for principle. They are weapons of clarity in a world of obfuscation, tools for those who see through the haze of centralized control and demand something better.",
-
-                "This site is a window into my world: code that respects logic, writing that honors thought, and systems that answer to no master. If you came for trends or safe consensus, I have nothing for you. If you seek signal, truth, and tools built to endure, dive in. Explore. Challenge the defaults. Build something that matters."
+                "This site reveals my approach: logic-driven code, principled architecture, systems that answer to no master. Signal over noise. Truth over trends. Tools built to endure. Explore carefully, there are easter eggs that reward attention. Want to see more? Check my blog, GitHub, and X. Challenge the defaults and build something that matters."
               ].map((text, index) => (
                 <div
                   key={index}
