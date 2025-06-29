@@ -23,18 +23,41 @@ export default function NotFound() {
     return () => clearInterval(cursorTimer);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) return null;  const normalized = currentPath.toLowerCase();
 
-  const normalized = currentPath.toLowerCase();
+  // Função para calcular distância de Levenshtein (algoritmo de edição)
+  const levenshteinDistance = (str1: string, str2: string): number => {
+    const matrix = Array(str2.length + 1).fill(null).map(() => Array(str1.length + 1).fill(null));
 
-  // Lista de variações comuns para "gleizi/gleiziane" (mas não os nomes corretos)
-  const misspellings = [
-    'gleisy', 'gleize', 'gleizy', 'gleis', 'glei', 'gleizee',
-    'glayzi', 'gleise', 'glazy', 'gleyzi', 'glaizi',
-    'gleizian', 'gleiziana', 'gleiziany', 'glezianne'
-  ];
+    for (let i = 0; i <= str1.length; i++) matrix[0][i] = i;
+    for (let j = 0; j <= str2.length; j++) matrix[j][0] = j;
 
-  const isLikelyMisspelling = misspellings.some(name => normalized.includes(name));
+    for (let j = 1; j <= str2.length; j++) {
+      for (let i = 1; i <= str1.length; i++) {
+        const indicator = str1[i - 1] === str2[j - 1] ? 0 : 1;
+        matrix[j][i] = Math.min(
+          matrix[j][i - 1] + 1,     // deletion
+          matrix[j - 1][i] + 1,     // insertion
+          matrix[j - 1][i - 1] + indicator // substitution
+        );
+      }
+    }
+
+    return matrix[str2.length][str1.length];
+  };
+
+  // Verifica se é um erro de digitação baseado em similaridade
+  const isTypoOf = (input: string, target: string, maxDistance: number = 2): boolean => {
+    if (input === target) return false; // Nome exato não é erro
+    if (Math.abs(input.length - target.length) > maxDistance) return false; // Diferença muito grande
+
+    return levenshteinDistance(input, target) <= maxDistance;
+  };
+
+  // Nomes corretos que queremos detectar erros
+  const correctNames = ['gleizi', 'gleiziane'];
+
+  const isLikelyMisspelling = correctNames.some(name => isTypoOf(normalized, name));
 
   if (isLikelyMisspelling) {
     return (
@@ -52,11 +75,11 @@ export default function NotFound() {
             </div>
 
             <div className="text-gray-300">
-              note: maybe you mistyped the name? or maybe... you weren’t meant to run this binary.
+              note: maybe you mistyped the name? or maybe... you weren&apos;t meant to run this binary.
             </div>
 
             <div className="pt-4 italic text-gray-500">
-              (Você chegou perto. Mas não é esse o nome que faz tudo funcionar.)
+              (You got close. But that&apos;s not the name that makes everything work.)
             </div>
 
             <div className="pt-6">
@@ -70,7 +93,7 @@ export default function NotFound() {
     );
   }
 
-  // Página 404 padrão
+  // Default 404 page
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
