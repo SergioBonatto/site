@@ -99,9 +99,9 @@ interface SEOProps {
   keywords?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, image, url, keywords }) => {
+const SEO: React.FC<SEOProps> = () => {
   console.warn('SEO component is deprecated. Use generateSEOMetadata for Next.js App Router.');
-
+  
   // This component is kept for backward compatibility but should not be used
   // in App Router. Use generateSEOMetadata instead.
   return null;
