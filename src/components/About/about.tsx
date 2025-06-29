@@ -109,7 +109,7 @@ const About: React.FC<AboutProps> = ({
                 "I’m a father who builds not just for today but for a future where my children inherit freedom, not chains. I’m a non-practicing vegan and a cosmopolite who thrives on ideas, not trends. I craft my own Vim tooling because I trust my process over corporate defaults. I write to think clearly, build to own what I use, and learn because I refuse to live by borrowed assumptions.",
 
                 "My projects, like Agoriz, exist because they had to, not for profit, but for principle. They are weapons of clarity in a world of obfuscation, tools for those who see through the haze of centralized control and demand something better.",
-                
+
                 "This site is a window into my world: code that respects logic, writing that honors thought, and systems that answer to no master. If you came for trends or safe consensus, I have nothing for you. If you seek signal, truth, and tools built to endure, dive in. Explore. Challenge the defaults. Build something that matters."
               ].map((text, index) => (
                 <div
@@ -120,7 +120,7 @@ const About: React.FC<AboutProps> = ({
                     "bg-[#ececec] p-2 md:p-3"
                   )}
                 >
-                  <p className="leading-relaxed text-base md:text-lg">
+                  {/* <p className="leading-relaxed text-base md:text-lg">
                     {index === 3 ? (
                       <>
                         On my{' '}
@@ -134,7 +134,7 @@ const About: React.FC<AboutProps> = ({
                     ) : (
                       text
                     )}
-                  </p>
+                  </p> */}
                 </div>
               ))}
             </div>
