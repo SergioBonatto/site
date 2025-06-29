@@ -1,11 +1,19 @@
 import Link from 'next/link';
 import Navbar from '@/components/Nav';
 import Footer from '@/components/Footer/footer';
-import SEO from '@/components/SEO';
+import { generateSEOMetadata } from '@/components/SEO';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { cn } from '@/lib/utils';
+
+export const metadata = generateSEOMetadata({
+  title: 'Blog - Sergio Bonatto',
+  description: 'Posts about development, formal proofs, and other interesting topics',
+  image: '/cards.png',
+  url: '/blog',
+  keywords: ['blog', 'development', 'formal proofs', 'programming', 'tech'],
+});
 
 const WIN95_BORDERS = {
   raised: "border-t-white border-l-white border-r-gray-800 border-b-gray-800",
@@ -49,12 +57,6 @@ export default async function BlogIndex() {
 
   return (
     <div className="flex flex-col min-h-screen bg-teal-600">
-      <SEO
-        title="Blog - Sergio Bonatto"
-        description="Posts sobre desenvolvimento, provas formais e outras coisas interessantes"
-        image="/cards.png"
-        url="https://bonatto.vercel.app/blog"
-      />
       <Navbar />
       <main className="relative flex-grow pt-40 pb-10">
         <section className={cn(

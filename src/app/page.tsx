@@ -1,6 +1,5 @@
 'use client';
 import { useEffect } from 'react';
-import SEO from '@/components/SEO';
 import Navbar from '@/components/Nav';
 import MusicPlayer from '@/components/musicPlayer';
 import SolarSystem from '@/components/solarSystem/components/SolarSystem';
@@ -36,12 +35,6 @@ export default function Home() {
         <MatrixBackground />
       {/* Page content */}
       <div className="relative z-10">
-        <SEO
-          title="Sergio Bonatto - Formal Proofs"
-          description="Full Stack Developer, formal proofs, lambda calculus, Haskell, JavaScript, Python, Time Traveler"
-          image="/cards.png"
-          url="https://bonatto.vercel.app/"
-        />
         <Navbar />
         <MusicPlayer />
         <ClientOnly fallback={null}>
