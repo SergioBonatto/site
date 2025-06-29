@@ -4,7 +4,7 @@ date: "2025-06-29"
 description: "Uma análise sobre como a falta de definições precisas compromete o pensamento racional, explorando exemplos da computação, matemática, física, direito e filosofia para demonstrar que definir conceitos não é mero formalismo, mas a base de todo discurso coerente."
 ---
 
-![Escola de atenas](/public/blog/a-escola-de-atenas-de-rafael-sanzio-og.webp)
+![Escola de atenas](/blog/a-escola-de-atenas-de-rafael-sanzio-og.webp)
 
 
 ## O problema da ambiguidade conceitual
