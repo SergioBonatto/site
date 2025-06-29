@@ -50,9 +50,9 @@ const Win95Panel: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className,
 
 const Contact: React.FC<ContactProps> = ({
   className,
-  phoneNumber = "+55(61)99183-5555",
+  phoneNumber = "+55(11)93707-1628",
   email = "bonatto@tutanota.com",
-  whatsappNumber = "61991835555",
+  whatsappNumber = "11937071628",
   ...props
 }) => {
   const handleWhatsAppClick = () => {
