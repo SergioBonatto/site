@@ -16,22 +16,22 @@ const WIN95_BORDERS = {
   sunken: "border-t-gray-800 border-l-gray-800 border-r-white border-b-white",
 } as const;
 
-const Win95Link: React.FC<React.ComponentProps<typeof Link>> = ({
-  className,
-  children,
-  ...props
-}) => (
-  <Link
-    className={cn(
-      "text-blue-800 hover:text-blue-600 visited:text-purple-800",
-      "underline-offset-2 hover:underline",
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </Link>
-);
+// const Win95Link: React.FC<React.ComponentProps<typeof Link>> = ({
+//   className,
+//   children,
+//   ...props
+// }) => (
+//   <Link
+//     className={cn(
+//       "text-blue-800 hover:text-blue-600 visited:text-purple-800",
+//       "underline-offset-2 hover:underline",
+//       className
+//     )}
+//     {...props}
+//   >
+//     {children}
+//   </Link>
+// );
 
 const About: React.FC<AboutProps> = ({
   className,
