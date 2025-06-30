@@ -12,6 +12,8 @@ export default function GleiziPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
+  const [musicStarted, setMusicStarted] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const poemLines = [
@@ -66,15 +68,32 @@ export default function GleiziPage() {
       if (!isComplete) return;
 
       if (event.code === 'Space') {
-        // Pausar/parar o áudio
+        // Pausar/retomar o áudio
         if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current.currentTime = 0;
-          setIsPlaying(false);
-          setIsLoading(false);
+          if (isPlaying) {
+            audioRef.current.pause();
+            setIsPlaying(false);
+            setIsPaused(true);
+          } else if (isPaused) {
+            setIsLoading(true);
+            const playPromise = audioRef.current.play();
+
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => {
+                  setIsPlaying(true);
+                  setIsLoading(false);
+                  setIsPaused(false);
+                })
+                .catch((error) => {
+                  console.log('Erro ao retomar áudio:', error);
+                  setIsLoading(false);
+                });
+            }
+          }
         }
       } else {
-        // Qualquer outra tecla toca o áudio
+        // Qualquer outra tecla toca o áudio do início
         if (audioRef.current && !isPlaying) {
           setIsLoading(true);
 
@@ -85,6 +104,8 @@ export default function GleiziPage() {
               .then(() => {
                 setIsPlaying(true);
                 setIsLoading(false);
+                setMusicStarted(true);
+                setIsPaused(false);
               })
               .catch((error) => {
                 console.log('Erro ao tocar áudio:', error);
@@ -102,7 +123,7 @@ export default function GleiziPage() {
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
-  }, [isComplete, isPlaying]);
+  }, [isComplete, isPlaying, isPaused]);
 
   // Preload do áudio quando o poema terminar
   useEffect(() => {
@@ -112,7 +133,16 @@ export default function GleiziPage() {
   }, [isComplete, audioReady]);
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: WIN95_COLORS.background }}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{
+        backgroundColor: musicStarted ? 'transparent' : WIN95_COLORS.background,
+        backgroundImage: musicStarted ? 'url(/cat.jpg)' : 'none',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <Navbar />
       <main className="flex-1 flex items-center justify-center px-4 pt-24 pb-8">
         <div className="max-w-4xl w-full mt-8">
@@ -124,41 +154,45 @@ export default function GleiziPage() {
               borderLeft: '2px solid #ffffff',
               borderRight: '2px solid #808080',
               borderBottom: '2px solid #808080',
-              boxShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+              boxShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+              backgroundColor: isPlaying ? 'rgba(192, 192, 192, 0.1)' : '#c0c0c0',
+              opacity: isPlaying ? 0.9 : 1
             }}
           >
             <div
               className="px-3 py-1 flex items-center justify-between"
               style={{
-                background: 'linear-gradient(to right, #0040a0, #4080d0)',
-                borderBottom: '1px solid #000080'
+                background: isPlaying
+                  ? 'linear-gradient(to right, rgba(0,64,160,0.1), rgba(64,128,208,0.1))'
+                  : 'linear-gradient(to right, #0040a0, #4080d0)',
+                borderBottom: isPlaying ? '1px solid rgba(0,8,128,0.1)' : '1px solid #000080'
               }}
             >
               <div className="flex items-center space-x-2">
                 <div
                   className="w-4 h-4 flex items-center justify-center text-xs"
                   style={{
-                    backgroundColor: '#c0c0c0',
-                    borderTop: '1px solid #ffffff',
-                    borderLeft: '1px solid #ffffff',
-                    borderRight: '1px solid #808080',
-                    borderBottom: '1px solid #808080'
+                    backgroundColor: isPlaying ? 'rgba(192,192,192,0.1)' : '#c0c0c0',
+                    borderTop: isPlaying ? '1px solid rgba(255,255,255,0.1)' : '1px solid #ffffff',
+                    borderLeft: isPlaying ? '1px solid rgba(255,255,255,0.1)' : '1px solid #ffffff',
+                    borderRight: isPlaying ? '1px solid rgba(128,128,128,0.1)' : '1px solid #808080',
+                    borderBottom: isPlaying ? '1px solid rgba(128,128,128,0.1)' : '1px solid #808080'
                   }}
                 >
                   <span style={{ color: '#000', fontSize: '8px' }}>📄</span>
                 </div>
-                <span className="text-white text-sm font-bold">main.rs - MS-DOS Prompt</span>
+                <span className="text-white text-sm font-bold" style={{ opacity: isPlaying ? 0.3 : 1 }}>main.rs - MS-DOS Prompt</span>
               </div>
               <div className="flex space-x-1">
                 <button
                   className="w-5 h-4 flex items-center justify-center text-xs font-bold hover:bg-gray-200 active:border-inset"
                   style={{
-                    backgroundColor: '#c0c0c0',
-                    borderTop: '1px solid #ffffff',
-                    borderLeft: '1px solid #ffffff',
-                    borderRight: '1px solid #808080',
-                    borderBottom: '1px solid #808080',
-                    color: '#000',
+                    backgroundColor: isPlaying ? 'rgba(192,192,192,0.1)' : '#c0c0c0',
+                    borderTop: isPlaying ? '1px solid rgba(255,255,255,0.1)' : '1px solid #ffffff',
+                    borderLeft: isPlaying ? '1px solid rgba(255,255,255,0.1)' : '1px solid #ffffff',
+                    borderRight: isPlaying ? '1px solid rgba(128,128,128,0.1)' : '1px solid #808080',
+                    borderBottom: isPlaying ? '1px solid rgba(128,128,128,0.1)' : '1px solid #808080',
+                    color: isPlaying ? 'rgba(0,0,0,0.3)' : '#000',
                     fontSize: '10px',
                     lineHeight: '1',
                     fontFamily: 'monospace'
@@ -169,12 +203,12 @@ export default function GleiziPage() {
                 <button
                   className="w-5 h-4 flex items-center justify-center text-xs font-bold hover:bg-gray-200 active:border-inset"
                   style={{
-                    backgroundColor: '#c0c0c0',
-                    borderTop: '1px solid #ffffff',
-                    borderLeft: '1px solid #ffffff',
-                    borderRight: '1px solid #808080',
-                    borderBottom: '1px solid #808080',
-                    color: '#000',
+                    backgroundColor: isPlaying ? 'rgba(192,192,192,0.1)' : '#c0c0c0',
+                    borderTop: isPlaying ? '1px solid rgba(255,255,255,0.1)' : '1px solid #ffffff',
+                    borderLeft: isPlaying ? '1px solid rgba(255,255,255,0.1)' : '1px solid #ffffff',
+                    borderRight: isPlaying ? '1px solid rgba(128,128,128,0.1)' : '1px solid #808080',
+                    borderBottom: isPlaying ? '1px solid rgba(128,128,128,0.1)' : '1px solid #808080',
+                    color: isPlaying ? 'rgba(0,0,0,0.3)' : '#000',
                     fontSize: '10px',
                     lineHeight: '1',
                     fontFamily: 'monospace'
@@ -185,12 +219,12 @@ export default function GleiziPage() {
                 <button
                   className="w-5 h-4 flex items-center justify-center text-xs font-bold hover:bg-gray-200 active:border-inset"
                   style={{
-                    backgroundColor: '#c0c0c0',
-                    borderTop: '1px solid #ffffff',
-                    borderLeft: '1px solid #ffffff',
-                    borderRight: '1px solid #808080',
-                    borderBottom: '1px solid #808080',
-                    color: '#000',
+                    backgroundColor: isPlaying ? 'rgba(192,192,192,0.1)' : '#c0c0c0',
+                    borderTop: isPlaying ? '1px solid rgba(255,255,255,0.1)' : '1px solid #ffffff',
+                    borderLeft: isPlaying ? '1px solid rgba(255,255,255,0.1)' : '1px solid #ffffff',
+                    borderRight: isPlaying ? '1px solid rgba(128,128,128,0.1)' : '1px solid #808080',
+                    borderBottom: isPlaying ? '1px solid rgba(128,128,128,0.1)' : '1px solid #808080',
+                    color: isPlaying ? 'rgba(0,0,0,0.3)' : '#000',
                     fontSize: '10px',
                     lineHeight: '1',
                     fontFamily: 'monospace'
@@ -201,7 +235,14 @@ export default function GleiziPage() {
               </div>
             </div>
 
-            <div className={WIN95_CLASSES.terminal} style={WIN95_INLINE_STYLES.windowSunken}>
+            <div
+              className={WIN95_CLASSES.terminal}
+              style={{
+                ...WIN95_INLINE_STYLES.windowSunken,
+                backgroundColor: isPlaying ? 'rgba(0,0,0,0.05)' : undefined,
+                opacity: isPlaying ? 0.8 : 1
+              }}
+            >
               <div className="mb-2">
                 <span className={WIN95_CLASSES.terminalPrompt}>C:\Projects\poetry&gt;</span> <span className={WIN95_CLASSES.terminalCommand}>cargo run</span>
               </div>
@@ -239,7 +280,8 @@ export default function GleiziPage() {
                     <div className={WIN95_CLASSES.terminalCommand}>
                       Press any key to continue . . .
                       {isLoading && <span className="ml-2 text-blue-400 animate-pulse">(Carregando...)</span>}
-                      {isPlaying && <span className="ml-2 text-yellow-400">(♪ Tocando - Pressione ESPAÇO para parar)</span>}
+                      {isPlaying && <span className="ml-2 text-yellow-400">(♪ Tocando - Pressione ESPAÇO para pausar)</span>}
+                      {isPaused && <span className="ml-2 text-orange-400">(⏸ Pausado - Pressione ESPAÇO para continuar)</span>}
                     </div>
                   </div>
                 )}
@@ -259,7 +301,10 @@ export default function GleiziPage() {
           ref={audioRef}
           preload="auto"
           onCanPlayThrough={() => setAudioReady(true)}
-          onEnded={() => setIsPlaying(false)}
+          onEnded={() => {
+            setIsPlaying(false);
+            setIsPaused(false);
+          }}
           onError={(e) => {
             console.log('Erro no áudio:', e);
             setIsLoading(false);
