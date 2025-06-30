@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Navbar from '@/components/Nav';
 import Footer from '@/components/Footer/footer';
 import { WIN95_COLORS, WIN95_CLASSES, WIN95_INLINE_STYLES } from '@/styles/win95';
@@ -9,6 +9,10 @@ export default function GleiziPage() {
   const [currentLine, setCurrentLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [audioReady, setAudioReady] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const poemLines = [
     "Entre as linhas do código e do tempo,",
@@ -56,6 +60,56 @@ export default function GleiziPage() {
 
     return () => clearInterval(cursorTimer);
   }, []);
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (!isComplete) return;
+
+      if (event.code === 'Space') {
+        // Pausar/parar o áudio
+        if (audioRef.current) {
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+          setIsPlaying(false);
+          setIsLoading(false);
+        }
+      } else {
+        // Qualquer outra tecla toca o áudio
+        if (audioRef.current && !isPlaying) {
+          setIsLoading(true);
+
+          const playPromise = audioRef.current.play();
+
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                setIsPlaying(true);
+                setIsLoading(false);
+              })
+              .catch((error) => {
+                console.log('Erro ao tocar áudio:', error);
+                setIsLoading(false);
+              });
+          }
+        }
+      }
+    };
+
+    if (isComplete) {
+      window.addEventListener('keydown', handleKeyPress);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [isComplete, isPlaying]);
+
+  // Preload do áudio quando o poema terminar
+  useEffect(() => {
+    if (isComplete && audioRef.current && !audioReady) {
+      audioRef.current.load();
+    }
+  }, [isComplete, audioReady]);
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: WIN95_COLORS.background }}>
@@ -182,7 +236,11 @@ export default function GleiziPage() {
                 {isComplete && (
                   <div className="mt-6 space-y-2">
                     <div className={WIN95_CLASSES.terminalOutput}>Process exited with code 0.</div>
-                    <div className={WIN95_CLASSES.terminalCommand}>Press any key to continue . . .</div>
+                    <div className={WIN95_CLASSES.terminalCommand}>
+                      Press any key to continue . . .
+                      {isLoading && <span className="ml-2 text-blue-400 animate-pulse">(Carregando...)</span>}
+                      {isPlaying && <span className="ml-2 text-yellow-400">(♪ Tocando - Pressione ESPAÇO para parar)</span>}
+                    </div>
                   </div>
                 )}
               </div>
@@ -195,6 +253,22 @@ export default function GleiziPage() {
             </div>
           </div>
         </div>
+
+        {/* Audio element - hidden */}
+        <audio
+          ref={audioRef}
+          preload="auto"
+          onCanPlayThrough={() => setAudioReady(true)}
+          onEnded={() => setIsPlaying(false)}
+          onError={(e) => {
+            console.log('Erro no áudio:', e);
+            setIsLoading(false);
+          }}
+        >
+          <source src="/gleizi-audio.webm" type="audio/webm" />
+          <source src="/gleizi-audio.mp3" type="audio/mpeg" />
+          Seu navegador não suporta o elemento audio.
+        </audio>
       </main>
       <Footer />
     </div>
