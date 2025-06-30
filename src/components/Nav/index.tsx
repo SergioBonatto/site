@@ -13,11 +13,11 @@ const navItems = [
     { name: 'Contact', href: '/#Contact' },
     { name: 'Blog', href: '/blog' },
     { name: 'Login', href: '/login' },
-    {   name: 'KindBook',
-        href: 'https://sergiobonatto.github.io/Software-Foundations-in-Kind/docs/Kind/index.html',
-        target: '_blank',
-        rel:"noopener noreferrer",
-    }
+    // {   name: 'KindBook',
+    //     href: 'https://sergiobonatto.github.io/Software-Foundations-in-Kind/docs/Kind/index.html',
+    //     target: '_blank',
+    //     rel:"noopener noreferrer",
+    // }
 ];
 
 const Navbar: React.FC = () => {
