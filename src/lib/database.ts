@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 export interface Subscriber {
   id?: number;
   email: string;
-  subscribedAt: string;
+  subscribed_at: string;
   verified: boolean;
 }
 
@@ -26,7 +26,7 @@ const FALLBACK_SUBSCRIBERS: Subscriber[] = [
   {
     id: 1,
     email: "bonatto@tutanota.com",
-    subscribedAt: "2025-07-02T20:29:45.126Z",
+    subscribed_at: "2025-07-02T20:29:45.126Z",
     verified: true
   }
 ];
@@ -43,7 +43,7 @@ export class DatabaseService {
       const { data, error } = await supabase
         .from('subscribers')
         .select('*')
-        .order('subscribedAt', { ascending: false });
+        .order('subscribed_at', { ascending: false });
 
       if (error) {
         console.error('❌ Database error:', error);
@@ -64,7 +64,7 @@ export class DatabaseService {
       const newSubscriber: Subscriber = {
         id: Date.now(),
         email,
-        subscribedAt: new Date().toISOString(),
+        subscribed_at: new Date().toISOString(),
         verified: true
       };
       FALLBACK_SUBSCRIBERS.push(newSubscriber);
@@ -88,7 +88,6 @@ export class DatabaseService {
       // Adicionar novo subscriber
       const newSubscriber = {
         email,
-        subscribedAt: new Date().toISOString(),
         verified: true
       };
 
