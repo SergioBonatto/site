@@ -12,6 +12,7 @@
     "subscribers:clear": "curl -s -X DELETE 'http://localhost:3000/api/subscribers?clear=all' -H 'Authorization: Bearer dev-secret' | jq ."
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.50.3",
     "@types/p5": "^1.7.6",
     "clsx": "^2.1.1",
     "fs": "^0.0.1-security",

@@ -7,8 +7,9 @@ interface EmailOptions {
 export async function sendEmail({ to, subject, html }: EmailOptions): Promise<boolean> {
   console.log('🔧 Environment check:', {
     NODE_ENV: process.env.NODE_ENV,
+    VERCEL_ENV: process.env.VERCEL_ENV,
     HAS_RESEND_KEY: !!process.env.RESEND_API_KEY,
-    VERCEL_ENV: process.env.VERCEL_ENV
+    RESEND_KEY_LENGTH: process.env.RESEND_API_KEY?.length || 0
   });
 
   // If in development and no API key, just log
@@ -22,32 +23,55 @@ export async function sendEmail({ to, subject, html }: EmailOptions): Promise<bo
   // Check if API key is available
   if (!process.env.RESEND_API_KEY) {
     console.error('❌ RESEND_API_KEY not configured');
+    console.error('❌ Please configure RESEND_API_KEY in your environment variables');
     return false;
   }
 
   // Production: use Resend for real sending
   try {
+    console.log('📦 Importing Resend...');
     const { Resend } = await import('resend');
+
+    console.log('🔑 Creating Resend instance...');
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     console.log('📧 Sending email via Resend to:', to);
+    console.log('📝 Subject:', subject);
 
-    const { data, error } = await resend.emails.send({
+    const emailData = {
       from: 'Sergio Bonatto <onboarding@resend.dev>', // Free Resend domain for testing
       to: [to],
       subject,
       html,
+    };
+
+    console.log('📤 Email data prepared:', {
+      from: emailData.from,
+      to: emailData.to,
+      subject: emailData.subject,
+      htmlLength: emailData.html.length
     });
+
+    const { data, error } = await resend.emails.send(emailData);
 
     if (error) {
       console.error('❌ Resend Error:', error);
+      console.error('❌ Error details:', JSON.stringify(error, null, 2));
       return false;
     }
 
-    console.log('✅ Email sent via Resend:', data?.id);
+    console.log('✅ Email sent via Resend successfully!');
+    console.log('✅ Response data:', data);
     return true;
   } catch (error) {
     console.error('❌ Error sending email:', error);
+
+    if (error instanceof Error) {
+      console.error('❌ Error name:', error.name);
+      console.error('❌ Error message:', error.message);
+      console.error('❌ Error stack:', error.stack);
+    }
+
     return false;
   }
 }
