@@ -38,9 +38,11 @@ async function getPosts(): Promise<Post[]> {
 
 export async function GET() {
   const posts = await getPosts();
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'http://localhost:3000';
+  const baseUrl = process.env.SITE_URL
+    ? process.env.SITE_URL
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000';
 
   const rssItems = posts.map(post => {
     const postUrl = `${baseUrl}/blog/${post.slug}`;

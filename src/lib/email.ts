@@ -5,7 +5,13 @@ interface EmailOptions {
 }
 
 export async function sendEmail({ to, subject, html }: EmailOptions): Promise<boolean> {
-  // If in development, just log
+  console.log('🔧 Environment check:', {
+    NODE_ENV: process.env.NODE_ENV,
+    HAS_RESEND_KEY: !!process.env.RESEND_API_KEY,
+    VERCEL_ENV: process.env.VERCEL_ENV
+  });
+
+  // If in development and no API key, just log
   if (process.env.NODE_ENV === 'development' && !process.env.RESEND_API_KEY) {
     console.log('📧 [DEV MODE] Email sent to:', to);
     console.log('📝 [DEV MODE] Subject:', subject);
@@ -13,10 +19,18 @@ export async function sendEmail({ to, subject, html }: EmailOptions): Promise<bo
     return true;
   }
 
+  // Check if API key is available
+  if (!process.env.RESEND_API_KEY) {
+    console.error('❌ RESEND_API_KEY not configured');
+    return false;
+  }
+
   // Production: use Resend for real sending
   try {
     const { Resend } = await import('resend');
     const resend = new Resend(process.env.RESEND_API_KEY);
+
+    console.log('📧 Sending email via Resend to:', to);
 
     const { data, error } = await resend.emails.send({
       from: 'Sergio Bonatto <onboarding@resend.dev>', // Free Resend domain for testing
@@ -34,20 +48,18 @@ export async function sendEmail({ to, subject, html }: EmailOptions): Promise<bo
     return true;
   } catch (error) {
     console.error('❌ Error sending email:', error);
-
-    // Fallback: If Resend fails, just log (to not break the application)
-    console.log('📧 [FALLBACK] Email to:', to);
-    console.log('📝 [FALLBACK] Subject:', subject);
     return false;
   }
 }
 
 export function generateWelcomeEmail(email: string): string {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : process.env.NODE_ENV === 'production'
-      ? 'https://bonatto.vercel.app'
-      : 'http://localhost:3000';
+  const baseUrl = process.env.SITE_URL
+    ? process.env.SITE_URL
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.NODE_ENV === 'production'
+        ? 'https://bonatto.vercel.app'
+        : 'http://localhost:3000';
 
   return `
     <!DOCTYPE html>

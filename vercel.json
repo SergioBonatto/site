@@ -1,0 +1,55 @@
+{
+  "functions": {
+    "src/app/api/newsletter/route.ts": {
+      "maxDuration": 30
+    },
+    "src/app/api/notify-subscribers/route.ts": {
+      "maxDuration": 30
+    },
+    "src/app/feed.xml/route.ts": {
+      "maxDuration": 10
+    }
+  },
+  "headers": [
+    {
+      "source": "/feed.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/rss+xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/rss",
+      "destination": "/feed.xml"
+    },
+    {
+      "source": "/feed",
+      "destination": "/feed.xml"
+    }
+  ]
+}
