@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Navbar from '@/components/Nav';
 import Footer from '@/components/Footer/footer';
+import NewsletterSignup from '@/components/NewsletterSignup';
 import { generateSEOMetadata } from '@/components/SEO';
 import fs from 'fs';
 import path from 'path';
@@ -71,6 +72,9 @@ export default async function BlogIndex() {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-['MS Sans Serif'] text-[#000080] mb-4 md:mb-6 select-none">
               Blog Posts
             </h2>
+
+            <NewsletterSignup />
+
             {posts.length > 0 ? (
               <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800">
                 {posts.map(post => (

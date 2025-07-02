@@ -19,6 +19,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="canonical" href="https://bonatto.vercel.app" />
+        <link rel="alternate" type="application/rss+xml" title="Blog - Sergio Bonatto" href="/feed.xml" />
       </head>
       <body>
         <StructuredData />

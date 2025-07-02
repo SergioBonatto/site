@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "notify:subscribers": "node scripts/notify-subscribers.js",
+    "subscribers:list": "curl -s http://localhost:3000/api/subscribers | jq .",
+    "subscribers:clear": "curl -s -X DELETE 'http://localhost:3000/api/subscribers?clear=all' -H 'Authorization: Bearer dev-secret' | jq ."
   },
   "dependencies": {
     "@types/p5": "^1.7.6",
@@ -22,6 +25,7 @@
     "react-youtube": "^10.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
+    "resend": "^4.6.0",
     "tailwind-merge": "^3.0.1"
   },
   "devDependencies": {
