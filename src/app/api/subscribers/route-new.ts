@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       subscribers: subscribers.map(sub => ({
         email: sub.email,
-        subscribedAt: sub.subscribedAt,
+        subscribedAt: sub.subscribed_at,
         verified: sub.verified
       })),
       count: subscribers.length

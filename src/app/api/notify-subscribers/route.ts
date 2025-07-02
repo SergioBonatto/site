@@ -6,7 +6,7 @@ import { sendEmail, generateNewPostEmail } from '@/lib/email';
 
 interface Subscriber {
   email: string;
-  subscribedAt: string;
+  subscribed_at: string;
   verified: boolean;
 }
 
