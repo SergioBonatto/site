@@ -1,0 +1,982 @@
+/* Prism.js Theme - Atom One Light */
+
+/* HIGHEST PRIORITY STYLES - Override everything */
+html body div[class*="prose"] pre[class*="language-"],
+html body .prose pre[class*="language-"],
+html body pre[class*="language-"],
+div[class*="prose"] pre[class*="language-"],
+.prose pre[class*="language-"],
+pre[class*="language-"] {
+  background: #fafafa !important;
+  color: #383a42 !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+  display: block !important;
+  direction: ltr !important;
+  text-align: left !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  tab-size: 2 !important;
+  hyphens: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+html body div[class*="prose"] pre[class*="language-"] code,
+html body .prose pre[class*="language-"] code,
+html body pre[class*="language-"] code,
+div[class*="prose"] pre[class*="language-"] code,
+.prose pre[class*="language-"] code,
+pre[class*="language-"] code {
+  background: transparent !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  white-space: inherit !important;
+}
+
+/* Critical fallback styles applied immediately to prevent FOUC */
+pre[class*="language-"] {
+  background: #fafafa !important;
+  color: #383a42 !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+  display: block !important;
+  direction: ltr !important;
+  text-align: left !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  tab-size: 2 !important;
+  hyphens: none !important;
+}
+
+pre[class*="language-"] code {
+  background: transparent !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  white-space: inherit !important;
+}
+
+/* Force maximum specificity to override all other styles */
+html body code[class*="language-"],
+html body pre[class*="language-"],
+html body .prose code[class*="language-"],
+html body .prose pre[class*="language-"],
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #383a42 !important;
+  background: none !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  direction: ltr !important;
+  text-align: left !important;
+  white-space: pre !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  tab-size: 2 !important;
+  hyphens: none !important;
+  text-decoration: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #3390ff;
+  color: #fff;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #3390ff;
+  color: #fff;
+}
+
+/* Code blocks */
+html body pre[class*="language-"],
+html body .prose pre[class*="language-"],
+pre[class*="language-"] {
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  overflow: auto !important;
+  background: #fafafa !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  text-decoration: none !important;
+  position: relative !important;
+  display: block !important;
+}
+
+/* Inline code */
+html body :not(pre) > code[class*="language-"],
+html body .prose :not(pre) > code[class*="language-"],
+:not(pre) > code[class*="language-"] {
+  padding: 3px 6px !important;
+  border-radius: 4px !important;
+  white-space: normal !important;
+  background: #f6f8fa !important;
+  color: #24292e !important;
+  border: 1px solid #e1e4e8 !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
+  font-size: 13px !important;
+  text-decoration: none !important;
+}
+
+/* Tokens - Atom One Light colors */
+html body .token.comment,
+html body .token.prolog,
+html body .token.doctype,
+html body .token.cdata,
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #a0a1a7 !important;
+  font-style: italic !important;
+}
+
+html body .token.punctuation,
+.token.punctuation {
+  color: #383a42 !important;
+}
+
+html body .token.property,
+html body .token.tag,
+html body .token.constant,
+html body .token.symbol,
+html body .token.deleted,
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #e45649 !important;
+}
+
+html body .token.boolean,
+html body .token.number,
+.token.boolean,
+.token.number {
+  color: #986801 !important;
+}
+
+html body .token.selector,
+html body .token.attr-name,
+html body .token.string,
+html body .token.char,
+html body .token.builtin,
+html body .token.inserted,
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #50a14f !important;
+}
+
+html body .token.operator,
+html body .token.entity,
+html body .token.url,
+.token.operator,
+.token.entity,
+.token.url {
+  color: #383a42 !important;
+}
+
+html body .token.atrule,
+html body .token.attr-value,
+html body .token.keyword,
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+html body .token.function,
+html body .token.class-name,
+.token.function,
+.token.class-name {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e45649 !important;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold !important;
+}
+
+.token.italic {
+  font-style: italic !important;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* CSS specific overrides */
+.language-css .token.string,
+.style .token.string {
+  color: #50a14f !important;
+}
+
+/* Additional Atom One Light tokens */
+.token.namespace {
+  color: #e45649 !important;
+}
+
+.token.annotation,
+.token.decorator {
+  color: #986801 !important;
+}
+
+.token.module {
+  color: #4078f2 !important;
+}
+
+.token.parameter {
+  color: #986801 !important;
+}
+
+.token.spread {
+  color: #a626a4 !important;
+}
+
+/* JSX/TSX specific */
+.language-jsx .token.tag,
+.language-tsx .token.tag {
+  color: #e45649 !important;
+}
+
+.language-jsx .token.attr-name,
+.language-tsx .token.attr-name {
+  color: #986801 !important;
+}
+
+.language-jsx .token.attr-value,
+.language-tsx .token.attr-value {
+  color: #50a14f !important;
+}
+
+/* CSS specific */
+.language-css .token.property {
+  color: #4078f2 !important;
+}
+
+.language-css .token.selector {
+  color: #e45649 !important;
+}
+
+.language-css .token.important {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+/* JSON specific */
+.language-json .token.property {
+  color: #4078f2 !important;
+}
+
+.language-json .token.string {
+  color: #50a14f !important;
+}
+
+/* Markdown specific */
+.language-markdown .token.title {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+.language-markdown .token.code {
+  color: #e45649 !important;
+}
+
+.language-markdown .token.url {
+  color: #50a14f !important;
+  text-decoration: underline;
+}
+
+/* Language-specific highlighting */
+.language-solidity .token.keyword {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+.language-solidity .token.type {
+  color: #4078f2 !important;
+}
+
+.language-solidity .token.modifier {
+  color: #a626a4 !important;
+}
+
+.language-javascript .token.template-string {
+  color: #50a14f !important;
+}
+
+.language-typescript .token.builtin {
+  color: #4078f2 !important;
+}
+
+/* Additional Solidity-specific tokens */
+.language-solidity .token.storage,
+.language-solidity .token.visibility {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+.language-solidity .token.number {
+  color: #986801 !important;
+}
+
+.language-solidity .token.address {
+  color: #4078f2 !important;
+}
+
+/* Code comments enhancement */
+.token.comment .token.keyword {
+  color: #a0a1a7 !important;
+  font-weight: normal !important;
+}
+
+/* Error highlighting */
+.token.error {
+  color: #e45649 !important;
+  background: #ffeaea !important;
+}
+
+/* Modern code block header */
+.code-block-header {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-bottom: none;
+  padding: 8px 12px;
+  font-family: 'SF Pro Text', system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  color: #586069;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Line numbers (if using line numbers plugin) */
+.line-numbers .line-numbers-rows {
+  border-right: 1px solid #e1e4e8;
+  background: #f6f8fa;
+}
+
+.line-numbers-rows > span:before {
+  color: #959da5;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+}
+
+/* Modern scrollbar for code blocks */
+pre[class*="language-"] {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5da #f6f8fa;
+}
+
+pre[class*="language-"]::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+  background: #f6f8fa;
+  border-radius: 6px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: #d1d5da;
+  border-radius: 6px;
+  border: 2px solid #f6f8fa;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: #bdc4cc;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-corner {
+  background: #f6f8fa;
+}
+
+/* Language labels */
+pre[class*="language-"] {
+  position: relative;
+}
+
+pre[class*="language-"]:before {
+  content: attr(data-language);
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: #e1e4e8;
+  color: #586069;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-family: 'SF Pro Text', system-ui, -apple-system, sans-serif;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+}
+
+pre[class*="language-solidity"]:before {
+  content: "SOLIDITY";
+}
+
+pre[class*="language-javascript"]:before {
+  content: "JAVASCRIPT";
+}
+
+pre[class*="language-typescript"]:before {
+  content: "TYPESCRIPT";
+}
+
+pre[class*="language-tsx"]:before {
+  content: "TSX";
+}
+
+pre[class*="language-jsx"]:before {
+  content: "JSX";
+}
+
+pre[class*="language-css"]:before {
+  content: "CSS";
+}
+
+pre[class*="language-json"]:before {
+  content: "JSON";
+}
+
+pre[class*="language-bash"]:before {
+  content: "BASH";
+}
+
+pre[class*="language-shell"]:before {
+  content: "SHELL";
+}
+
+pre[class*="language-markdown"]:before {
+  content: "MARKDOWN";
+}
+
+pre[class*="language-python"]:before {
+  content: "PYTHON";
+}
+
+pre[class*="language-rust"]:before {
+  content: "RUST";
+}
+
+pre[class*="language-go"]:before {
+  content: "GO";
+}
+
+/* JavaScript/TypeScript specific enhancements */
+.language-javascript .token.keyword,
+.language-typescript .token.keyword,
+.language-jsx .token.keyword,
+.language-tsx .token.keyword {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+.language-javascript .token.function,
+.language-typescript .token.function,
+.language-jsx .token.function,
+.language-tsx .token.function {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+.language-javascript .token.string,
+.language-typescript .token.string,
+.language-jsx .token.string,
+.language-tsx .token.string {
+  color: #50a14f !important;
+}
+
+.language-javascript .token.number,
+.language-typescript .token.number,
+.language-jsx .token.number,
+.language-tsx .token.number {
+  color: #986801 !important;
+}
+
+.language-javascript .token.comment,
+.language-typescript .token.comment,
+.language-jsx .token.comment,
+.language-tsx .token.comment {
+  color: #a0a1a7 !important;
+  font-style: italic !important;
+}
+
+.language-javascript .token.operator,
+.language-typescript .token.operator,
+.language-jsx .token.operator,
+.language-tsx .token.operator {
+  color: #383a42 !important;
+}
+
+.language-javascript .token.variable,
+.language-typescript .token.variable,
+.language-jsx .token.variable,
+.language-tsx .token.variable {
+  color: #e45649 !important;
+}
+
+.language-javascript .token.class-name,
+.language-typescript .token.class-name,
+.language-jsx .token.class-name,
+.language-tsx .token.class-name {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+/* Python specific */
+.language-python .token.keyword {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+.language-python .token.function {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+.language-python .token.string {
+  color: #50a14f !important;
+}
+
+.language-python .token.number {
+  color: #986801 !important;
+}
+
+.language-python .token.comment {
+  color: #a0a1a7 !important;
+  font-style: italic !important;
+}
+
+/* Ensure global token rules have high specificity */
+code[class*="language-"] .token.comment,
+pre[class*="language-"] .token.comment {
+  color: #a0a1a7 !important;
+  font-style: italic !important;
+}
+
+code[class*="language-"] .token.keyword,
+pre[class*="language-"] .token.keyword {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+code[class*="language-"] .token.function,
+pre[class*="language-"] .token.function {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+code[class*="language-"] .token.string,
+pre[class*="language-"] .token.string {
+  color: #50a14f !important;
+}
+
+code[class*="language-"] .token.number,
+pre[class*="language-"] .token.number {
+  color: #986801 !important;
+}
+
+code[class*="language-"] .token.variable,
+pre[class*="language-"] .token.variable {
+  color: #e45649 !important;
+}
+
+code[class*="language-"] .token.class-name,
+pre[class*="language-"] .token.class-name {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+code[class*="language-"] .token.operator,
+pre[class*="language-"] .token.operator {
+  color: #383a42 !important;
+}
+
+code[class*="language-"] .token.punctuation,
+pre[class*="language-"] .token.punctuation {
+  color: #383a42 !important;
+}
+
+/* Force all token styles with maximum specificity */
+html body code[class*="language-"] .token.comment,
+html body pre[class*="language-"] .token.comment {
+  color: #a0a1a7 !important;
+  font-style: italic !important;
+}
+
+html body code[class*="language-"] .token.keyword,
+html body pre[class*="language-"] .token.keyword {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+html body code[class*="language-"] .token.function,
+html body pre[class*="language-"] .token.function {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+html body code[class*="language-"] .token.string,
+html body pre[class*="language-"] .token.string {
+  color: #50a14f !important;
+}
+
+html body code[class*="language-"] .token.number,
+html body pre[class*="language-"] .token.number {
+  color: #986801 !important;
+}
+
+html body code[class*="language-"] .token.variable,
+html body pre[class*="language-"] .token.variable {
+  color: #e45649 !important;
+}
+
+html body code[class*="language-"] .token.class-name,
+html body pre[class*="language-"] .token.class-name {
+  color: #4078f2 !important;
+  font-weight: bold !important;
+}
+
+html body code[class*="language-"] .token.operator,
+html body pre[class*="language-"] .token.operator {
+  color: #383a42 !important;
+}
+
+html body code[class*="language-"] .token.punctuation,
+html body pre[class*="language-"] .token.punctuation {
+  color: #383a42 !important;
+}
+
+html body code[class*="language-"] .token.property,
+html body pre[class*="language-"] .token.property {
+  color: #e45649 !important;
+}
+
+html body code[class*="language-"] .token.tag,
+html body pre[class*="language-"] .token.tag {
+  color: #e45649 !important;
+}
+
+html body code[class*="language-"] .token.boolean,
+html body pre[class*="language-"] .token.boolean {
+  color: #986801 !important;
+}
+
+html body code[class*="language-"] .token.constant,
+html body pre[class*="language-"] .token.constant {
+  color: #986801 !important;
+}
+
+html body code[class*="language-"] .token.symbol,
+html body pre[class*="language-"] .token.symbol {
+  color: #986801 !important;
+}
+
+html body code[class*="language-"] .token.selector,
+html body pre[class*="language-"] .token.selector {
+  color: #50a14f !important;
+}
+
+html body code[class*="language-"] .token.attr-name,
+html body pre[class*="language-"] .token.attr-name {
+  color: #50a14f !important;
+}
+
+html body code[class*="language-"] .token.char,
+html body pre[class*="language-"] .token.char {
+  color: #50a14f !important;
+}
+
+html body code[class*="language-"] .token.builtin,
+html body pre[class*="language-"] .token.builtin {
+  color: #50a14f !important;
+}
+
+html body code[class*="language-"] .token.inserted,
+html body pre[class*="language-"] .token.inserted {
+  color: #50a14f !important;
+}
+
+html body code[class*="language-"] .token.atrule,
+html body pre[class*="language-"] .token.atrule {
+  color: #a626a4 !important;
+  font-weight: bold !important;
+}
+
+html body code[class*="language-"] .token.attr-value,
+html body pre[class*="language-"] .token.attr-value {
+  color: #a626a4 !important;
+}
+
+html body code[class*="language-"] .token.regex,
+html body pre[class*="language-"] .token.regex {
+  color: #e45649 !important;
+}
+
+html body code[class*="language-"] .token.important,
+html body pre[class*="language-"] .token.important {
+  color: #e45649 !important;
+  font-weight: bold !important;
+}
+
+/* Override Tailwind Prose styles */
+.prose pre[class*="language-"] {
+  background: #fafafa !important;
+  color: #383a42 !important;
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.prose code[class*="language-"] {
+  background: #fafafa !important;
+  color: #383a42 !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+}
+
+/* Ensure inline code (not in pre) keeps different styling */
+.prose :not(pre) > code {
+  background: #f6f8fa !important;
+  color: #24292e !important;
+  padding: 3px 6px !important;
+  border-radius: 4px !important;
+  border: 1px solid #e1e4e8 !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace !important;
+  font-size: 13px !important;
+}
+
+/* Force Prism.js theme over Tailwind prose with maximum specificity */
+html body article .prose pre[class*="language-"],
+html body section .prose pre[class*="language-"],
+html body div .prose pre[class*="language-"],
+.prose pre[class*="language-"] {
+  color: #383a42 !important;
+  background: #fafafa !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  overflow: auto !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2;
+  hyphens: none;
+}
+
+html body article .prose code[class*="language-"],
+html body section .prose code[class*="language-"],
+html body div .prose code[class*="language-"],
+.prose code[class*="language-"] {
+  color: #383a42 !important;
+  background: transparent !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2;
+  hyphens: none;
+}
+
+/* MAXIMUM SPECIFICITY OVERRIDES FOR PRISM TOKENS */
+/* These rules ensure Prism tokens work even with Tailwind prose */
+
+html body code[class*="language-"] .token.comment,
+html body pre[class*="language-"] .token.comment,
+html body .prose code[class*="language-"] .token.comment,
+html body .prose pre[class*="language-"] .token.comment,
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #a0a1a7 !important;
+  font-style: italic !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.punctuation,
+html body pre[class*="language-"] .token.punctuation,
+html body .prose code[class*="language-"] .token.punctuation,
+html body .prose pre[class*="language-"] .token.punctuation,
+.token.punctuation {
+  color: #383a42 !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.property,
+html body pre[class*="language-"] .token.property,
+html body .prose code[class*="language-"] .token.property,
+html body .prose pre[class*="language-"] .token.property,
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #e45649 !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.boolean,
+html body pre[class*="language-"] .token.boolean,
+html body .prose code[class*="language-"] .token.boolean,
+html body .prose pre[class*="language-"] .token.boolean,
+.token.boolean,
+.token.number {
+  color: #986801 !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.selector,
+html body pre[class*="language-"] .token.selector,
+html body .prose code[class*="language-"] .token.selector,
+html body .prose pre[class*="language-"] .token.selector,
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #50a14f !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.operator,
+html body pre[class*="language-"] .token.operator,
+html body .prose code[class*="language-"] .token.operator,
+html body .prose pre[class*="language-"] .token.operator,
+.token.operator,
+.token.entity,
+.token.url {
+  color: #4078f2 !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.atrule,
+html body pre[class*="language-"] .token.atrule,
+html body .prose code[class*="language-"] .token.atrule,
+html body .prose pre[class*="language-"] .token.atrule,
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #a626a4 !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.function,
+html body pre[class*="language-"] .token.function,
+html body .prose code[class*="language-"] .token.function,
+html body .prose pre[class*="language-"] .token.function,
+.token.function,
+.token.class-name {
+  color: #4078f2 !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.regex,
+html body pre[class*="language-"] .token.regex,
+html body .prose code[class*="language-"] .token.regex,
+html body .prose pre[class*="language-"] .token.regex,
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e45649 !important;
+  text-decoration: none !important;
+}
+
+/* Solidity specific tokens with maximum specificity */
+html body code[class*="language-"] .token.storage,
+html body pre[class*="language-"] .token.storage,
+html body .prose code[class*="language-"] .token.storage,
+html body .prose pre[class*="language-"] .token.storage,
+.language-solidity .token.storage,
+.language-solidity .token.visibility {
+  color: #a626a4 !important;
+  text-decoration: none !important;
+}
+
+html body code[class*="language-"] .token.type,
+html body pre[class*="language-"] .token.type,
+html body .prose code[class*="language-"] .token.type,
+html body .prose pre[class*="language-"] .token.type,
+.language-solidity .token.type {
+  color: #4078f2 !important;
+  text-decoration: none !important;
+}
+
+/* Ensure no underlines on any code elements */
+html body pre[class*="language-"] *,
+html body code[class*="language-"] *,
+html body .prose pre[class*="language-"] *,
+html body .prose code[class*="language-"] * {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  border: none !important;
+}

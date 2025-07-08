@@ -3,11 +3,16 @@ import path from 'path';
 import matter from 'gray-matter';
 import Navbar from '@/components/Nav';
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypePrismPlus from 'rehype-prism-plus';
+import rehypeStringify from 'rehype-stringify';
 import Footer from '@/components/Footer/footer';
 import { generateSEOMetadata } from '@/components/SEO';
 import { cn } from '@/lib/utils';
 import { Metadata } from 'next';
+import MarkdownContent from '@/components/MarkdownContent';
+import PrismLoader from '@/components/PrismLoader';
+import { ClientOnly } from '@/components/ClientOnly';
 
 interface PostData {
   title: string;
@@ -109,8 +114,37 @@ export default async function BlogPost({ params }: Props) {
     );
   }
 
-  const processedContent = await remark().use(html).process(postData.content);
+  const processedContent = await remark()
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypePrismPlus, {
+      ignoreMissing: true,
+      showLineNumbers: false,
+      defaultLanguage: 'text',
+      preloadLanguages: ['solidity', 'javascript', 'typescript', 'jsx', 'tsx', 'css', 'json', 'bash'],
+      aliases: {
+        solidity: 'solidity',
+        sol: 'solidity',
+        js: 'javascript',
+        ts: 'typescript',
+        tsx: 'typescript',
+        jsx: 'javascript',
+        shell: 'bash',
+        sh: 'bash'
+      }
+    })
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(postData.content);
   const contentHtml = processedContent.toString();
+
+  // Debug: Log if we have syntax highlighted code
+  if (process.env.NODE_ENV === 'development') {
+    const hasCodeBlocks = contentHtml.includes('language-');
+    console.log(`Post ${slug} has code blocks:`, hasCodeBlocks);
+    if (hasCodeBlocks) {
+      const languageMatches = contentHtml.match(/language-\w+/g);
+      console.log('Languages found:', languageMatches);
+    }
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-teal-600">
@@ -131,16 +165,16 @@ export default async function BlogPost({ params }: Props) {
             <div className="text-base text-gray-600 mb-4 font-['MS Sans Serif']">
               {postData.data.date}
             </div>
-            <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800 prose max-w-none">
+            <div className="space-y-3 md:space-y-4 font-['MS Sans Serif'] text-gray-800">
               <div className={cn(
                 "border-2",
                 WIN95_BORDERS.sunken,
                 "bg-[#ececec] p-2 md:p-3"
               )}>
-                <div
-                  className="leading-relaxed text-base md:text-lg"
-                  dangerouslySetInnerHTML={{ __html: contentHtml }}
-                />
+                <MarkdownContent content={contentHtml} />
+                <ClientOnly>
+                  <PrismLoader />
+                </ClientOnly>
               </div>
             </div>
           </div>

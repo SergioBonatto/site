@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import "../styles/prism.css";
 import "./globals.css";
 import { metadata as siteMetadata } from '@/app/metadata';
 import { StructuredData } from '@/components/StructuredData';
+import Script from 'next/script';
 
 export const metadata: Metadata = siteMetadata;
 
@@ -22,6 +24,12 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" title="Blog - Sergio Bonatto" href="/feed.xml" />
       </head>
       <body>
+        <Script id="prism-preload" strategy="beforeInteractive">
+          {`
+            window.Prism = window.Prism || {};
+            window.Prism.manual = true;
+          `}
+        </Script>
         <StructuredData />
         {children}
       </body>

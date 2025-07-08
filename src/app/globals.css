@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prism.js override for prose - Simplified and clean */
+.prose pre[class*="language-"] {
+  background: #fafafa !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  overflow-x: auto !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+}
+
+.prose code[class*="language-"] {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+/* Ensure Prism tokens are not overridden */
+.prose pre[class*="language-"] .token,
+.prose code[class*="language-"] .token {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
 
 :root {
   --primary-color: #000080;
