@@ -25,8 +25,8 @@ We built a comprehensive test suite that validates all critical aspects of the p
 ### 1. Dynamic Fee System Implemented
 
 -  **Volume-based fee system**: Automatically responds to traded volumes
-  - Core mode: 3% (low volume) → 5% (high volume)
-  - Advanced mode: 5% (low volume) → 7% (high volume)
+   - Core mode: 3% (low volume) → 5% (high volume)
+   - Advanced mode: 5% (low volume) → 7% (high volume)
 -  **Volume threshold**: Configured for 100 ETH daily
 -  **Extension compatibility**: Allows upgrade to advanced features
 -  **Automatic daily reset**: Based on UTC timestamp for global consistency
@@ -43,13 +43,11 @@ We built a comprehensive test suite that validates all critical aspects of the p
 
 We measured and optimized gas consumption for main operations:
 
-
 | Operation | Gas Consumed | Applied Optimization |
 |-----------|--------------|-------------------|
 | **Create listing** | ~116,500 gas | Custom errors, struct packing |
 | **Process payment** | ~176,200 gas | Efficient modifiers, optimized validations |
 | **Cancel listing** | ~33,800 gas | Early returns, storage cleanup |
-
 
 **Implemented optimization techniques:**
 - Custom errors instead of require strings (saving ~50 gas per error)
@@ -67,25 +65,21 @@ One of the critical points tested was real operational cost. We used verified ma
 - Polygon gas: 25 gwei (PolygonScan)
 - Ethereum gas: 3.552 gwei (EtherScan)
 
-
 | Operation | Polygon Cost | Ethereum Cost | Real Savings |
 |-----------|--------------|---------------|--------------|
 | Create listing | $0.00059 | $1.10 | 99.9% |
 | Process payment | $0.00089 | $1.66 | 99.9% |
 | Cancel listing | $0.00017 | $0.32 | 99.9% |
 
-
 ### Validated Active User Scenario
 
 **Tested scenario**: User who creates 10 listings/month, processes 7 payments, cancels 3
-
 
 | Network | Monthly Cost | Annual Cost |
 |---------|--------------|-------------|
 | **Polygon** | $0.0126 | $0.15 |
 | **Ethereum** | $23.60 | $283.20 |
 | **Savings** | $23.59 (99.9%) | $283.05 |
-
 
 **During Ethereum congestion** (150+ gwei), savings become even more dramatic, with daily costs potentially exceeding $400 for active traders.
 
@@ -123,7 +117,6 @@ To ensure technical honesty, we documented our methodology:
 ** Cost calculations**: Based on real gas × real prices
 ** Disclaimers**: All limitations clearly documented
 
-
 ## Current Development Status
 
 The PaymentProcessor is in an advanced development state with:
@@ -137,8 +130,6 @@ The PaymentProcessor is in an advanced development state with:
 ## Conclusion
 
 The Agoriz PaymentProcessor demonstrates through rigorous testing to be a robust, secure and economically viable system for decentralized payments. The metrics presented are based on real data and transparent methodology, providing confidence in the quality and potential of the solution.
-
----
 
 **Technical Considerations:**
 - Measurements performed in controlled environment with projections based on real data
