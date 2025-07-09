@@ -168,3 +168,45 @@ button, input, select, textarea {
     transform: translateX(-100%);
   }
 }
+
+/* Tabelas em posts de blog - estilo Windows 95 */
+.prose table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border: 2px solid #808080 !important;
+  background-color: white !important;
+  font-family: 'MS Sans Serif', Arial, sans-serif !important;
+  margin: 1.5rem 0 !important;
+  font-size: 14px !important;
+}
+
+.prose table thead {
+  background-color: #c0c0c0 !important;
+}
+
+.prose table th {
+  border: 2px solid #808080 !important;
+  padding: 8px 12px !important;
+  text-align: left !important;
+  font-weight: bold !important;
+  color: black !important;
+  background-color: #c0c0c0 !important;
+}
+
+.prose table td {
+  border: 1px solid #808080 !important;
+  padding: 8px 12px !important;
+  color: #333 !important;
+  background-color: white !important;
+}
+
+.prose table tr:nth-child(even) td {
+  background-color: #f8f8f8 !important;
+}
+
+/* Garantir que texto em negrito dentro de tabelas funcione */
+.prose table th strong,
+.prose table td strong {
+  font-weight: bold !important;
+  color: inherit !important;
+}

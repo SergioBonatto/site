@@ -43,11 +43,13 @@ We built a comprehensive test suite that validates all critical aspects of the p
 
 We measured and optimized gas consumption for main operations:
 
+
 | Operation | Gas Consumed | Applied Optimization |
 |-----------|--------------|-------------------|
 | **Create listing** | ~116,500 gas | Custom errors, struct packing |
 | **Process payment** | ~176,200 gas | Efficient modifiers, optimized validations |
 | **Cancel listing** | ~33,800 gas | Early returns, storage cleanup |
+
 
 **Implemented optimization techniques:**
 - Custom errors instead of require strings (saving ~50 gas per error)
@@ -65,21 +67,25 @@ One of the critical points tested was real operational cost. We used verified ma
 - Polygon gas: 25 gwei (PolygonScan)
 - Ethereum gas: 3.552 gwei (EtherScan)
 
+
 | Operation | Polygon Cost | Ethereum Cost | Real Savings |
 |-----------|--------------|---------------|--------------|
 | Create listing | $0.00059 | $1.10 | 99.9% |
 | Process payment | $0.00089 | $1.66 | 99.9% |
 | Cancel listing | $0.00017 | $0.32 | 99.9% |
 
+
 ### Validated Active User Scenario
 
 **Tested scenario**: User who creates 10 listings/month, processes 7 payments, cancels 3
+
 
 | Network | Monthly Cost | Annual Cost |
 |---------|--------------|-------------|
 | **Polygon** | $0.0126 | $0.15 |
 | **Ethereum** | $23.60 | $283.20 |
 | **Savings** | $23.59 (99.9%) | $283.05 |
+
 
 **During Ethereum congestion** (150+ gwei), savings become even more dramatic, with daily costs potentially exceeding $400 for active traders.
 
