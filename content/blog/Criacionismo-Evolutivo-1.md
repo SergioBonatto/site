@@ -166,9 +166,3 @@ Adão e Eva, como primeiros portadores da *imago Dei*, receberam:
 - **Patrística:** Agostinho, *De Genesi ad Litteram* III.20; *De Civitate Dei* XIII.10
 - **Reformada:** Calvino, *Comentários sobre Gênesis* 2:17; Berkhof, *Systematic Theology* 262; Bavinck, *Reformed Dogmatics* III.156; Hodge, *Systematic Theology* II.127
 - **Contemporânea:** Collins, *Science and Faith*; Alexander, *Creation or Evolution*; McGrath, *Christian Theology and Natural Science*
-
-- Resposta: A morte mencionada na Escritura é a morte espiritual e penal causada pelo pecado, não a morte natural ou física que pode ocorrer como parte da ordem criada. Assim, a morte física antes da queda não contradiz a doutrina bíblica da penalidade do pecado.
-
-Referências:
-- Confissão de Fé de Westminster (CFW): Capítulo 6, Seções 1-3
-- Credos: Credo de Niceia (325) – afirmação da criação “muito boa”
