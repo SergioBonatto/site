@@ -1,7 +1,6 @@
 import React from "react";
 import { useThemeContext } from "./ThemeProvider";
 import { ThemeToggle } from "./ThemeToggle";
-import { cn } from "@/lib/utils";
 
 const links = [
 	{ href: "/", label: "Início" },
@@ -27,10 +26,8 @@ export function DesktopNav() {
 					>
 						{link.label}
 					</a>
-
 				))}
 				<ThemeToggle />
-
 			</div>
 		</div>
 	);

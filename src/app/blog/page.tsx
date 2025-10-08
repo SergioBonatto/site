@@ -1,9 +1,7 @@
-import Link from 'next/link';
 import { generateSEOMetadata } from '@/components/SEO';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { Nav } from '@/components/Nav';
 
 export const metadata = generateSEOMetadata({
   title: 'Blog - Sergio Bonatto',
@@ -44,8 +42,6 @@ async function getPosts(): Promise<Post[]> {
 
   return posts.sort((a, b) => (new Date(b.date)).getTime() - (new Date(a.date)).getTime());
 }
-
-
 
 import BlogIndexClient from './BlogIndexClient';
 

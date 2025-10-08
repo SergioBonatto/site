@@ -25,16 +25,14 @@ const FloatingGif: React.FC = () => {
       setPendingTheme(newTheme);
       setVisible(true);
       setTimeout(() => setExpanding(true), 30);
-      timeouts.current.change = setTimeout(() => {
-        requestThemeChange(newTheme as any);
-      }, 1000);
       timeouts.current.show = setTimeout(() => {
         setVisible(false);
+        requestThemeChange(newTheme as any); // Altera o tema imediatamente ao iniciar o fadeout
         setTimeout(() => {
           setExpanding(false);
           setPendingTheme(null);
-        }, 200);
-      }, 1500);
+        }, 100);
+      }, 1600); // Ajuste para garantir sincronização precisa
     }, 50);
   };
 
@@ -72,42 +70,60 @@ const FloatingGif: React.FC = () => {
   const targetColor = colors[oppositeTheme].syntaxBg;
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        zIndex: 10002,
-        pointerEvents: 'none',
-        userSelect: 'none',
-      }}
-    >
+    <>
+      <style jsx>{`
+        @keyframes organicGrow {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(2);
+            opacity: 1;
+          }
+          75% {
+            transform: scale(3);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(200);
+            opacity: 0;
+          }
+        }
+      `}</style>
       <div
         style={{
-          width: 120,
-          height: 120,
-          animation: 'spin 4s linear infinite',
-          display: 'block',
-          opacity: visible ? 1 : 0,
-          transition:
-            (visible || expanding)
-              ? 'opacity 0s, transform 3s cubic-bezier(0.4,0,0.2,1)'
-              : 'opacity 0.3s, transform 0s',
-          transform: expanding ? 'scale(50)' : 'scale(1)',
-          backgroundColor: targetColor,
-          maskImage: `url(${gifUrl})`,
-          maskSize: 'contain',
-          maskRepeat: 'no-repeat',
-          maskPosition: 'center',
-          // Prefix for Safari/Chrome compatibility
-          WebkitMaskImage: `url(${gifUrl})`,
-          WebkitMaskSize: 'contain',
-          WebkitMaskRepeat: 'no-repeat',
-          WebkitMaskPosition: 'center',
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          // zIndex: 1,
+          pointerEvents: 'none',
+          userSelect: 'none',
         }}
-      />
-    </div>
+      >
+        <div
+          style={{
+            width: 120,
+            height: 120,
+            display: 'block',
+            opacity: visible ? 1 : 0,
+            transition: visible || expanding ? 'opacity 0s' : 'opacity 0.1s',
+            animation: expanding ? 'organicGrow 2s ease-out forwards' : 'none',
+            backgroundColor: targetColor,
+            maskImage: `url(${gifUrl})`,
+            maskSize: 'contain',
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
+            // Prefix for Safari/Chrome compatibility
+            WebkitMaskImage: `url(${gifUrl})`,
+            WebkitMaskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+          }}
+        />
+      </div>
+    </>
   );
 };
 

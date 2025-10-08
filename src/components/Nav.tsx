@@ -3,10 +3,10 @@
 
 import React, { useState } from "react";
 import { useThemeContext } from "./ThemeProvider";
-import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 import { DesktopNav } from "./DesktopNav";
 import { MobileNav } from "./MobileNav";
+import Link from 'next/link';
 
 export function Nav() {
   const { colors, theme } = useThemeContext();
@@ -25,22 +25,17 @@ export function Nav() {
     >
       <div className="mx-auto flex items-center justify-between px-8 py-4 md:py-2">
         {/* Logo */}
-        <a
+        <Link
           href="/"
           className="font-bold text-3xl md:text-3xl tracking-tight mt-1 pl-4"
           style={{ color: colors.hue2 }}
         >
           Bonatto
-        </a>
+        </Link>
 
         <div className="links">
-        {/* Links centralizados (desktop) */}
-        <DesktopNav />
-
-        {/* Theme toggle sempre à direita */}
-        <div className="flex items-center gap-2">
-        </div>
-
+          {/* Links centralizados (desktop) */}
+          <DesktopNav />
         </div>
       </div>
 

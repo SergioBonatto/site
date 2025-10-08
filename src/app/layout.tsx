@@ -12,6 +12,7 @@ import { Nav } from "@/components/Nav";
 
 export const metadata: Metadata = siteMetadata;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  console.log('Rendering RootLayout'); // Log para depuração
   return (
     <html lang="pt-BR">
       <head>
@@ -35,6 +36,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Nav />
           <FloatingGif />
           <About />
+          {children ? (
+            <>
+              {console.log('Children are being rendered')} {/* Log para verificar se children está sendo renderizado */}
+              {children}
+            </>
+          ) : (
+            <>
+              {console.error('Children are not being passed to RootLayout')} {/* Log de erro */}
+            </>
+          )}
         </ThemeProvider>
       </body>
     </html>
