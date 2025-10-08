@@ -6,7 +6,7 @@ import { ThemeToggle } from "../Theme/ThemeToggle";
 const links = [
   { href: "/", label: "Home" },
   { href: "/blog", label: "Blog" },
-  { href: "/projects", label: "Projects" },
+  { href: "/#projects", label: "Projects" },
   { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
   { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
   { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
