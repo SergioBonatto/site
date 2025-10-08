@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import gifFrames from 'gif-frames';
-
+import { Nav } from '@/components/Nav/Nav';
 const generateAscii = (imageData: ImageData): string => {
   const characters = '@#8&OLI)i=+;:,. ';  // From darkest to lightest
   let ascii = '';
@@ -105,12 +105,20 @@ export default function JimmyPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-1 flex items-center justify-center text-white text-center bg-black">
+      <Nav/>
+      <main
+        className="flex-1 flex items-center justify-center text-center"
+        style={{
+          color: `var(--mono1)`,
+          backgroundColor: `var(--syntaxBg)`
+        }}
+      >
         <div className={`w-full ${isPortrait ? 'mb-[20vh]' : 'pb-8'}`}>
           {asciiFrames.length > 0 ? (
             <pre
-              className="text-green-400 font-mono text-[0.5em] md:text-[0.6em] whitespace-pre overflow-hidden"
+              className="font-mono text-[0.5em] md:text-[0.6em] whitespace-pre overflow-hidden"
               style={{
+                color: `var(--hue6)`,
                 lineHeight: '1em',
                 letterSpacing: '0em',
                 transform: 'scale(1)',
@@ -122,7 +130,10 @@ export default function JimmyPage() {
               {asciiFrames[currentFrame]}
             </pre>
           ) : (
-            <h2 className="text-2xl font-bold">
+            <h2
+              className="text-2xl font-bold"
+              style={{ color: `var(--hue5)` }}
+            >
               Why are you gay?
             </h2>
           )}

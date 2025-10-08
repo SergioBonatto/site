@@ -2,17 +2,15 @@ import type { Metadata } from "next";
 import "../styles/prism.css";
 import "./globals.css";
 
-import { ThemeProvider } from '@/components/ThemeProvider';
+import { ThemeProvider } from '@/components/Theme/ThemeProvider';
 import { metadata as siteMetadata } from '@/app/metadata';
 import { StructuredData } from '@/components/StructuredData';
-import FloatingGif from '@/components/FloatingGif';
+import FloatingGif from '@/components/Core/FloatingGif';
 import Script from 'next/script';
-import About from "@/components/About";
-import { Nav } from "@/components/Nav";
 
 export const metadata: Metadata = siteMetadata;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  console.log('Rendering RootLayout'); // Log para depuração
+  console.log('Rendering RootLayout');
   return (
     <html lang="pt-BR">
       <head>
@@ -40,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </>
           ) : (
             <>
-              {console.error('Children are not being passed to RootLayout')} {/* Log de erro */}
+              {console.error('Children are not being passed to RootLayout')}
             </>
           )}
         </ThemeProvider>

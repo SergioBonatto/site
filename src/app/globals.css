@@ -71,16 +71,14 @@ body {
 
 
 /*
- * ESTILOS GERAIS DO BOTÃO
+ * GENERAL BUTTON STYLES
  */
 .theme-toggle {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
   padding: 0;
   background-color: var(--syntaxBg);
   color: var(--mono1);
-  border: 1px solid var(--mono4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,7 +101,7 @@ body {
   transition-duration: 0.1s;
 }
 
-/* * ESTILOS DE ANIMAÇÃO DO ÍCONE
+/* * ICON ANIMATION STYLES
  */
 
 .theme-toggle__icon {
@@ -112,42 +110,42 @@ body {
   justify-content: center;
   width: 24px;
   height: 24px;
-  /* Garante que o span seja o contêiner para animação */
+  /* Ensures the span is the container for animation */
   overflow: hidden;
 }
 
-/* O SVG em si deve ter transição para a cor */
+/* The SVG itself should transition to the color */
 .theme-toggle__icon svg {
   width: 100%;
   height: 100%;
-  /* A Transição que faz o mágico acontecer:
-     A animação de rotação e escala será aplicada pela função 'cubic-bezier'
-     para um movimento mais natural. */
+  /* The Transition that makes the magic happen:
+     The rotation and scale animation will be applied by the 'cubic-bezier'
+     function for a more natural movement. */
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.4, 1.2),
               stroke 0.3s ease,
               fill 0.3s ease;
 }
 
 /*
- * EFEITO DE ROTAÇÃO E ESCALA
- * * Este é um truque moderno de CSS: ao ser renderizado, o SVG irá se animar.
- * Quando o componente é montado ou a chave (key) é trocada, ele aplica a animação.
+ * ROTATION AND SCALE EFFECT
+ * * This is a modern CSS trick: when rendered, the SVG will animate.
+ * When the component is mounted or the key is swapped, it applies the animation.
  */
 
-/* Rotação e escala inicial (escondido) */
+/* Initial rotation and scale (hidden) */
 .theme-toggle__icon svg {
   transform: scale(0.8) rotate(-90deg);
   opacity: 0;
 }
 
-/* Rotação e escala do ícone ATUAL (visível) */
+/* Rotation and scale of the CURRENT icon (visible) */
 .theme-toggle:not(:active) .theme-toggle__icon svg {
   transform: scale(1) rotate(0deg);
   opacity: 1;
 }
 
-/* Transição de Cores para o Ícone */
-/* Garante que a cor do sol se adapte perfeitamente ao tema */
+/* Color Transition for the Icon */
+/* Ensures the sun color adapts perfectly to the theme */
 .theme-toggle__icon svg[fill="currentColor"] {
   fill: var(--mono1);
   stroke: var(--mono1);
@@ -162,5 +160,60 @@ body {
   .theme-toggle__icon {
     width: 20px;
     height: 20px;
+  }
+}
+
+/* Adding styles for theme transition */
+:root {
+  --expo-in: linear(
+    0 0%, 0.0085 31.26%, 0.0167 40.94%,
+    0.0289 48.86%, 0.0471 55.92%,
+    0.0717 61.99%, 0.1038 67.32%,
+    0.1443 72.07%, 0.1989 76.7%,
+    0.2659 80.89%, 0.3465 84.71%,
+    0.4419 88.22%, 0.554 91.48%,
+    0.6835 94.51%, 0.8316 97.34%, 1 100%
+  );
+  --expo-out: linear(
+    0 0%, 0.1684 2.66%, 0.3165 5.49%,
+    0.446 8.52%, 0.5581 11.78%,
+    0.6535 15.29%, 0.7341 19.11%,
+    0.8011 23.3%, 0.8557 27.93%,
+    0.8962 32.68%, 0.9283 38.01%,
+    0.9529 44.08%, 0.9711 51.14%,
+    0.9833 59.06%, 0.9915 68.74%, 1 100%
+  );
+}
+
+::view-transition-group(root) {
+  animation-timing-function: var(--expo-in);
+}
+
+::view-transition-new(root) {
+  mask: url('/shigure-ui-smol.gif') center / 0 no-repeat;
+  animation: scale 3s;
+  animation-fill-mode: both;
+  image-rendering: -webkit-optimize-contrast; /* Smoothing for WebKit */
+  image-rendering: smooth; /* Smoothing for other browsers */
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: scale 3s;
+  animation-fill-mode: both;
+}
+
+@keyframes scale {
+  0% {
+    mask-size: 0;
+  }
+  10% {
+    mask-size: 15vmax; /* Starts with half the previous size */
+  }
+  90% {
+    mask-size: 15vmax;
+  }
+  100% {
+    mask-size: 2000vmax;
   }
 }

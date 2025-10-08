@@ -16,7 +16,7 @@ function useDevTools() {
         setIsDevToolsOpen(true);
         return '';
       };
-      console.debug(isDevToolsOpen);
+      // console.debug(isDevToolsOpen);
 
       if (widthThreshold || heightThreshold) {
         setIsDevToolsOpen(true);

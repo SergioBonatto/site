@@ -1,10 +1,11 @@
 'use client';
 import { useEffect } from 'react';
 import useDevTools from '@/lib/useDevtools';
-import { useThemeContext } from '@/components/ThemeProvider';
-import { Nav } from '@/components/Nav';
-import About from '@/components/About';
-
+import { useThemeContext } from '@/components/Theme/ThemeProvider';
+import { Nav } from '@/components/Nav/Nav';
+import About from '@/components/About/About';
+import Footer from '@/components/Footer/Footer';
+import ProjectsSection from '@/components/Projects/ProjectsSection';
 
 export default function Home() {
   const isDevToolsOpen = useDevTools();
@@ -36,6 +37,8 @@ function HomeContent() {
       <div style={{ backgroundColor: colors.syntaxBg, color: colors.mono1 }}>
         <About />
       </div>
+      <ProjectsSection />
+      <Footer />
     </main>
   );
 }

@@ -1,11 +1,12 @@
 import React from "react";
-import { useThemeContext } from "./ThemeProvider";
+import { useThemeContext } from "../Theme/ThemeProvider";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "./ThemeToggle";
+import { ThemeToggle } from "../Theme/ThemeToggle";
 
 const links = [
-  { href: "/", label: "Início" },
+  { href: "/", label: "Home" },
   { href: "/blog", label: "Blog" },
+  { href: "/projects", label: "Projects" },
   { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
   { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
   { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
@@ -22,15 +23,15 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
 
   return (
     <>
-      {/* Botão hambúrguer animado */}
+      {/* Animated hamburger button */}
       <button
-        className="fixed top-4 right-4 p-2 rounded-lg focus:outline-none focus:ring-2 z-[10001] md:hidden transition-all duration-200 hover:bg-opacity-10 hover:bg-current"
-        aria-label={open ? "Fechar menu" : "Abrir menu"}
+        className="fixed top-4 right-4 p-2 rounded-lg focus:outline-none focus:ring-2 z-[10001] md:hidden transition-all duration-200"
+        aria-label={open ? "Close menu" : "Open menu"}
         onClick={open ? onClose : onOpen}
         style={{ color: colors.mono1 }}
       >
         <div className="w-6 h-5 relative flex flex-col justify-center">
-          {/* Linha superior */}
+          {/* Top line */}
           <span
             className="absolute block w-full h-0.5 rounded-full transition-all duration-300 ease-in-out"
             style={{
@@ -42,7 +43,7 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
             }}
           />
 
-          {/* Linha do meio */}
+          {/* Middle line */}
           <span
             className="absolute block w-full h-0.5 rounded-full transition-all duration-300 ease-in-out"
             style={{
@@ -55,7 +56,7 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
             }}
           />
 
-          {/* Linha inferior */}
+          {/* Bottom line */}
           <span
             className="absolute block w-full h-0.5 rounded-full transition-all duration-300 ease-in-out"
             style={{
@@ -69,17 +70,18 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
         </div>
       </button>
 
-      {/* Menu mobile */}
+      {/* Mobile menu */}
       <div
         className={cn(
-          "fixed top-0 left-0 z-[9999] flex flex-col items-center justify-center transition-all duration-300 md:hidden",
+          "fixed left-0 z-[9999] flex flex-col items-center justify-center transition-all duration-300 md:hidden",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
         style={{
           background: colors.syntaxBg + (theme === "dark" ? "f6" : "fc"),
           color: colors.mono1,
           width: "100vw",
-          height: "100vh",
+          height: "110vh",
+          top: "-6rem"
         }}
         aria-modal="true"
         role="dialog"
@@ -101,7 +103,7 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
                   href={link.href}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
-                  className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:bg-opacity-10 hover:bg-current hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                  className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
                   style={{ color: colors.mono1 }}
                   onClick={onClose}
                 >

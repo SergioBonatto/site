@@ -6,12 +6,12 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
-import { generateSEOMetadata } from '@/components/SEO';
+import { generateSEOMetadata } from '@/components/Core/SEO';
 import { Metadata } from 'next';
-import MarkdownContent from '@/components/MarkdownContent';
-import PrismLoader from '@/components/PrismLoader';
-import { ClientOnly } from '@/components/ClientOnly';
-import { Nav } from '@/components/Nav';
+import MarkdownContent from '@/components/Core/MarkdownContent';
+import PrismLoader from '@/components/Theme/PrismLoader';
+import { ClientOnly } from '@/components/Core/ClientOnly';
+import { Nav } from '@/components/Nav/Nav';
 import styles from '../article.module.css';
 
 interface PostData {

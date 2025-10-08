@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { useThemeContext } from './ThemeProvider';
+import { useThemeContext } from '../Theme/ThemeProvider';
 
 interface AboutProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;
@@ -14,7 +14,7 @@ interface AboutProps extends React.HTMLAttributes<HTMLElement> {
 const About: React.FC<AboutProps> = ({
   className,
   imageSrc = "/eu.jpeg",
-  imageAlt = "Foto minha com um livro vermelho",
+  imageAlt = "Picture of me with a red book",
   ...props
 }) => {
   const { colors } = useThemeContext();
@@ -32,29 +32,29 @@ const About: React.FC<AboutProps> = ({
       }}
       {...props}
     >
+      <h2
+        className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+        style={{ color: colors.hue2 }}
+      >
+        About
+      </h2>
       <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-        {/* Painel Esquerdo - Imagem */}
+        {/* Left Panel - Image */}
         <div className="w-full md:w-1/3">
           <div className="relative w-full h-[400px] md:h-[600px] rounded-lg overflow-hidden shadow-lg">
             <Image
               src={imageSrc}
               alt={imageAlt}
               fill
-              priority
               sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover"
             />
           </div>
         </div>
 
-        {/* Painel Direito - Conteúdo */}
+        {/* Right Panel - Content */}
         <div className="w-full md:w-2/3 flex flex-col justify-center">
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-            style={{ color: colors.hue2 }}
-          >
-            About
-          </h2>
+
 
           <div className="space-y-4 text-base md:text-lg leading-relaxed">
             {[

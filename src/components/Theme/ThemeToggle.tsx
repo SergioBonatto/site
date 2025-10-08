@@ -7,20 +7,21 @@ export function ThemeToggle() {
   const isDark = theme === 'dark';
 
   const handleClick = () => {
-    // A animação será controlada pelo CSS
-    if (typeof window !== 'undefined' && (window as any).changeThemeWithGif) {
-      (window as any).changeThemeWithGif(nextTheme);
+    // The animation will be controlled by CSS
+    const changeThemeWithGif = (window as Window & { changeThemeWithGif?: (theme: string) => void }).changeThemeWithGif;
+    if (typeof window !== 'undefined' && changeThemeWithGif) {
+      changeThemeWithGif(nextTheme);
     }
   };
 
   // ------------------------------------------
-  // Ícones SVG
+  // SVG Icons
   // ------------------------------------------
 
-  // A Lua será preenchida com var(--hue6) (dourado/laranja)
+  // The Moon will be filled with var(--hue6) (gold/orange)
   const MoonIcon = () => (
     <svg
-      key="moon" // Chave para ajudar o React a gerenciar a transição
+      key="moon" // Key to help React manage the transition
       className="toggle-svg"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -37,10 +38,10 @@ export function ThemeToggle() {
     </svg>
   );
 
-  // O Sol será preenchido e traçado com currentColor (var(--mono1))
+  // The Sun will be filled and stroked with currentColor (var(--mono1))
   const SunIcon = () => (
     <svg
-      key="sun" // Chave para ajudar o React a gerenciar a transição
+      key="sun" // Key to help React manage the transition
       className="toggle-svg"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -68,15 +69,15 @@ export function ThemeToggle() {
   return (
     <button
       onClick={handleClick}
-      aria-label={isDark ? 'Mudar para o tema claro' : 'Mudar para o tema escuro'}
+      aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       className="theme-toggle"
       tabIndex={0}
     >
-      {/* O uso da chave 'key' e o React Transition Group (se usasse) é o ideal.
-          Sem RTG, o truque é fazer com que o span contenha o SVG e animar o SVG. */}
+      {/* Using the 'key' prop and React Transition Group (if used) is ideal.
+          Without RTG, the trick is to make the span contain the SVG and animate the SVG. */}
       <span className="theme-toggle__icon" aria-hidden="true">
-        {/* Usamos a chave 'key' para forçar uma "troca" de elemento,
-            que o CSS pode interceptar com animações. */}
+        {/* We use the 'key' prop to force an "element swap",
+            which CSS can intercept with animations. */}
         {isDark ? <MoonIcon /> : <SunIcon />}
       </span>
     </button>

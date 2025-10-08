@@ -1,10 +1,10 @@
-'use client';
+import { Nav } from '@/components/Nav/Nav';
 
 export default function NotFound() {
-
   // Default 404 page
   return (
     <div className="min-h-screen flex flex-col">
+      <Nav />
       <main
         className="flex-1 flex items-center justify-center text-white text-center"
         style={{

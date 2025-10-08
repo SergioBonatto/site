@@ -2,7 +2,7 @@
 
 
 import React, { useState } from "react";
-import { useThemeContext } from "./ThemeProvider";
+import { useThemeContext } from "../Theme/ThemeProvider";
 import { cn } from "@/lib/utils";
 import { DesktopNav } from "./DesktopNav";
 import { MobileNav } from "./MobileNav";
@@ -34,12 +34,12 @@ export function Nav() {
         </Link>
 
         <div className="links">
-          {/* Links centralizados (desktop) */}
+          {/* Centered links (desktop) */}
           <DesktopNav />
         </div>
       </div>
 
-      {/* Menu mobile cobrindo toda a tela */}
+      {/* Fullscreen mobile menu */}
       <MobileNav
         open={mobileOpen}
         onOpen={() => setMobileOpen(true)}

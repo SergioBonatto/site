@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react';
-import colors from '../config/colors';
-import type { Theme, ThemeColors } from '../types/theme';
+import colors from '../../config/colors';
+import type { Theme, ThemeColors } from '../../types/theme';
 
 
 interface ThemeContextProps {
@@ -25,18 +25,31 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark');
   const [themeColors, setThemeColors] = useState<ThemeColors>(colors.dark);
 
-  // Aplica o tema ao <html> imediatamente
+  // Applies the theme to <html> immediately
   const applyTheme = useCallback((newTheme: Theme) => {
     setTheme(newTheme);
     setThemeColors(colors[newTheme]);
     document.documentElement.classList.remove('dark', 'light');
     document.documentElement.classList.add(newTheme);
-    // Atualiza todas as variáveis CSS do tema no <html>
+    // Updates all CSS variables for the theme in <html>
     const themeObj = colors[newTheme];
     Object.entries(themeObj).forEach(([key, value]) => {
       document.documentElement.style.setProperty(`--${key}`, value);
     });
   }, []);
+
+  // Immediately switches the theme
+  const setThemeMode = useCallback((newTheme: Theme) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('theme-mode', newTheme);
+    }
+    applyTheme(newTheme);
+  }, [applyTheme]);
+
+  // Requests a theme change: the caller decides when to switch
+  const requestThemeChange = useCallback((newTheme: Theme) => {
+    setThemeMode(newTheme);
+  }, [setThemeMode]);
 
   // Detects and applies the initial theme and observes system changes
   useEffect(() => {
@@ -44,7 +57,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const saved = localStorage.getItem('theme-mode');
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
 
-  // Applies saved or system theme on load
+    // Applies saved or system theme on load
     if (saved === 'light' || saved === 'dark') {
       applyTheme(saved);
     } else {
@@ -53,7 +66,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       localStorage.setItem('theme-mode', systemTheme);
     }
 
-  // During navigation, always follows the system theme
+    // During navigation, always follows the system theme
     const updateSystemTheme = (e: MediaQueryListEvent) => {
       const systemTheme = e.matches ? 'dark' : 'light';
       requestThemeChange(systemTheme);
@@ -62,20 +75,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return () => {
       mql.removeEventListener('change', updateSystemTheme);
     };
-  }, [applyTheme]);
-
-  // Troca o tema imediatamente
-  const setThemeMode = useCallback((newTheme: Theme) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme-mode', newTheme);
-    }
-    applyTheme(newTheme);
-  }, [applyTheme]);
-
-  // Solicita troca de tema: quem chama decide quando trocar
-  const requestThemeChange = useCallback((newTheme: Theme) => {
-    setThemeMode(newTheme);
-  }, [setThemeMode]);
+  }, [applyTheme, requestThemeChange]);
 
   return (
     <ThemeContext.Provider value={{ theme, colors: themeColors, setThemeMode, requestThemeChange }}>

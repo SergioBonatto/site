@@ -1,9 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import { Nav } from '@/components/Nav';
-import { useThemeContext } from '@/components/ThemeProvider';
-import colors from '@/config/colors';
+import { Nav } from '@/components/Nav/Nav';
 import styles from './blogIndex.module.css';
 
 
@@ -15,9 +13,6 @@ interface Post {
 }
 
 export default function BlogIndexClient({ posts }: { posts: Post[] }) {
-  const { theme } = useThemeContext();
-  const themeColors = colors[theme];
-
   return (
     <div
       className="min-h-screen w-full flex flex-col items-center bg-[var(--syntaxBg)] transition-colors duration-300"
@@ -27,7 +22,7 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
 
       <main
         className="w-full max-w-3xl px-4 sm:px-6 md:px-8 lg:px-10"
-        style={{ width: '100%', maxWidth: '700px' }}
+        style={{ width: '100%', maxWidth: '80%' }}
       >
         <section className="mt-8 sm:mt-10">
           <div className="mb-6 sm:mb-8">

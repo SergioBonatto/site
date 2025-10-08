@@ -1,4 +1,4 @@
-import { generateSEOMetadata } from '@/components/SEO';
+import { generateSEOMetadata } from '@/components/Core/SEO';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';

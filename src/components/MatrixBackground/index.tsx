@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { useMatrixAnimation } from './useMatrixAnimation';
-import { ClientOnly } from '../ClientOnly';
+import { ClientOnly } from '../Core/ClientOnly';
 
 interface MatrixBackgroundProps {
   className?: string;
