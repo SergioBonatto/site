@@ -33,12 +33,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `}
           </Script>
           <StructuredData />
-          <Nav />
           <FloatingGif />
-          <About />
           {children ? (
             <>
-              {console.log('Children are being rendered')} {/* Log para verificar se children está sendo renderizado */}
               {children}
             </>
           ) : (
