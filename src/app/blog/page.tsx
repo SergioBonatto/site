@@ -3,6 +3,7 @@ import { generateSEOMetadata } from '@/components/SEO';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { Nav } from '@/components/Nav';
 
 export const metadata = generateSEOMetadata({
   title: 'Blog - Sergio Bonatto',
@@ -44,38 +45,11 @@ async function getPosts(): Promise<Post[]> {
   return posts.sort((a, b) => (new Date(b.date)).getTime() - (new Date(a.date)).getTime());
 }
 
+
+
+import BlogIndexClient from './BlogIndexClient';
+
 export default async function BlogIndex() {
   const posts = await getPosts();
-
-  return (
-    <div>
-      <main>
-        <section>
-          <div>
-            <h2>
-              Blog Posts
-            </h2>
-
-            {posts.length > 0 ? (
-              <div>
-                {posts.map(post => (
-                  <div key={post.slug}>
-                    <Link href={`/blog/${post.slug}`} >
-                      <h3>{post.title}</h3>
-                    </Link>
-                    <p >{post.date}</p>
-                    <p>{post.description}</p>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div>
-                Nenhum post encontrado.
-              </div>
-            )}
-          </div>
-        </section>
-      </main>
-    </div>
-  );
+  return <BlogIndexClient posts={posts} />;
 }

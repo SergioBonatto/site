@@ -7,6 +7,8 @@ import { metadata as siteMetadata } from '@/app/metadata';
 import { StructuredData } from '@/components/StructuredData';
 import FloatingGif from '@/components/FloatingGif';
 import Script from 'next/script';
+import About from "@/components/About";
+import { Nav } from "@/components/Nav";
 
 export const metadata: Metadata = siteMetadata;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -30,8 +32,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `}
           </Script>
           <StructuredData />
-          {children}
+          <Nav />
           <FloatingGif />
+          <About />
         </ThemeProvider>
       </body>
     </html>

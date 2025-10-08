@@ -4,6 +4,8 @@ import useDevTools from '@/lib/useDevtools';
 import { useThemeContext } from '@/components/ThemeProvider';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Nav } from '@/components/Nav';
+import About from '@/components/About';
+import { useTranslations } from 'next-intl';
 
 
 export default function Home() {
@@ -30,10 +32,14 @@ export default function Home() {
 
 function HomeContent() {
   const { colors } = useThemeContext();
+  const t = useTranslations('HomePage');
+
   return (
     <main>
       <Nav />
       <div style={{ backgroundColor: colors.syntaxBg, color: colors.mono1 }}>
+        <About />
+        <h1>{t('title')}</h1>
       </div>
     </main>
   );

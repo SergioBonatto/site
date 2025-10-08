@@ -68,3 +68,99 @@ body {
   background: var(--syntaxBg);
   color: var(--mono1);
 }
+
+
+/*
+ * ESTILOS GERAIS DO BOTÃO
+ */
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  padding: 0;
+  background-color: var(--syntaxBg);
+  color: var(--mono1);
+  border: 1px solid var(--mono4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--hue1);
+  outline-offset: 2px;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+  transition-duration: 0.1s;
+}
+
+/* * ESTILOS DE ANIMAÇÃO DO ÍCONE
+ */
+
+.theme-toggle__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  /* Garante que o span seja o contêiner para animação */
+  overflow: hidden;
+}
+
+/* O SVG em si deve ter transição para a cor */
+.theme-toggle__icon svg {
+  width: 100%;
+  height: 100%;
+  /* A Transição que faz o mágico acontecer:
+     A animação de rotação e escala será aplicada pela função 'cubic-bezier'
+     para um movimento mais natural. */
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.4, 1.2),
+              stroke 0.3s ease,
+              fill 0.3s ease;
+}
+
+/*
+ * EFEITO DE ROTAÇÃO E ESCALA
+ * * Este é um truque moderno de CSS: ao ser renderizado, o SVG irá se animar.
+ * Quando o componente é montado ou a chave (key) é trocada, ele aplica a animação.
+ */
+
+/* Rotação e escala inicial (escondido) */
+.theme-toggle__icon svg {
+  transform: scale(0.8) rotate(-90deg);
+  opacity: 0;
+}
+
+/* Rotação e escala do ícone ATUAL (visível) */
+.theme-toggle:not(:active) .theme-toggle__icon svg {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* Transição de Cores para o Ícone */
+/* Garante que a cor do sol se adapte perfeitamente ao tema */
+.theme-toggle__icon svg[fill="currentColor"] {
+  fill: var(--mono1);
+  stroke: var(--mono1);
+}
+
+/* Media Query  */
+@media (max-width: 600px) {
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+  .theme-toggle__icon {
+    width: 20px;
+    height: 20px;
+  }
+}

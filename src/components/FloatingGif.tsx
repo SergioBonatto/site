@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import { useThemeContext } from './ThemeProvider';
+import colors from '@/config/colors';
 
 const gifUrl = '/shigure-ui-smol.gif';
 
@@ -9,74 +10,66 @@ const FloatingGif: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [expanding, setExpanding] = useState(false);
   const [pendingTheme, setPendingTheme] = useState<null | string>(null);
-  const [gifKey, setGifKey] = useState(0); // key para forçar remount
+  const [gifKey, setGifKey] = useState(0);
   const prevTheme = useRef(theme);
   const timeouts = useRef<{show?: NodeJS.Timeout, change?: NodeJS.Timeout}>({});
 
-  // Função para iniciar o fluxo: exibe gif, troca tema após 1.5s, some após 2s
+
+  // Function to start the flow: shows gif, changes theme after 2.9s, hides after 3s
   const startThemeChangeWithGif = (newTheme: string) => {
-    // Limpa timeouts antigos
     if (timeouts.current.change) clearTimeout(timeouts.current.change);
     if (timeouts.current.show) clearTimeout(timeouts.current.show);
-
-    // Reseta animação se já estiver visível/expandindo
     setExpanding(false);
     setVisible(false);
-    // Força remount do gif
-    setGifKey(prev => prev + 1);
-
-    // Aguarda o reset visual antes de iniciar nova animação
     setTimeout(() => {
       setPendingTheme(newTheme);
       setVisible(true);
-      setTimeout(() => setExpanding(true), 30); // Pequeno delay para garantir transição
-      // Troca o tema após 1.5s
+      setTimeout(() => setExpanding(true), 30);
       timeouts.current.change = setTimeout(() => {
         requestThemeChange(newTheme as any);
-      }, 1500);
-      // Some o gif após 2s
+      }, 1000);
       timeouts.current.show = setTimeout(() => {
         setVisible(false);
         setTimeout(() => {
           setExpanding(false);
           setPendingTheme(null);
-          setGifKey(prev => prev + 1); // Garante reset ao sumir
-        }, 300); // espera o fade-out antes de encolher
-      }, 2000);
-    }, 50); // Pequeno delay para garantir reset visual
+        }, 200);
+      }, 1500);
+    }, 50);
   };
 
-  // Exponha uma função global para debug/manual
-  (window as any).changeThemeWithGif = startThemeChangeWithGif;
 
-  // ThemeToggle e outros devem chamar startThemeChangeWithGif
-
-  // Detecta mudança de tema "externa" para mostrar o gif normalmente
+  // Expor função global apenas no cliente
   useEffect(() => {
-    if (prevTheme.current !== theme && !pendingTheme) {
-      // Limpa timeouts antigos
-      if (timeouts.current.change) clearTimeout(timeouts.current.change);
-      if (timeouts.current.show) clearTimeout(timeouts.current.show);
-      setExpanding(false);
-      setVisible(false);
-      setGifKey(prev => prev + 1);
-      setTimeout(() => {
-        setVisible(true);
-        setTimeout(() => setExpanding(true), 30);
-        const t = setTimeout(() => {
-          setVisible(false);
-          setTimeout(() => {
-            setExpanding(false);
-            setGifKey(prev => prev + 1);
-          }, 300); // espera o fade-out antes de encolher
-        }, 2000);
-        prevTheme.current = theme;
-        return () => clearTimeout(t);
-      }, 50);
+    (window as any).changeThemeWithGif = startThemeChangeWithGif;
+  }, [startThemeChangeWithGif]);
+
+
+  // ThemeToggle and others should call startThemeChangeWithGif
+
+  // Prevent gif from showing on initial mount
+  const hasMounted = useRef(false);
+
+  // Only show gif if theme change was initiated by startThemeChangeWithGif
+  useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      prevTheme.current = theme;
+      return;
+    }
+    // If theme changed and it was NOT triggered by startThemeChangeWithGif, do not show gif
+    if (prevTheme.current !== theme && pendingTheme) {
+      // The animation will be handled by startThemeChangeWithGif
+      prevTheme.current = theme;
+      return;
     }
     prevTheme.current = theme;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
+
+
+  const oppositeTheme = theme === 'light' ? 'dark' : 'light';
+  const targetColor = colors[oppositeTheme].syntaxBg;
 
   return (
     <div
@@ -85,29 +78,34 @@ const FloatingGif: React.FC = () => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        zIndex: 20, // menor que o navbar (z-30)
+        zIndex: 10002,
         pointerEvents: 'none',
         userSelect: 'none',
-        opacity: visible ? 1 : 0,
-        transition: 'opacity 0.3s',
       }}
     >
-      <img
-        key={gifKey}
-        src={gifUrl}
-        alt="Shigure UI Smol"
+      <div
         style={{
           width: 120,
-          height: 'auto',
-          maxWidth: 'none',
+          height: 120,
           animation: 'spin 4s linear infinite',
-          filter: theme === 'dark' ? 'invert(1) hue-rotate(180deg)' : 'none',
           display: 'block',
-          transition: 'transform 3s cubic-bezier(0.4,0,0.2,1)',
-          transform: expanding ? 'scale(20)' : 'scale(1)',
-          imageRendering: 'auto',
+          opacity: visible ? 1 : 0,
+          transition:
+            (visible || expanding)
+              ? 'opacity 0s, transform 3s cubic-bezier(0.4,0,0.2,1)'
+              : 'opacity 0.3s, transform 0s',
+          transform: expanding ? 'scale(50)' : 'scale(1)',
+          backgroundColor: targetColor,
+          maskImage: `url(${gifUrl})`,
+          maskSize: 'contain',
+          maskRepeat: 'no-repeat',
+          maskPosition: 'center',
+          // Prefix for Safari/Chrome compatibility
+          WebkitMaskImage: `url(${gifUrl})`,
+          WebkitMaskSize: 'contain',
+          WebkitMaskRepeat: 'no-repeat',
+          WebkitMaskPosition: 'center',
         }}
-        draggable={false}
       />
     </div>
   );

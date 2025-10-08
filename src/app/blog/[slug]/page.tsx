@@ -11,6 +11,8 @@ import { Metadata } from 'next';
 import MarkdownContent from '@/components/MarkdownContent';
 import PrismLoader from '@/components/PrismLoader';
 import { ClientOnly } from '@/components/ClientOnly';
+import { Nav } from '@/components/Nav';
+import styles from '../article.module.css';
 
 interface PostData {
   title: string;
@@ -84,11 +86,12 @@ export default async function BlogPost({ params }: Props) {
 
   if (!postData) {
     return (
-      <div>
-        <main >
-          <section >
-            <div >
-              <h2 >
+      <div className={styles.container} style={{ color: 'var(--mono1)' }}>
+        <main className={styles.main}>
+          <Nav />
+          <section>
+            <div className={styles.header}>
+              <h2 className={styles.title}>
                 Post not found
               </h2>
             </div>
@@ -132,24 +135,19 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <div>
-      <main>
+    <div className={styles.container} style={{ color: 'var(--mono1)' }}>
+      <Nav />
+      <main className={styles.main}>
         <section>
-          <div>
-            <h2>
-              {postData.data.title}
-            </h2>
-            <div>
-              {postData.data.date}
-            </div>
-            <div>
-              <div>
-                <MarkdownContent content={contentHtml} />
-                <ClientOnly>
-                  <PrismLoader />
-                </ClientOnly>
-              </div>
-            </div>
+          <div className={styles.header}>
+            <h2 className={styles.title}>{postData.data.title}</h2>
+            <div className={styles.date}>{postData.data.date}</div>
+          </div>
+          <div className={styles.content}>
+            <MarkdownContent content={contentHtml} />
+            <ClientOnly>
+              <PrismLoader />
+            </ClientOnly>
           </div>
         </section>
       </main>
