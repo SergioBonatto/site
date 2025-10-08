@@ -1,48 +1,39 @@
 'use client';
 import { useEffect } from 'react';
-import Navbar from '@/components/Nav';
-import MusicPlayer from '@/components/musicPlayer';
-import SolarSystem from '@/components/solarSystem/components/SolarSystem';
-import About from '@/components/About/about';
-import Contact from '@/components/Contact/contact';
-import Footer from '@/components/Footer/footer';
-import { MatrixBackground } from '@/components/MatrixBackground';
-import { ClientOnly } from '@/components/ClientOnly';
 import useDevTools from '@/lib/useDevtools';
+import { useThemeContext } from '@/components/ThemeProvider';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { Nav } from '@/components/Nav';
 
 
 export default function Home() {
   const isDevToolsOpen = useDevTools();
 
-    useEffect(() => {
-      if (isDevToolsOpen) {
-        console.log(`
-          🕵️‍♂️ Hey there, curious developer!
+  useEffect(() => {
+    if (isDevToolsOpen) {
+      console.log(`
+        🕵️‍♂️ Hey there, curious developer!
 
-          While I appreciate your investigative spirit,
-          I'm afraid I can't let you peek behind the curtain.
+        While I appreciate your investigative spirit,
+        I'm afraid I can't let you peek behind the curtain.
 
-          But since you're here, why not grab a coffee ☕️ and visit:
-          https://github.com/SergioBonatto
+        But since you're here, why not grab a coffee ☕️ and visit:
+        https://github.com/SergioBonatto
 
-          PS: The cake is a lie! 🍰
-        `);
-      }
-    }, [isDevToolsOpen]);
+        PS: The cake is a lie! 🍰
+      `);
+    }
+  }, [isDevToolsOpen]);
 
+  return <HomeContent />;
+}
+
+function HomeContent() {
+  const { colors } = useThemeContext();
   return (
-    <main className={`relative min-h-screen bg-teal-600`}>
-        <MatrixBackground />
-      {/* Page content */}
-      <div className="relative z-10">
-        <Navbar />
-        <MusicPlayer />
-        <ClientOnly fallback={null}>
-          <SolarSystem />
-        </ClientOnly>
-        <About />
-        <Contact />
-        <Footer />
+    <main>
+      <Nav />
+      <div style={{ backgroundColor: colors.syntaxBg, color: colors.mono1 }}>
       </div>
     </main>
   );

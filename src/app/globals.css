@@ -2,211 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Prism.js override for prose - Simplified and clean */
-.prose pre[class*="language-"] {
-  background: #fafafa !important;
-  border: 1px solid #e1e4e8 !important;
-  border-radius: 6px !important;
-  padding: 20px !important;
-  margin: 24px 0 !important;
-  overflow-x: auto !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+html.light {
+  --mono1: #383A42;
+  --mono2: #696c77;
+  --mono3: #a0a1a7;
+  --mono4: #c2c2c3;
+  --hue1: #0184bc;
+  --hue2: #4078f2;
+  --hue3: #a626a4;
+  --hue4: #50a14f;
+  --hue5: #e45649;
+  --hue52: #ca1243;
+  --hue6: #986801;
+  --hue62: #c18401;
+  --syntaxBg: #fafafa;
+  --syntaxGutter: #9e9e9e;
+  --syntaxCursor: #f0f0f0;
+  --syntaxAccent: #526fff;
+  --vertsplit: #e7e9e1;
+  --specialGrey: #d3d3d3;
+  --visualGrey: #d0d0d0;
+  --pmenu: #dfdfdf;
+  --termBlack: #383a42;
+  --termBlue: #0184bc;
+  --termCyan: #0997b3;
+  --termWhite: #fafafa;
+  --term8: #4f525e;
+  --colorAdded: #2db448;
+  --colorModified: #f2a60d;
+  --colorRemoved: #ff1414;
 }
 
-.prose code[class*="language-"] {
-  background: transparent !important;
-  color: inherit !important;
-  padding: 0 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
-  font-size: 14px !important;
-  line-height: 1.4 !important;
+html.dark {
+  --mono1: #abb2bf;
+  --mono2: #828997;
+  --mono3: #5c6370;
+  --mono4: #4b5263;
+  --hue1: #56b6c2;
+  --hue2: #61afef;
+  --hue3: #c678dd;
+  --hue4: #98c379;
+  --hue5: #e06c75;
+  --hue52: #be5046;
+  --hue6: #d19a66;
+  --hue62: #e5c07b;
+  --syntaxBg: #282c34;
+  --syntaxGutter: #636d83;
+  --syntaxCursor: #2c323c;
+  --syntaxAccent: #528bff;
+  --vertsplit: #181a1f;
+  --specialGrey: #3b4048;
+  --visualGrey: #3e4452;
+  --pmenu: #333841;
+  --termBlack: #282c34;
+  --termBlue: #61afef;
+  --termCyan: #56b6c2;
+  --termWhite: #dcdfe4;
+  --term8: #5d677a;
+  --colorAdded: #43d08a;
+  --colorModified: #e0c285;
+  --colorRemoved: #e05252;
 }
-
-/* Ensure Prism tokens are not overridden */
-.prose pre[class*="language-"] .token,
-.prose code[class*="language-"] .token {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-}
-
-
-:root {
-  --primary-color: #000080;
-  --secondary-color: #c0c0c0;
-  --text-color: #000;
-  --background-color: #0d9488;
-  --link-color: #0000EE;
-  --visited-link-color: #551A8B;
-  --active-link-color: #FF0000;
-  --system-scale: 1;
-  --orbit-scale: 1;
-  --background: #0d9488;;
-  --foreground: #000;
-  --base-font-size: 18px
-}
-
-@media (max-width: 1200px) {
-  :root {
-      --system-scale: 0.6;
-      --orbit-scale: 2;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-      --system-scale: 0.6;
-      --orbit-scale: 2;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-      --system-scale: 0.6;
-      --orbit-scale: 2;
-  }
-}
-
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: var(--base-font-size);
-  line-height: 1.6;
-  background-color: var(--background);
-  color: var(--foreground);
-}
-
-.retro-border {
-  border-width: 2px;
-  border-style: solid;
-  border-color: #fff #aaa #aaa #fff;
-  box-shadow: inset 1px 1px 0 0 #aaa, inset -1px -1px 0 0 #fff;
-}
-
-.container {
-  width: 85%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-a:hover {
-  color: #551a8b;
-}
-
-button, input, select, textarea {
-  font-family: 'MS Sans Serif', Arial, Helvetica, sans-serif;
-}
-
-@keyframes orbit {
-  from {
-    transform: rotate(0deg) translate(-50%, -50%);
-  }
-
-  to {
-    transform: rotate(360deg) translate(-50%, -50%);
-  }
-}
-
-@keyframes moonOrbit {
-  from {
-    transform: rotate(0deg) translate(20px);
-  }
-
-  to {
-    transform: rotate(360deg) translate(20px);
-  }
-}
-
-@media (max-width: 640px) {
-  @keyframes moonOrbit {
-    from {
-      transform: rotate(0deg) translate(10px);
-    }
-
-    to {
-      transform: rotate(360deg) translate(10px);
-    }
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.5;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-2px);
-  }
-}
-
-.animate-pulse {
-  animation: pulse 1s infinite;
-}
-
-@keyframes blink {
-  from, to {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes loading {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-/* Tabelas em posts de blog - estilo Windows 95 */
-.prose table {
-  width: 100% !important;
-  border-collapse: collapse !important;
-  border: 2px solid #808080 !important;
-  background-color: white !important;
-  font-family: 'MS Sans Serif', Arial, sans-serif !important;
-  margin: 1.5rem 0 !important;
-  font-size: 14px !important;
-}
-
-.prose table thead {
-  background-color: #c0c0c0 !important;
-}
-
-.prose table th {
-  border: 2px solid #808080 !important;
-  padding: 8px 12px !important;
-  text-align: left !important;
-  font-weight: bold !important;
-  color: black !important;
-  background-color: #c0c0c0 !important;
-}
-
-.prose table td {
-  border: 1px solid #808080 !important;
-  padding: 8px 12px !important;
-  color: #333 !important;
-  background-color: white !important;
-}
-
-.prose table tr:nth-child(even) td {
-  background-color: #f8f8f8 !important;
-}
-
-/* Garantir que texto em negrito dentro de tabelas funcione */
-.prose table th strong,
-.prose table td strong {
-  font-weight: bold !important;
-  color: inherit !important;
+  background: var(--syntaxBg);
+  color: var(--mono1);
 }

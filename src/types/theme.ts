@@ -1,0 +1,32 @@
+export type ThemeColors = {
+  mono1: string;
+  mono2: string;
+  mono3: string;
+  mono4: string;
+  hue1: string;
+  hue2: string;
+  hue3: string;
+  hue4: string;
+  hue5: string;
+  hue52: string;
+  hue6: string;
+  hue62: string;
+  syntaxBg: string;
+  syntaxGutter: string;
+  syntaxCursor: string;
+  syntaxAccent: string;
+  vertsplit: string;
+  specialGrey: string;
+  visualGrey: string;
+  pmenu: string;
+  termBlack: string;
+  termBlue: string;
+  termCyan: string;
+  termWhite: string;
+  term8: string;
+  colorAdded: string;
+  colorModified: string;
+  colorRemoved: string;
+};
+
+export type Theme = 'dark' | 'light';

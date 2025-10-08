@@ -1,9 +1,0 @@
-@layer components {
-    .animate-orbit {
-      animation: orbit linear infinite;
-    }
-
-    .animate-moon-orbit {
-      animation: moonOrbit linear infinite 2.5s;
-    }
-  }

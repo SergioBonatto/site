@@ -6,10 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "notify:subscribers": "node scripts/notify-subscribers.js",
-    "subscribers:list": "curl -s http://localhost:3000/api/subscribers | jq .",
-    "subscribers:clear": "curl -s -X DELETE 'http://localhost:3000/api/subscribers?clear=all' -H 'Authorization: Bearer dev-secret' | jq ."
+    "lint": "next lint"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.50.3",

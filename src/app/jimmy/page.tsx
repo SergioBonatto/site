@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Navbar from '@/components/Nav';
 import gifFrames from 'gif-frames';
 
 const generateAscii = (imageData: ImageData): string => {
@@ -106,7 +105,6 @@ export default function JimmyPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
       <main className="flex-1 flex items-center justify-center text-white text-center bg-black">
         <div className={`w-full ${isPortrait ? 'mb-[20vh]' : 'pb-8'}`}>
           {asciiFrames.length > 0 ? (

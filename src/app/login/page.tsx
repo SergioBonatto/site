@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState, useCallback, useRef } from 'react';
-import Navbar from '@/components/Nav';
 import YouTube, { YouTubeEvent, YouTubePlayer } from 'react-youtube';
 
 interface PlayerState {
@@ -179,7 +178,6 @@ export default function VideoPage() {
 
   return (
     <div className="relative min-h-screen flex flex-col bg-black">
-      <Navbar />
       {!playerState.hasError && showVideo ? (
         <div className="absolute inset-0 overflow-hidden">
           <div className="relative w-full h-full scale-150">

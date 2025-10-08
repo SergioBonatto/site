@@ -1,13 +1,10 @@
 'use client';
-import Navbar from '@/components/Nav';
-import Footer from '@/components/Footer/footer';
 
 export default function NotFound() {
 
   // Default 404 page
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
       <main
         className="flex-1 flex items-center justify-center text-white text-center"
         style={{
@@ -25,7 +22,6 @@ export default function NotFound() {
           </h2>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
