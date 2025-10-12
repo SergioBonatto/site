@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { useEffect } from 'react';
 
 interface MarkdownContentProps {
   content: string;
@@ -6,6 +7,26 @@ interface MarkdownContentProps {
 }
 
 export default function MarkdownContent({ content, className }: MarkdownContentProps) {
+  // Dynamically inject Prism stylesheet only when markdown content is rendered
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    // Prevent duplicate insertion
+    if (document.getElementById('prism-stylesheet')) return;
+
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/prism.css';
+    link.id = 'prism-stylesheet';
+    link.crossOrigin = '';
+    document.head.appendChild(link);
+
+    return () => {
+      // Keep stylesheet for navigation to avoid FOUC on subsequent pages
+      // If you prefer removing, uncomment the next line
+      // document.head.removeChild(link);
+    };
+  }, []);
   return (
     <div className={cn(
       "prose max-w-none",

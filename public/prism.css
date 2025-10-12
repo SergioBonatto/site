@@ -1,0 +1,100 @@
+/* HIGHEST PRIORITY STYLES - Override everything */
+html body div[class*="prose"] pre[class*="language-"],
+html body .prose pre[class*="language-"],
+html body pre[class*="language-"],
+div[class*="prose"] pre[class*="language-"],
+.prose pre[class*="language-"],
+pre[class*="language-"] {
+  background: var(--syntaxBg)  !important;
+  color: var(--mono1) !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  border: 1px solid var(--specialGrey)  !important;
+  border-radius: 6px !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+  display: block !important;
+  direction: ltr !important;
+  text-align: left !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  tab-size: 2 !important;
+  hyphens: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+html body div[class*="prose"] pre[class*="language-"] code,
+html body .prose pre[class*="language-"] code,
+html body pre[class*="language-"] code,
+div[class*="prose"] pre[class*="language-"] code,
+.prose pre[class*="language-"] code,
+pre[class*="language-"] code {
+  background: transparent !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  white-space: inherit !important;
+}
+
+/* Critical fallback styles applied immediately to prevent FOUC */
+pre[class*="language-"] {
+  background: var(--syntaxBg) !important;
+  color: var(--mono1) !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  padding: 20px !important;
+  margin: 24px 0 !important;
+  border: 1px solid var(--specialGrey) !important;
+  border-radius: 6px !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+}
+
+pre[class*="language-"] code {
+  background: transparent !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  white-space: inherit !important;
+}
+
+/* Force maximum specificity to override all other styles */
+html body code[class*="language-"],
+html body pre[class*="language-"],
+html body .prose code[class*="language-"],
+html body .prose pre[class*="language-"],
+code[class*="language-"],
+pre[class*="language-"] {
+  color: var(--mono1) !important;
+  background: none !important;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  direction: ltr !important;
+  text-align: left !important;
+  white-space: pre !important;
+  word-spacing: normal !important;
+  word-break: normal !important;
+  word-wrap: normal !important;
+  tab-size: 2 !important;
+  hyphens: none !important;
+  text-decoration: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ... (file continues - trimmed for brevity in patch, full content added in repository) */

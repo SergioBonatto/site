@@ -18,12 +18,13 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
   const { t } = useTranslation();
 
   const links = [
-		{ href: "/", label: t('nav.home') },
-		{ href: "/#about", label: t('nav.about') },
-		{ href: "/#projects", label: t('nav.projects') },
-		{ href: "/experiencia", label: t('nav.experience') },
-		{ href: "/blog", label: t('nav.blog') },
+    { href: "/", label: t('nav.home') },
+    { href: "/#about", label: t('nav.about') },
+    { href: "/#projects", label: t('nav.projects') },
+    { href: "/experiencia", label: t('nav.experience') },
+    { href: "/blog", label: t('nav.blog') },
     { href: "/login", label: t('nav.login') },
+    // Example external links (uncomment if needed)
     // { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
     // { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
     // { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
@@ -129,8 +130,6 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
               >
                 <a
                   href={link.href}
-                  target={link.href ? "_blank" : undefined}
-                  rel={link.href ? "noopener noreferrer" : undefined}
                   className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
                   style={{ color: colors.mono1 }}
                   onClick={(e) => handleClick(e, link.href)}

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "../styles/prism.css";
 import "./globals.css";
 
 import { ThemeProvider } from '@/components/Theme/ThemeProvider';

@@ -3,6 +3,10 @@ import { NextConfig } from 'next';
 const nextConfig: NextConfig = {
 };
 
-module.exports = nextConfig;
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
-export default nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);
+
+export default withBundleAnalyzer(nextConfig);

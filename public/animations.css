@@ -1,0 +1,224 @@
+/* Non-critical animations and effects - Load asynchronously */
+@tailwind utilities;
+
+/* Complete CSS variables for all theme colors */
+html.light {
+  --mono4: #c2c2c3;
+  --hue3: #a626a4;
+  --hue4: #50a14f;
+  --hue52: #ca1243;
+  --hue6: #986801;
+  --hue62: #c18401;
+  --syntaxGutter: #9e9e9e;
+  --syntaxCursor: #f0f0f0;
+  --syntaxAccent: #526fff;
+  --vertsplit: #e7e9e1;
+  --specialGrey: #d3d3d3;
+  --visualGrey: #d0d0d0;
+  --pmenu: #dfdfdf;
+  --termBlack: #383a42;
+  --termBlue: #0184bc;
+  --termCyan: #0997b3;
+  --termWhite: #fafafa;
+  --term8: #4f525e;
+  --colorAdded: #2db448;
+  --colorModified: #f2a60d;
+  --colorRemoved: #ff1414;
+}
+
+html.dark {
+  --mono4: #4b5263;
+  --hue3: #c678dd;
+  --hue4: #98c379;
+  --hue52: #be5046;
+  --hue6: #d19a66;
+  --hue62: #e5c07b;
+  --syntaxGutter: #636d83;
+  --syntaxCursor: #2c323c;
+  --syntaxAccent: #528bff;
+  --vertsplit: #181a1f;
+  --specialGrey: #3b4048;
+  --visualGrey: #3e4452;
+  --pmenu: #333841;
+  --termBlack: #282c34;
+  --termBlue: #61afef;
+  --termCyan: #56b6c2;
+  --termWhite: #dcdfe4;
+  --term8: #5d677a;
+  --colorAdded: #43d08a;
+  --colorModified: #e0c285;
+  --colorRemoved: #e05252;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+section, main > div {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stagger-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-delay-1 { transition-delay: 0.1s; }
+.stagger-delay-2 { transition-delay: 0.2s; }
+.stagger-delay-3 { transition-delay: 0.3s; }
+.stagger-delay-4 { transition-delay: 0.4s; }
+.stagger-delay-5 { transition-delay: 0.5s; }
+.stagger-delay-6 { transition-delay: 0.6s; }
+
+.scale-on-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scale-on-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Theme toggle animations */
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--hue1);
+  outline-offset: 2px;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+  transition-duration: 0.1s;
+}
+
+.theme-toggle__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.theme-toggle__icon svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.4, 1.2),
+              stroke 0.3s ease,
+              fill 0.3s ease;
+  transform: scale(0.8) rotate(-90deg);
+  opacity: 0;
+}
+
+.theme-toggle:not(:active) .theme-toggle__icon svg {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+.theme-toggle__icon svg[fill="currentColor"] {
+  fill: var(--mono1);
+  stroke: var(--mono1);
+}
+
+@media (max-width: 600px) {
+  .theme-toggle__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* View transition styles */
+:root {
+  --expo-in: linear(
+    0 0%, 0.0085 31.26%, 0.0167 40.94%,
+    0.0289 48.86%, 0.0471 55.92%,
+    0.0717 61.99%, 0.1038 67.32%,
+    0.1443 72.07%, 0.1989 76.7%,
+    0.2659 80.89%, 0.3465 84.71%,
+    0.4419 88.22%, 0.554 91.48%,
+    0.6835 94.51%, 0.8316 97.34%, 1 100%
+  );
+  --expo-out: linear(
+    0 0%, 0.1684 2.66%, 0.3165 5.49%,
+    0.446 8.52%, 0.5581 11.78%,
+    0.6535 15.29%, 0.7341 19.11%,
+    0.8011 23.3%, 0.8557 27.93%,
+    0.8962 32.68%, 0.9283 38.01%,
+    0.9529 44.08%, 0.9711 51.14%,
+    0.9833 59.06%, 0.9915 68.74%, 1 100%
+  );
+}
+
+::view-transition-group(root) {
+  animation-timing-function: var(--expo-in);
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+::view-transition-new(root) {
+  mask: url('/shigure-ui-smol.gif') center / 0 no-repeat;
+  animation: scale 2.2s;
+  animation-fill-mode: both;
+  image-rendering: smooth;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root) {
+  animation: scale 2.2s;
+  animation-fill-mode: both;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  z-index: -1;
+}
+
+@keyframes scale {
+  0% { mask-size: 0; }
+  10% { mask-size: 15vmax; }
+  90% { mask-size: 15vmax; }
+  100% { mask-size: 2000vmax; }
+}
+
+html:root {
+  view-transition-name: root;
+}

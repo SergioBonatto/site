@@ -14,12 +14,27 @@ interface AboutProps extends React.HTMLAttributes<HTMLElement> {
 
 const About: React.FC<AboutProps> = ({
   className,
-  imageSrc = "/eu.jpeg",
+  imageSrc = "/eu.webp",
   ...props
 }) => {
   const { colors } = useThemeContext();
   const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+
+  // Generate a tiny SVG placeholder and convert to base64 for Next/Image
+  const toBase64 = (str: string) => {
+    if (typeof window === 'undefined') {
+      return Buffer.from(str).toString('base64');
+    }
+    return window.btoa(unescape(encodeURIComponent(str)));
+  };
+
+  const svgPlaceholder = `<?xml version='1.0' encoding='UTF-8'?>\n` +
+    `<svg xmlns='http://www.w3.org/2000/svg' width='16' height='24' viewBox='0 0 16 24' preserveAspectRatio='none'>` +
+    `<rect width='100%' height='100%' fill='${colors.syntaxBg}' />` +
+    `</svg>`;
+
+  const blurDataURL = `data:image/svg+xml;base64,${toBase64(svgPlaceholder)}`;
 
   return (
     <section
@@ -44,14 +59,19 @@ const About: React.FC<AboutProps> = ({
       </h2>
       <div className="flex flex-col md:flex-row gap-8 md:gap-12">
         {/* Left Panel - Image */}
-        <div className="w-full md:w-1/3">
-          <div className="relative w-full h-[400px] md:h-[600px] rounded-lg overflow-hidden shadow-lg">
+        <div className="w-full md:w-1/3 flex justify-center">
+          <div className="rounded-lg overflow-hidden shadow-lg">
             <Image
               src={imageSrc}
               alt={t('about.imageAlt')}
-              fill
+              width={600}
+              height={800}
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover"
+              priority
+              quality={75}
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+              className="object-cover w-full h-auto"
             />
           </div>
         </div>

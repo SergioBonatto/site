@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState, useCallback, useRef } from 'react';
-import YouTube, { YouTubeEvent, YouTubePlayer } from 'react-youtube';
+import dynamic from 'next/dynamic';
+import type { YouTubeEvent, YouTubePlayer } from 'react-youtube';
+const YouTube = dynamic(() => import('react-youtube'), { ssr: false });
 import { Nav } from '@/components/Nav/Nav';
 
 interface PlayerState {
@@ -57,6 +59,16 @@ const baseVideoOptions = {
   } as PlayerVars,
 };
 
+  // Lightweight map for YouTube PlayerState numeric constants
+  const YTState = {
+    UNSTARTED: -1,
+    ENDED: 0,
+    PLAYING: 1,
+    PAUSED: 2,
+    BUFFERING: 3,
+    CUED: 5,
+  } as const;
+
 export default function VideoPage() {
   const playerRef = useRef<YouTubePlayer | null>(null);
   const unmutingRef = useRef(false);
@@ -104,7 +116,7 @@ export default function VideoPage() {
       player.playVideo();
 
       const interval = setInterval(() => {
-        if (player.getPlayerState() === YouTube.PlayerState.PLAYING) {
+        if (player.getPlayerState() === YTState.PLAYING) {
           unmuteVideo();
           clearInterval(interval);
         }
@@ -143,17 +155,17 @@ export default function VideoPage() {
   }, [showVideo, playerState.isInitialized, initializePlayer]);
 
   const handleStateChange = useCallback((event: YouTubeEvent) => {
-    const player = event.target;
+    const player = event.target as YouTubePlayer;
     const currentState = player.getPlayerState();
 
-    if (currentState === YouTube.PlayerState.PLAYING) {
+    if (currentState === YTState.PLAYING) {
       updatePlayerState({ isPlaying: true });
 
       if (player.isMuted()) {
         unmuteVideo();
       }
-    } else if (currentState === YouTube.PlayerState.ENDED ||
-              currentState === YouTube.PlayerState.PAUSED) {
+    } else if (currentState === YTState.ENDED ||
+              currentState === YTState.PAUSED) {
       try {
         player.playVideo();
       } catch (err) {
@@ -163,7 +175,7 @@ export default function VideoPage() {
   }, [updatePlayerState, unmuteVideo]);
 
   const handleVideoReady = useCallback((event: YouTubeEvent) => {
-    const player = event.target;
+    const player = event.target as YouTubePlayer;
     playerRef.current = player;
     updatePlayerState({ isReady: true });
 
