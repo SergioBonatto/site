@@ -8,30 +8,43 @@
  * @param fns Functions to apply in sequence
  * @returns Result after applying all functions
  */
-export const pipe = <T>(value: T, ...fns: Array<(arg: any) => any>): any =>
-  fns.reduce((acc, fn) => fn(acc), value);
+export function pipe<A, B>(value: A, fn1: (arg: A) => B): B;
+export function pipe<A, B, C>(value: A, fn1: (arg: A) => B, fn2: (arg: B) => C): C;
+export function pipe<A, B, C, D>(value: A, fn1: (arg: A) => B, fn2: (arg: B) => C, fn3: (arg: C) => D): D;
+export function pipe<A, B, C, D, E>(value: A, fn1: (arg: A) => B, fn2: (arg: B) => C, fn3: (arg: C) => D, fn4: (arg: D) => E): E;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function pipe(value: any, ...fns: Array<(arg: any) => any>): any {
+  return fns.reduce((acc, fn) => fn(acc), value);
+}
 
 /**
  * Compose function - applies functions from right to left
  * @param fns Functions to compose
  * @returns Composed function
  */
-export const compose =
-  <T>(...fns: Array<(arg: any) => any>) =>
-  (value: T): any =>
-    fns.reduceRight((acc, fn) => fn(acc), value);
+export function compose<A, B>(fn1: (arg: A) => B): (value: A) => B;
+export function compose<A, B, C>(fn2: (arg: B) => C, fn1: (arg: A) => B): (value: A) => C;
+export function compose<A, B, C, D>(fn3: (arg: C) => D, fn2: (arg: B) => C, fn1: (arg: A) => B): (value: A) => D;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function compose(...fns: Array<(arg: any) => any>): (value: any) => any {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (value: any) => fns.reduceRight((acc, fn) => fn(acc), value);
+}
 
 /**
  * Curry function - transforms a function with multiple arguments into a sequence of functions
  * @param fn Function to curry
  * @returns Curried function
  */
-export const curry =
-  <T extends any[], R>(fn: (...args: T) => R) =>
-  (...args: Partial<T>): any =>
-    args.length >= fn.length
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const curry = <T extends any[], R>(fn: (...args: T) => R): any => {
+  return (...args: any[]): any => {
+    return args.length >= fn.length
       ? fn(...(args as T))
       : curry(fn.bind(null, ...(args as any[])));
+  };
+};
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 /**
  * Identity function - returns the input unchanged
