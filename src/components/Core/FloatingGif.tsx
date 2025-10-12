@@ -12,9 +12,23 @@ const FloatingGif: React.FC = () => {
       return;
     }
 
-    document.startViewTransition(() => {
+    // Add will-change hint before transition starts
+    const root = document.documentElement;
+    root.style.willChange = 'mask-size, mask-position';
+
+    const transition = document.startViewTransition(() => {
       requestThemeChange(newTheme);
     });
+
+    // Cleanup will-change after transition to free GPU resources
+    transition.finished
+      .then(() => {
+        root.style.willChange = '';
+      })
+      .catch(() => {
+        // Cleanup even on error
+        root.style.willChange = '';
+      });
   }, [requestThemeChange]);
 
   useEffect(() => {

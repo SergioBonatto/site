@@ -67,11 +67,17 @@ html.dark {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* Offset for sticky navbar */
+  /* Prevent color flickering during theme transitions */
+  color-scheme: light dark;
 }
 
 body {
   background: var(--syntaxBg);
   color: var(--mono1);
+  /* Force GPU acceleration for smoother transitions */
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Smooth scroll animations for sections */
@@ -286,20 +292,33 @@ body {
 
 ::view-transition-group(root) {
   animation-timing-function: var(--expo-in);
+  /* Optimize for performance */
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 ::view-transition-new(root) {
   mask: url('/shigure-ui-smol.gif') center / 0 no-repeat;
-  animation: scale 3s;
+  animation: scale 2.2s;
   animation-fill-mode: both;
   image-rendering: -webkit-optimize-contrast; /* Smoothing for WebKit */
   image-rendering: smooth; /* Smoothing for other browsers */
+  /* Force GPU layer */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 ::view-transition-old(root),
 .dark::view-transition-old(root) {
-  animation: scale 3s;
+  animation: scale 2.2s;
   animation-fill-mode: both;
+  /* Force GPU layer */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  /* Prevent flickering on old layer */
+  z-index: -1;
 }
 
 @keyframes scale {
@@ -315,4 +334,14 @@ body {
   100% {
     mask-size: 2000vmax;
   }
+}
+
+/* Optimize transitions during theme change */
+* {
+  /* Disable transitions during view transitions to prevent jank */
+  view-transition-name: none;
+}
+
+html:root {
+  view-transition-name: root;
 }

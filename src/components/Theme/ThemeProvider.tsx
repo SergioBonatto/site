@@ -27,15 +27,30 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   // Applies the theme to <html> immediately
   const applyTheme = useCallback((newTheme: Theme) => {
+    const root = document.documentElement;
+
+    // Step 1: Update color-scheme immediately to prevent flash
+    root.style.colorScheme = newTheme;
+
+    // Step 2: Update classes synchronously (needed for CSS selectors)
+    root.classList.remove('dark', 'light');
+    root.classList.add(newTheme);
+
+    // Step 3: Batch CSS variable updates in a single rAF
+    // This ensures all updates happen in one render cycle
+    requestAnimationFrame(() => {
+      const themeObj = colors[newTheme];
+
+      // Apply all CSS variables
+      // Modern browsers optimize consecutive setProperty calls
+      for (const [key, value] of Object.entries(themeObj)) {
+        root.style.setProperty(`--${key}`, value);
+      }
+    });
+
+    // Step 4: Update React state after DOM updates
     setTheme(newTheme);
     setThemeColors(colors[newTheme]);
-    document.documentElement.classList.remove('dark', 'light');
-    document.documentElement.classList.add(newTheme);
-    // Updates all CSS variables for the theme in <html>
-    const themeObj = colors[newTheme];
-    Object.entries(themeObj).forEach(([key, value]) => {
-      document.documentElement.style.setProperty(`--${key}`, value);
-    });
   }, []);
 
   // Immediately switches the theme
