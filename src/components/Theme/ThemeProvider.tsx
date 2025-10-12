@@ -30,11 +30,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement;
 
     // Step 1: Update color-scheme immediately to prevent flash
-    root.style.colorScheme = newTheme;
+    // Only update if different to avoid forcing style recalcs
+    if (root.style.colorScheme !== newTheme) {
+      root.style.colorScheme = newTheme;
+    }
 
     // Step 2: Update classes synchronously (needed for CSS selectors)
-    root.classList.remove('dark', 'light');
-    root.classList.add(newTheme);
+    if (!root.classList.contains(newTheme)) {
+      root.classList.remove('dark', 'light');
+      root.classList.add(newTheme);
+    }
 
     // Step 3: Batch CSS variable updates in a single rAF
     // This ensures all updates happen in one render cycle
@@ -48,17 +53,37 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    // Step 4: Update React state after DOM updates
-    setTheme(newTheme);
-    setThemeColors(colors[newTheme]);
+    // Step 4: Update React state after DOM updates - only if changed
+    setTheme((prev) => {
+      if (prev === newTheme) return prev;
+      return newTheme;
+    });
+    setThemeColors((prev) => {
+      const next = colors[newTheme];
+      // shallow compare a few keys to avoid unnecessary updates
+      if (prev && prev.syntaxBg === next.syntaxBg && prev.mono1 === next.mono1) return prev;
+      return next;
+    });
   }, []);
 
   // Immediately switches the theme
   const setThemeMode = useCallback((newTheme: Theme) => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('theme-mode', newTheme);
+      try {
+        const current = localStorage.getItem('theme-mode');
+        if (current !== newTheme) {
+          localStorage.setItem('theme-mode', newTheme);
+        }
+      } catch {
+        // ignore quota/access errors
+      }
     }
-    applyTheme(newTheme);
+    // Avoid re-applying if already the current state
+    setTheme((prev) => {
+      if (prev === newTheme) return prev;
+      applyTheme(newTheme);
+      return newTheme;
+    });
   }, [applyTheme]);
 
   // Requests a theme change: the caller decides when to switch

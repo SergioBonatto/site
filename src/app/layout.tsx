@@ -11,7 +11,6 @@ import Script from 'next/script';
 
 export const metadata: Metadata = siteMetadata;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  console.log('Rendering RootLayout');
   return (
     <html lang="pt-BR">
       <head>

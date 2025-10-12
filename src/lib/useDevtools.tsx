@@ -1,40 +1,46 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 function useDevTools() {
   const [isDevToolsOpen, setIsDevToolsOpen] = useState(false);
+  const lastStateRef = useRef<boolean>(false);
+  const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const detectDevTools = () => {
-      setIsDevToolsOpen(false);
-      // Method 1: Dimension difference
+    if (typeof window === 'undefined') return;
+
+    // Lightweight detection function
+    const detect = () => {
       const widthThreshold = window.outerWidth - window.innerWidth > 160;
       const heightThreshold = window.outerHeight - window.innerHeight > 160;
-
-      // Method 2: Console debug
-      const isDevToolsOpen = /./;
-      isDevToolsOpen.toString = () => {
-        setIsDevToolsOpen(true);
-        return '';
-      };
-      // console.debug(isDevToolsOpen);
-
-      if (widthThreshold || heightThreshold) {
-        setIsDevToolsOpen(true);
+      const open = widthThreshold || heightThreshold;
+      if (open !== lastStateRef.current) {
+        lastStateRef.current = open;
+        setIsDevToolsOpen(open);
       }
     };
 
-    // Run detection on multiple events
-    window.addEventListener('resize', detectDevTools);
-    window.addEventListener('load', detectDevTools);
-    window.addEventListener('mousemove', detectDevTools);
+    // Debounced wrapper to avoid flooding on pointer events
+    const debounced = () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      timerRef.current = window.setTimeout(() => {
+        detect();
+      }, 120);
+    };
 
-    // Initial check
-    detectDevTools();
+    // Initial detection
+    detect();
+
+    // Listen to low-frequency events only
+    window.addEventListener('resize', debounced, { passive: true });
+    window.addEventListener('load', debounced, { passive: true });
+    // pointermove is lower-level and better than mousemove for various input devices
+    window.addEventListener('pointermove', debounced, { passive: true });
 
     return () => {
-      window.removeEventListener('resize', detectDevTools);
-      window.removeEventListener('load', detectDevTools);
-      window.removeEventListener('mousemove', detectDevTools);
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      window.removeEventListener('resize', debounced);
+      window.removeEventListener('load', debounced);
+      window.removeEventListener('pointermove', debounced);
     };
   }, []);
 
