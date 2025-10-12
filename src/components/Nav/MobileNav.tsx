@@ -1,16 +1,11 @@
+'use client';
+
 import React from "react";
 import { useThemeContext } from "../Theme/ThemeProvider";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "../Theme/ThemeToggle";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/blog", label: "Blog" },
-  { href: "/projects", label: "Projects" },
-  { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
-  { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
-  { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
-];
+import { LanguageToggle } from "../LanguageToggle";
+import { useTranslation } from "@/i18n";
 
 interface MobileNavProps {
   open: boolean;
@@ -20,6 +15,17 @@ interface MobileNavProps {
 
 export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
   const { colors, theme } = useThemeContext();
+  const { t } = useTranslation();
+
+  const links = [
+    { href: "/", label: t('nav.home') },
+    { href: "/blog", label: t('nav.blog') },
+    { href: "/#projects", label: t('nav.projects') },
+    { href: "/experiencia", label: t('nav.experience') },
+    { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
+    { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
+    { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
+  ];
 
   return (
     <>
@@ -115,7 +121,10 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
           </ul>
 
         </nav>
-        <ThemeToggle />
+        <div className="flex gap-4 mt-6">
+          <ThemeToggle />
+          <LanguageToggle />
+        </div>
       </div>
     </>
   );

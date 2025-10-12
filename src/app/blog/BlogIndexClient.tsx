@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Nav } from '@/components/Nav/Nav';
 import styles from './blogIndex.module.css';
+import Footer from '@/components/Footer/Footer';
 
 
 interface Post {
@@ -57,6 +58,7 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
           )}
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

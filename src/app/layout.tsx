@@ -3,6 +3,7 @@ import "../styles/prism.css";
 import "./globals.css";
 
 import { ThemeProvider } from '@/components/Theme/ThemeProvider';
+import { I18nProvider } from '@/i18n';
 import { metadata as siteMetadata } from '@/app/metadata';
 import { StructuredData } from '@/components/StructuredData';
 import FloatingGif from '@/components/Core/FloatingGif';
@@ -24,23 +25,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
-          <Script id="prism-preload" strategy="beforeInteractive">
-            {`
-              window.Prism = window.Prism || {};
-              window.Prism.manual = true;
-            `}
-          </Script>
-          <StructuredData />
-          <FloatingGif />
-          {children ? (
-            <>
-              {children}
-            </>
-          ) : (
-            <>
-              {console.error('Children are not being passed to RootLayout')}
-            </>
-          )}
+          <I18nProvider defaultLanguage="pt-BR">
+            <Script id="prism-preload" strategy="beforeInteractive">
+              {`
+                window.Prism = window.Prism || {};
+                window.Prism.manual = true;
+              `}
+            </Script>
+            <StructuredData />
+            <FloatingGif />
+            {children ? (
+              <>
+                {children}
+              </>
+            ) : (
+              <>
+                {console.error('Children are not being passed to RootLayout')}
+              </>
+            )}
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

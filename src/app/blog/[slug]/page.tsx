@@ -13,6 +13,7 @@ import PrismLoader from '@/components/Theme/PrismLoader';
 import { ClientOnly } from '@/components/Core/ClientOnly';
 import { Nav } from '@/components/Nav/Nav';
 import styles from '../article.module.css';
+import Footer from '@/components/Footer/Footer';
 
 interface PostData {
   title: string;
@@ -151,6 +152,7 @@ export default async function BlogPost({ params }: Props) {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

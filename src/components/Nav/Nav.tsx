@@ -34,7 +34,6 @@ export function Nav() {
         </Link>
 
         <div className="links">
-          {/* Centered links (desktop) */}
           <DesktopNav />
         </div>
       </div>

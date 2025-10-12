@@ -1,18 +1,24 @@
+'use client';
+
 import React from "react";
 import { useThemeContext } from "../Theme/ThemeProvider";
 import { ThemeToggle } from "../Theme/ThemeToggle";
-
-const links = [
-	{ href: "/", label: "Início" },
-	{ href: "/blog", label: "Blog" },
-	{ href: "/#about", label: "About" },
-	{ href: "/projects", label: "Projects" },
-	{ href: "/login", label: "Login" },
-
-];
+import { LanguageToggle } from "../LanguageToggle";
+import { useTranslation } from "@/i18n";
 
 export function DesktopNav() {
 	const { colors } = useThemeContext();
+	const { t } = useTranslation();
+
+	const links = [
+		{ href: "/", label: t('nav.home') },
+		{ href: "/blog", label: t('nav.blog') },
+		{ href: "/#about", label: t('nav.about') },
+		{ href: "/#projects", label: t('nav.projects') },
+		{ href: "/experiencia", label: t('nav.experience') },
+		{ href: "/login", label: t('nav.login') },
+	];
+
 	return (
 		<div className="hidden md:flex flex-1 justify-center">
 			<div className="flex gap-6 items-center">
@@ -27,6 +33,7 @@ export function DesktopNav() {
 					</a>
 				))}
 				<ThemeToggle />
+				<LanguageToggle />
 			</div>
 		</div>
 	);
