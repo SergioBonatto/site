@@ -35,10 +35,12 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isHash: boolean) => {
     // Check if it's a hash link
     if (isHash) {
-      e.preventDefault();
       const id = href.substring(1); // Remove '#'
       const element = document.getElementById(id);
+
+      // Se o elemento existe na página atual, faz scroll suave
       if (element) {
+        e.preventDefault();
         const offset = 100; // Account for sticky navbar
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
@@ -48,6 +50,7 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
           behavior: 'smooth'
         });
       }
+      // Se não existe, deixa o link navegar normalmente para a home com hash
     }
     onClose(); // Close mobile menu after navigation
   };
@@ -131,14 +134,14 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
                 }}
               >
                 {link.isHash ? (
-                  <a
-                    href={link.href}
+                  <Link
+                    href={`/${language}${link.href}`}
                     className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
                     style={{ color: colors.mono1 }}
                     onClick={(e) => handleClick(e, link.href, link.isHash)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ) : (
                   <Link
                     href={`/${language}${link.href}`}

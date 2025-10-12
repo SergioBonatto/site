@@ -1,24 +1,23 @@
 import React from 'react';
-import { Metadata } from 'next';
+import { generateSEOMetadata } from '@/components/Core/SEO';
 import { Nav } from '@/components/Nav/Nav';
 import Footer from '@/components/Footer/Footer';
 import styles from './experience.module.css';
-import ExperienceView from './ExperienceView'; // Import the new Client Component
+import ExperienceView from './ExperienceView';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { LanguageCode } from '@/i18n/types';
 
-// Metadata remains the same, it's great for SEO.
-export const metadata: Metadata = {
-  title: 'Experiência',
-  description: 'Experiência profissional de Sergio Bonatto - Fundador do Agoriz, desenvolvedor na Higher Order Company, desenvolvedor de jogos na UwU Games, e especialista em programação funcional, blockchain, e desenvolvimento web.',
-  keywords: ['Sergio Bonatto', 'Experiência', 'Agoriz', 'Higher Order Company', 'UwU Games', 'Blockchain', 'Smart Contracts', 'Solidity', 'React', 'TypeScript', 'Haskell', 'Game Development'],
-  openGraph: {
-    title: 'Experiência - Sergio Bonatto',
-    description: 'Experiência profissional de Sergio Bonatto - Fundador do Agoriz, desenvolvedor na Higher Order Company, desenvolvedor de jogos na UwU Games, e especialista em programação funcional, blockchain, e desenvolvimento web.',
-  },
-  twitter: {
-    title: 'Experiência - Sergio Bonatto',
-    description: 'Experiência profissional de Sergio Bonatto - Fundador do Agoriz, desenvolvedor na Higher Order Company, desenvolvedor de jogos na UwU Games, e especialista em programação funcional, blockchain, e desenvolvimento web.',
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: LanguageCode }> }) {
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
+  return generateSEOMetadata({
+    title: dictionary['experience.title'],
+    description: dictionary['experience.description'],
+    image: '/og-image.png',
+    url: '/experiencia',
+    keywords: ['Sergio Bonatto', 'Experience', 'Agoriz', 'Higher Order Company', 'UwU Games', 'Blockchain', 'Smart Contracts', 'Solidity', 'React', 'TypeScript', 'Haskell', 'Game Development', 'Functional Programming'],
+  });
+}
 
 // This is the main Server Component for the page.
 // It renders the static shell (Nav, Footer) and the dynamic client part (ExperienceView).

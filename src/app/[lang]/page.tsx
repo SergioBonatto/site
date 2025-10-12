@@ -26,6 +26,28 @@ export default function Home() {
     }
   }, [isDevToolsOpen]);
 
+  // Handle hash navigation on page load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Aguarda um pouco para garantir que os elementos foram renderizados
+      setTimeout(() => {
+        const id = hash.substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          const offset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
   return <HomeContent />;
 }
 
