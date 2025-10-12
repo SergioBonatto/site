@@ -10,6 +10,19 @@ interface Project {
   image: string;
 }
 
+// A generic, light grey SVG placeholder
+const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect width="${w}" height="${h}" fill="#e2e8f0" />
+</svg>`;
+
+const toBase64 = (str: string) =>
+  typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str);
+
+const blurDataURL = `data:image/svg+xml;base64,${toBase64(shimmer(500, 300))}`;
+
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
@@ -26,6 +39,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           className={styles.cardImage}
           width={500}
           height={300}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          placeholder="blur"
+          blurDataURL={blurDataURL}
         />
       </div>
       <div className={styles.cardContent}>

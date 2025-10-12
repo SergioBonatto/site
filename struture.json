@@ -1,0 +1,206 @@
+{
+  "files": [
+    "eslint.config.mjs",
+    "next-env.d.ts",
+    "next.config.ts",
+    "package-lock.json",
+    "package.json",
+    "postcss.config.mjs",
+    "README.md",
+    "tailwind.config.ts",
+    "tsconfig.json",
+    "vercel.json"
+  ],
+  "content": {
+    "files": [],
+    "blog": {
+      "files": [
+        "Criacionismo-Evolutivo-1.md",
+        "post1.md",
+        "post10.md",
+        "post11.md",
+        "post12.md",
+        "post13.md",
+        "post2.md",
+        "post3.md",
+        "post4.md",
+        "post5.md",
+        "post6.md",
+        "post7.md",
+        "post8.md",
+        "post9.md"
+      ]
+    }
+  },
+  "public": {
+    "files": [
+      "Agda.png",
+      "Agoriz.png",
+      "animations.css",
+      "buzz-no-signs-of-intelligent-life.gif",
+      "card.png",
+      "cat-mobile.jpg",
+      "cat.jpg",
+      "eu-placeholder.webp",
+      "eu.webp",
+      "favicon.png",
+      "Flowcash.png",
+      "Kind.png",
+      "og-image.png",
+      "Phi.png",
+      "prism.css",
+      "robots.txt",
+      "shigure-ui-smol.gif",
+      "Treeson.png"
+    ],
+    "blog": {
+      "files": [
+        "a-escola-de-atenas-de-rafael-sanzio-og.webp",
+        "destruição do templo.jpg",
+        "perdeu mane.webp",
+        "PeterPaulRubens-TheFallOfMan.png",
+        "santo agostinho.jpg",
+        "terminal.png"
+      ]
+    }
+  },
+  "scripts": {
+    "files": []
+  },
+  "src": {
+    "files": [],
+    "app": {
+      "files": [
+        "favicon.ico",
+        "favicon.png",
+        "globals.css",
+        "layout.tsx",
+        "metadata.ts",
+        "not-found.tsx",
+        "page.tsx",
+        "sitemap.ts"
+      ],
+      "blog": {
+        "files": [
+          "article.module.css",
+          "blogIndex.module.css",
+          "BlogIndexClient.tsx",
+          "page.tsx"
+        ],
+        "[slug]": {
+          "files": [
+            "BlogPostClient.tsx",
+            "page.tsx"
+          ]
+        }
+      },
+      "experiencia": {
+        "files": [
+          "experience.module.css",
+          "ExperienceClient.tsx",
+          "page.tsx"
+        ]
+      },
+      "login": {
+        "files": [
+          "page.tsx"
+        ]
+      }
+    },
+    "components": {
+      "files": [
+        "StructuredData.tsx"
+      ],
+      "About": {
+        "files": [
+          "About.tsx"
+        ]
+      },
+      "Core": {
+        "files": [
+          "ClientOnly.tsx",
+          "FloatingGif.tsx",
+          "MarkdownContent.tsx",
+          "MetaTagsTest.tsx",
+          "SEO.tsx"
+        ]
+      },
+      "Footer": {
+        "files": [
+          "Footer.tsx",
+          "SocialLinks.tsx"
+        ]
+      },
+      "LanguageToggle": {
+        "files": [
+          "index.ts",
+          "LanguageToggle.tsx"
+        ]
+      },
+      "Nav": {
+        "files": [
+          "DesktopNav.tsx",
+          "MobileNav.tsx",
+          "Nav.tsx"
+        ]
+      },
+      "Projects": {
+        "files": [
+          "ProjectCard.module.css",
+          "ProjectCard.tsx",
+          "ProjectsSection.tsx"
+        ]
+      },
+      "Theme": {
+        "files": [
+          "PrismLoader.tsx",
+          "ThemeProvider.tsx",
+          "ThemeToggle.tsx"
+        ]
+      }
+    },
+    "config": {
+      "files": [
+        "colors.ts"
+      ]
+    },
+    "data": {
+      "files": [
+        "experienceData.ts"
+      ]
+    },
+    "i18n": {
+      "files": [
+        "i18n.ts",
+        "I18nContext.tsx",
+        "index.ts",
+        "translations.ts",
+        "types.ts"
+      ]
+    },
+    "lib": {
+      "files": [
+        "useDevtools.tsx",
+        "useScrollAnimation.tsx",
+        "utils.ts"
+      ]
+    },
+    "styles": {
+      "files": [
+        "prism.css"
+      ]
+    },
+    "types": {
+      "files": [
+        "gif-frames.d.ts",
+        "prism.d.ts",
+        "theme.ts"
+      ]
+    },
+    "utils": {
+      "files": [
+        "functional.ts"
+      ]
+    }
+  }
+}
