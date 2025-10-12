@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import SocialLinks from './SocialLinks';
 import { useThemeContext } from '../Theme/ThemeProvider';
-import { useTranslation } from '@/i18n';
+import { useTranslation } from '@/i18n/client';
 import { cn } from '@/lib/utils';
 
 interface FooterProps {

@@ -1,47 +1,46 @@
-'use client';
-import { useEffect } from 'react';
-import useDevTools from '@/lib/useDevtools';
-import { useThemeContext } from '@/components/Theme/ThemeProvider';
-import { Nav } from '@/components/Nav/Nav';
-import About from '@/components/About/About';
-import Footer from '@/components/Footer/Footer';
-import ProjectsSection from '@/components/Projects/ProjectsSection';
+import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
 
-export default function Home() {
-  const isDevToolsOpen = useDevTools();
+const locales = ['en', 'pt-BR', 'es', 'de', 'ja', 'it'];
+const defaultLocale = 'en';
 
-  useEffect(() => {
-    if (isDevToolsOpen) {
-      console.log(`
-        🕵️‍♂️ Hey there, curious developer!
+async function getPreferredLocale(): Promise<string> {
+  const headersList = await headers();
+  const acceptLanguage = headersList.get('accept-language');
 
-        While I appreciate your investigative spirit,
-        I'm afraid I can't let you peek behind the curtain.
+  if (acceptLanguage) {
+    const languages = acceptLanguage
+      .split(',')
+      .map(lang => lang.split(';')[0].trim());
 
-        But since you're here, why not grab a coffee ☕️ and visit:
-        https://github.com/SergioBonatto
+    for (const lang of languages) {
+      // Verifica correspondência exata primeiro
+      if (locales.includes(lang)) {
+        return lang;
+      }
 
-        PS: The cake is a lie! 🍰
-      `);
+      // Se não encontrou exato, tenta o idioma base
+      const baseLang = lang.split('-')[0];
+
+      // Casos especiais
+      if (baseLang === 'pt') return 'pt-BR';
+
+      // Para outros idiomas, verifica se o código base está nos locales
+      const matchedLocale = locales.find(locale => {
+        const localeBase = locale.split('-')[0];
+        return localeBase === baseLang;
+      });
+
+      if (matchedLocale) {
+        return matchedLocale;
+      }
     }
-  }, [isDevToolsOpen]);
+  }
 
-  return <HomeContent />;
+  return defaultLocale;
 }
 
-function HomeContent() {
-  const { colors } = useThemeContext();
-  return (
-    <main className="scroll-smooth">
-      <Nav />
-      <div
-        style={{ backgroundColor: colors.syntaxBg, color: colors.mono1 }}
-        className="transition-colors duration-300"
-      >
-        <About />
-      </div>
-      <ProjectsSection />
-      <Footer />
-    </main>
-  );
+export default async function RootPage() {
+  const locale = await getPreferredLocale();
+  redirect(`/${locale}`);
 }

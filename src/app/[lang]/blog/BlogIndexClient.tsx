@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Nav } from '@/components/Nav/Nav';
 import styles from './blogIndex.module.css';
 import Footer from '@/components/Footer/Footer';
-import { useTranslation } from '@/i18n';
+import { useTranslation } from '@/i18n/client';
 
 
 interface Post {

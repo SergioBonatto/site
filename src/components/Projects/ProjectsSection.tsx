@@ -3,7 +3,7 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import { useThemeContext } from '@/components/Theme/ThemeProvider';
-import { useTranslation } from '@/i18n';
+import { useTranslation } from '@/i18n/client';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 import { cn } from '@/lib/utils';
 

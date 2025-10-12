@@ -1,20 +1,11 @@
 /**
  * i18n - Internationalization system
  *
- * Functional and composable approach to translations
+ * Server-first, performant, and type-safe translations for Next.js App Router.
  *
- * @example
- * ```tsx
- * import { useTranslation } from '@/i18n';
- *
- * function MyComponent() {
- *   const { t } = useTranslation();
- *   return <h1>{t('nav.home')}</h1>;
- * }
- * ```
+ * This file should only export server-side utilities and types.
+ * Client-side hooks are exported from `./client`.
  */
 
-export { I18nProvider, useI18n, useTranslation, useLanguage } from './I18nContext';
-export { I18n, createTranslator, defaultI18n } from './i18n';
-export { translations } from './translations';
+export { getDictionary } from './get-dictionary';
 export type { LanguageCode, TranslationKeys, Translations } from './types';

@@ -2,12 +2,11 @@
 import React from 'react';
 import styles from './experience.module.css';
 import { experiences, skillCategories } from '@/data/experienceData';
-import { useTranslation, useLanguage } from '@/i18n';
+import { useTranslation } from '@/i18n/client';
 
 // This is a Client Component responsible for rendering the dynamic content
 export default function ExperienceView() {
   const { t } = useTranslation();
-  const { language } = useLanguage();
 
   return (
     <main className={styles.mainContent}>
@@ -23,16 +22,16 @@ export default function ExperienceView() {
         {experiences.map((exp, index) => (
           <div key={index} className={styles.experienceCard}>
             <div className={styles.cardHeader}>
-              <h3 className={styles.cardTitle}>{exp.title[language]}</h3>
+              <h3 className={styles.cardTitle}>{t(`experience.${exp.id}.title`)}</h3>
               <div className={styles.cardCompany}>{exp.company}</div>
             </div>
 
             <div className={styles.cardMeta}>
-              <span className={styles.cardPeriod}>{exp.period[language]}</span>
-              <span className={styles.cardLocation}>{exp.location[language]}</span>
+              <span className={styles.cardPeriod}>{t(`experience.${exp.id}.period`)}</span>
+              <span className={styles.cardLocation}>{t(`experience.${exp.id}.location`)}</span>
             </div>
 
-            <p className={styles.cardDescription}>{exp.description[language]}</p>
+            <p className={styles.cardDescription}>{t(`experience.${exp.id}.description`)}</p>
 
             <div className={styles.cardHighlights}>
               {exp.highlights.map((highlight, idx) => (
@@ -57,7 +56,7 @@ export default function ExperienceView() {
         <div className={styles.skillsGrid}>
           {skillCategories.map((category, index) => (
             <div key={index} className={styles.skillCategory}>
-              <h3 className={styles.categoryLabel}>{category.label[language]}</h3>
+              <h3 className={styles.categoryLabel}>{t(`skills.${category.id}.label`)}</h3>
               <div className={styles.skillTags}>
                 {category.items.map((item, idx) => (
                   <span key={idx} className={styles.skillTag}>

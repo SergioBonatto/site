@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
+import { getDictionary, LanguageCode } from '@/i18n';
 import { generateSEOMetadata } from '@/components/Core/SEO';
 import { Metadata } from 'next';
 import BlogPostClient from './BlogPostClient';
@@ -14,12 +15,6 @@ interface PostData {
   title: string;
   date: string;
   description: string;
-}
-
-interface Props {
-  params: Promise<{
-    slug: string;
-  }>;
 }
 
 async function getPostData(slug: string): Promise<{ data: PostData; content: string } | null> {
@@ -43,16 +38,15 @@ async function getPostData(slug: string): Promise<{ data: PostData; content: str
   }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; lang: LanguageCode }> }): Promise<Metadata> {
+  const { slug, lang } = await params;
   const postData = await getPostData(slug);
+  const dictionary = await getDictionary(lang);
 
   if (!postData) {
-    // Note: Metadata is server-side and cannot use i18n hooks
-    // Using English as default for SEO
     return generateSEOMetadata({
-      title: 'Post Not Found - Sergio Bonatto',
-      description: 'The requested blog post could not be found.',
+      title: `${dictionary['blog.notFound']} - Sergio Bonatto`,
+      description: dictionary['blog.notFoundDescription'],
       image: '/cards.png',
       url: `/blog/${slug}`,
     });
@@ -73,12 +67,18 @@ export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), 'content/blog');
   const files = fs.readdirSync(postsDirectory);
 
-  return files.map((filename) => ({
-    slug: filename.replace(/\.md$/, ''),
-  }));
+  const locales: LanguageCode[] = ['pt-BR', 'en', 'es', 'de', 'ja', 'it'];
+  const paths = files.flatMap((filename) =>
+    locales.map((locale) => ({
+      slug: filename.replace(/\.md$/, ''),
+      lang: locale
+    }))
+  );
+
+  return paths;
 }
 
-export default async function BlogPost({ params }: Props) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string; lang: LanguageCode }> }) {
   const { slug } = await params;
   const postData = await getPostData(slug);
 

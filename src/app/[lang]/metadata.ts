@@ -1,4 +1,9 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bonatto.vercel.app'),
@@ -51,6 +56,15 @@ export const metadata: Metadata = {
       { url: '/favicon.png', type: 'image/png' },
       { url: '/favicon.png', type: 'image/png', sizes: '16x16' },
       { url: '/favicon.png', type: 'image/png', sizes: '32x32' }
+    ],
+    apple: [
+      { url: '/favicon.png' }
     ]
+  },
+  alternates: {
+    canonical: 'https://bonatto.vercel.app',
+    types: {
+      'application/rss+xml': 'https://bonatto.vercel.app/feed.xml'
+    }
   }
 };

@@ -11,7 +11,7 @@ const PrismLoader = dynamic(() => import('@/components/Theme/PrismLoader'), {
 import { ClientOnly } from '@/components/Core/ClientOnly';
 import Footer from '@/components/Footer/Footer';
 import styles from '../article.module.css';
-import { useTranslation } from '@/i18n';
+import { useTranslation } from '@/i18n/client';
 
 interface PostData {
   title: string;

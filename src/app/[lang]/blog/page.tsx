@@ -2,14 +2,20 @@ import { generateSEOMetadata } from '@/components/Core/SEO';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { LanguageCode } from '@/i18n/types';
 
-export const metadata = generateSEOMetadata({
-  title: 'Blog - Sergio Bonatto',
-  description: 'Posts about development, formal proofs, and other interesting topics',
-  image: '/cards.png',
-  url: '/blog',
-  keywords: ['blog', 'development', 'formal proofs', 'programming', 'tech'],
-});
+export async function generateMetadata({ params }: { params: Promise<{ lang: LanguageCode }> }) {
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
+  return generateSEOMetadata({
+    title: dictionary['blog.title'],
+    description: dictionary['blog.description'],
+    image: '/cards.png',
+    url: '/blog',
+    keywords: ['blog', 'development', 'formal proofs', 'programming', 'tech'],
+  });
+}
 
 interface Post {
   slug: string;

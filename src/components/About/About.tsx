@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { useThemeContext } from '../Theme/ThemeProvider';
-import { useTranslation } from '@/i18n';
+import { useTranslation } from '@/i18n/client';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 
 interface AboutProps extends React.HTMLAttributes<HTMLElement> {

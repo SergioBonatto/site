@@ -1,11 +1,12 @@
 'use client';
 
 import React from "react";
+import Link from "next/link";
 import { useThemeContext } from "../Theme/ThemeProvider";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "../Theme/ThemeToggle";
 import { LanguageToggle } from "../LanguageToggle";
-import { useTranslation } from "@/i18n";
+import { useTranslation, useLanguage } from "@/i18n/client";
 
 interface MobileNavProps {
   open: boolean;
@@ -16,25 +17,26 @@ interface MobileNavProps {
 export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
   const { colors, theme } = useThemeContext();
   const { t } = useTranslation();
+  const { language } = useLanguage();
 
   const links = [
-    { href: "/", label: t('nav.home') },
-    { href: "/#about", label: t('nav.about') },
-    { href: "/#projects", label: t('nav.projects') },
-    { href: "/experiencia", label: t('nav.experience') },
-    { href: "/blog", label: t('nav.blog') },
-    { href: "/login", label: t('nav.login') },
+    { href: "/", label: t('nav.home'), isHash: false },
+    { href: "#about", label: t('nav.about'), isHash: true },
+    { href: "#projects", label: t('nav.projects'), isHash: true },
+    { href: "/experiencia", label: t('nav.experience'), isHash: false },
+    { href: "/blog", label: t('nav.blog'), isHash: false },
+    { href: "/login", label: t('nav.login'), isHash: false },
     // Example external links (uncomment if needed)
     // { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
     // { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
     // { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
   ];
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // Check if it's a hash link on the same page
-    if (href.startsWith('/#')) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isHash: boolean) => {
+    // Check if it's a hash link
+    if (isHash) {
       e.preventDefault();
-      const id = href.substring(2); // Remove '/#'
+      const id = href.substring(1); // Remove '#'
       const element = document.getElementById(id);
       if (element) {
         const offset = 100; // Account for sticky navbar
@@ -46,8 +48,8 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
           behavior: 'smooth'
         });
       }
-      onClose(); // Close mobile menu after navigation
     }
+    onClose(); // Close mobile menu after navigation
   };
 
   return (
@@ -128,15 +130,25 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
                   transitionDelay: open ? `${index * 50}ms` : '0ms'
                 }}
               >
-                <a
-                  href={link.href}
-                  className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
-                  style={{ color: colors.mono1 }}
-                  onClick={(e) => handleClick(e, link.href)}
-                >
-                  {link.label}
-                </a>
-
+                {link.isHash ? (
+                  <a
+                    href={link.href}
+                    className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                    style={{ color: colors.mono1 }}
+                    onClick={(e) => handleClick(e, link.href, link.isHash)}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={`/${language}${link.href}`}
+                    className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                    style={{ color: colors.mono1 }}
+                    onClick={() => onClose()}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
