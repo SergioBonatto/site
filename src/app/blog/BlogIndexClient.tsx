@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Nav } from '@/components/Nav/Nav';
 import styles from './blogIndex.module.css';
 import Footer from '@/components/Footer/Footer';
+import { useTranslation } from '@/i18n';
 
 
 interface Post {
@@ -14,6 +15,8 @@ interface Post {
 }
 
 export default function BlogIndexClient({ posts }: { posts: Post[] }) {
+  const { t } = useTranslation();
+
   return (
     <div
       className="min-h-screen w-full flex flex-col items-center bg-[var(--syntaxBg)] transition-colors duration-300"
@@ -28,10 +31,10 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
         <section className="mt-8 sm:mt-10">
           <div className="mb-6 sm:mb-8">
             <h2 className={styles.header}>
-              Blog Posts
+              {t('blog.postsTitle')}
             </h2>
             <p className="text-base text-[var(--mono2)] mb-4">
-              Posts sobre desenvolvimento, provas formais e outros temas interessantes.
+              {t('blog.description')}
             </p>
           </div>
 
@@ -53,7 +56,7 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
             </div>
           ) : (
             <div className="text-center text-[var(--mono2)] py-10">
-              Nenhum post encontrado.
+              {t('blog.noPosts')}
             </div>
           )}
         </section>

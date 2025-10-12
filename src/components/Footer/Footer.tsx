@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import SocialLinks from './SocialLinks';
 import { useThemeContext } from '../Theme/ThemeProvider';
+import { useTranslation } from '@/i18n';
 import { cn } from '@/lib/utils';
 
 interface FooterProps {
@@ -11,6 +12,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
   const { colors } = useThemeContext();
+  const { t } = useTranslation();
   const [currentYear, setCurrentYear] = useState('');
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
             <div className="text-sm flex items-center gap-2">
               <span>© {currentYear}</span>
               <span style={{ color: colors.mono3 }}>•</span>
-              <span>All rights reserved</span>
+              <span>{t('footer.rights')}</span>
             </div>
           </div>
 

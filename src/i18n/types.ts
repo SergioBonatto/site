@@ -1,4 +1,4 @@
-export type LanguageCode = 'pt-BR' | 'en';
+export type LanguageCode = 'pt-BR' | 'en' | 'es' | 'de' | 'ja' | 'it';
 
 export type TranslationKeys = {
   // Navigation
@@ -25,10 +25,26 @@ export type TranslationKeys = {
   'blog.description': string;
   'blog.readMore': string;
   'blog.backToBlog': string;
+  'blog.postsTitle': string;
+  'blog.noPosts': string;
+  'blog.notFound': string;
+  'blog.notFoundDescription': string;
 
   // Projects Section
   'projects.title': string;
   'projects.description': string;
+  'projects.phi.title': string;
+  'projects.phi.description': string;
+  'projects.treeson.title': string;
+  'projects.treeson.description': string;
+  'projects.flowcash.title': string;
+  'projects.flowcash.description': string;
+  'projects.kind.title': string;
+  'projects.kind.description': string;
+  'projects.agdavim.title': string;
+  'projects.agdavim.description': string;
+  'projects.agoriz.title': string;
+  'projects.agoriz.description': string;
 
   // Experience Section
   'experience.title': string;

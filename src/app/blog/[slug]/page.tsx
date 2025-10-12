@@ -8,12 +8,7 @@ import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
 import { generateSEOMetadata } from '@/components/Core/SEO';
 import { Metadata } from 'next';
-import MarkdownContent from '@/components/Core/MarkdownContent';
-import PrismLoader from '@/components/Theme/PrismLoader';
-import { ClientOnly } from '@/components/Core/ClientOnly';
-import { Nav } from '@/components/Nav/Nav';
-import styles from '../article.module.css';
-import Footer from '@/components/Footer/Footer';
+import BlogPostClient from './BlogPostClient';
 
 interface PostData {
   title: string;
@@ -53,6 +48,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const postData = await getPostData(slug);
 
   if (!postData) {
+    // Note: Metadata is server-side and cannot use i18n hooks
+    // Using English as default for SEO
     return generateSEOMetadata({
       title: 'Post Not Found - Sergio Bonatto',
       description: 'The requested blog post could not be found.',
@@ -86,20 +83,7 @@ export default async function BlogPost({ params }: Props) {
   const postData = await getPostData(slug);
 
   if (!postData) {
-    return (
-      <div className={styles.container} style={{ color: 'var(--mono1)' }}>
-        <main className={styles.main}>
-          <Nav />
-          <section>
-            <div className={styles.header}>
-              <h2 className={styles.title}>
-                Post not found
-              </h2>
-            </div>
-          </section>
-        </main>
-      </div>
-    );
+    return <BlogPostClient postData={null} />;
   }
 
   const processedContent = await remark()
@@ -135,24 +119,5 @@ export default async function BlogPost({ params }: Props) {
     }
   }
 
-  return (
-    <div className={styles.container} style={{ color: 'var(--mono1)' }}>
-      <Nav />
-      <main className={styles.main}>
-        <section>
-          <div className={styles.header}>
-            <h2 className={styles.title}>{postData.data.title}</h2>
-            <div className={styles.date}>{postData.data.date}</div>
-          </div>
-          <div className={styles.content}>
-            <MarkdownContent content={contentHtml} />
-            <ClientOnly>
-              <PrismLoader />
-            </ClientOnly>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
-  );
+  return <BlogPostClient postData={postData} contentHtml={contentHtml} />;
 }

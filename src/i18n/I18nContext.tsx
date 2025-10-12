@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useCallback, useMemo, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useCallback, useMemo, ReactNode, useEffect } from 'react';
 import { LanguageCode } from './types';
 import { I18n } from './i18n';
 
@@ -22,7 +22,17 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
   children,
   defaultLanguage = 'pt-BR',
 }) => {
+  // Always start with defaultLanguage for SSR consistency
   const [language, setLanguageState] = useState<LanguageCode>(defaultLanguage);
+
+  // Load saved language after hydration (client-side only)
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('preferred-language') as LanguageCode;
+    const supportedLanguages: LanguageCode[] = ['pt-BR', 'en', 'es', 'de', 'ja', 'it'];
+    if (savedLanguage && supportedLanguages.includes(savedLanguage)) {
+      setLanguageState(savedLanguage);
+    }
+  }, []);
 
   // Memoize i18n instance to avoid recreating on every render
   const i18n = useMemo(() => new I18n(language), [language]);
@@ -38,16 +48,6 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({
     setLanguageState(newLanguage);
     if (typeof window !== 'undefined') {
       localStorage.setItem('preferred-language', newLanguage);
-    }
-  }, []);
-
-  // Load language from localStorage on mount
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedLanguage = localStorage.getItem('preferred-language') as LanguageCode;
-      if (savedLanguage && (savedLanguage === 'pt-BR' || savedLanguage === 'en')) {
-        setLanguageState(savedLanguage);
-      }
     }
   }, []);
 
