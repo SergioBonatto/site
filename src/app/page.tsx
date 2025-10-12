@@ -32,9 +32,12 @@ export default function Home() {
 function HomeContent() {
   const { colors } = useThemeContext();
   return (
-    <main>
+    <main className="scroll-smooth">
       <Nav />
-      <div style={{ backgroundColor: colors.syntaxBg, color: colors.mono1 }}>
+      <div
+        style={{ backgroundColor: colors.syntaxBg, color: colors.mono1 }}
+        className="transition-colors duration-300"
+      >
         <About />
       </div>
       <ProjectsSection />

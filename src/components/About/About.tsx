@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { useThemeContext } from '../Theme/ThemeProvider';
 import { useTranslation } from '@/i18n';
+import { useScrollAnimation } from '@/lib/useScrollAnimation';
 
 interface AboutProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;
@@ -18,12 +19,15 @@ const About: React.FC<AboutProps> = ({
 }) => {
   const { colors } = useThemeContext();
   const { t } = useTranslation();
+  const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
   return (
     <section
       id="about"
+      ref={ref}
       className={cn(
-        "w-full max-w-6xl mx-auto my-12 p-4 md:p-8",
+        "w-full max-w-6xl mx-auto my-12 p-4 md:p-8 fade-in-section scroll-section",
+        isVisible && "is-visible",
         className
       )}
       style={{
@@ -65,7 +69,14 @@ const About: React.FC<AboutProps> = ({
               t('about.paragraph5'),
               t('about.paragraph6'),
             ].map((text, index) => (
-              <p key={index}>
+              <p
+                key={index}
+                className={cn(
+                  "stagger-item",
+                  isVisible && "is-visible",
+                  `stagger-delay-${index + 1}`
+                )}
+              >
                 {text}
               </p>
             ))}

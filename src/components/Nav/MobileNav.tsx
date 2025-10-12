@@ -18,14 +18,36 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
   const { t } = useTranslation();
 
   const links = [
-    { href: "/", label: t('nav.home') },
-    { href: "/blog", label: t('nav.blog') },
-    { href: "/#projects", label: t('nav.projects') },
-    { href: "/experiencia", label: t('nav.experience') },
-    { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
-    { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
-    { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
+		{ href: "/", label: t('nav.home') },
+		{ href: "/#about", label: t('nav.about') },
+		{ href: "/#projects", label: t('nav.projects') },
+		{ href: "/experiencia", label: t('nav.experience') },
+		{ href: "/blog", label: t('nav.blog') },
+    { href: "/login", label: t('nav.login') },
+    // { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
+    // { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
+    // { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
   ];
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Check if it's a hash link on the same page
+    if (href.startsWith('/#')) {
+      e.preventDefault();
+      const id = href.substring(2); // Remove '/#'
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 100; // Account for sticky navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+      onClose(); // Close mobile menu after navigation
+    }
+  };
 
   return (
     <>
@@ -107,11 +129,11 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
               >
                 <a
                   href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
+                  target={link.href ? "_blank" : undefined}
+                  rel={link.href ? "noopener noreferrer" : undefined}
                   className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
                   style={{ color: colors.mono1 }}
-                  onClick={onClose}
+                  onClick={(e) => handleClick(e, link.href)}
                 >
                   {link.label}
                 </a>

@@ -4,10 +4,13 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 import { useThemeContext } from '@/components/Theme/ThemeProvider';
 import { useTranslation } from '@/i18n';
+import { useScrollAnimation } from '@/lib/useScrollAnimation';
+import { cn } from '@/lib/utils';
 
 const ProjectsSection: React.FC = () => {
 	const { colors } = useThemeContext();
 	const { t } = useTranslation();
+	const { ref, isVisible } = useScrollAnimation<HTMLElement>();
 
 	const projects = [
 		{
@@ -51,7 +54,11 @@ const ProjectsSection: React.FC = () => {
 	return (
 		<section
 			id="projects"
-			className="w-full max-w-6xl mx-auto my-12 p-4 md:p-8"
+			ref={ref}
+			className={cn(
+				"w-full max-w-6xl mx-auto my-12 p-4 md:p-8 fade-in-section scroll-section",
+				isVisible && "is-visible"
+			)}
 			style={{ backgroundColor: colors.syntaxBg, color: colors.mono1 }}
 		>
 			<h2
@@ -60,9 +67,18 @@ const ProjectsSection: React.FC = () => {
 			>
 				{t('projects.title')}
 			</h2>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
 				{projects.map((project, index) => (
-					<ProjectCard key={index} project={project} />
+					<div
+						key={index}
+						className={cn(
+							"stagger-item",
+							isVisible && "is-visible",
+							`stagger-delay-${Math.min(index + 1, 6)}`
+						)}
+					>
+						<ProjectCard project={project} />
+					</div>
 				))}
 			</div>
 		</section>
