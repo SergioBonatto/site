@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { useThemeContext } from '../Theme/ThemeProvider';
-import { useTranslation } from '@/i18n/client';
+import { useTranslation, useLanguage } from '@/i18n/client';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 
 interface AboutProps extends React.HTMLAttributes<HTMLElement> {
@@ -19,7 +19,20 @@ const About: React.FC<AboutProps> = ({
 }) => {
   const { colors } = useThemeContext();
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation<HTMLElement>();
+
+  // Verificar se há uma imagem específica para esta tradução
+  // Por exemplo, podemos definir que para o idioma 'en' usamos uma imagem diferente
+  const getImageForLanguage = () => {
+    // Você pode adicionar mais casos conforme necessário
+    if (language === 'web') {
+      return '/web.webp'; // Imagem específica para inglês
+    }
+    return imageSrc; // Imagem padrão para outras linguagens
+  };
+
+  const actualImageSrc = getImageForLanguage();
 
   // Generate a tiny SVG placeholder and convert to base64 for Next/Image
   const toBase64 = (str: string) => {
@@ -62,7 +75,7 @@ const About: React.FC<AboutProps> = ({
         <div className="w-full md:w-1/3 flex justify-center">
           <div className="rounded-lg overflow-hidden shadow-lg">
             <Image
-              src={imageSrc}
+              src={actualImageSrc}
               alt={t('about.imageAlt')}
               width={600}
               height={800}

@@ -1,4 +1,4 @@
-export type LanguageCode = 'pt-BR' | 'en' | 'es' | 'de' | 'ja' | 'it';
+export type LanguageCode = 'pt-BR' | 'en' | 'es' | 'de' | 'ja' | 'it' | 'web';
 
 export type TranslationKeys = {
   // Navigation

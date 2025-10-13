@@ -12,7 +12,8 @@ const languageConfig: Record<LanguageCode, { flag: string; label: string; next: 
   'es':    { flag: '🇪🇸', label: 'ES', next: 'de' },
   'de':    { flag: '🇩🇪', label: 'DE', next: 'ja' },
   'ja':    { flag: '🇯🇵', label: 'JA', next: 'it' },
-  'it':    { flag: '🇮🇹', label: 'IT', next: 'pt-BR' },
+  'it':    { flag: '🇮🇹', label: 'IT', next: 'web' },
+  'web' :   { flag: '🏳️‍⚧️', label: 'WEB', next: 'pt-BR' },
 };
 
 export function LanguageToggle() {
