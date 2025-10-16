@@ -6,6 +6,7 @@ import { Nav } from '@/components/Nav/Nav';
 import About from '@/components/About/About';
 import Footer from '@/components/Footer/Footer';
 import ProjectsSection from '@/components/Projects/ProjectsSection';
+import KonamiDoom from '@/components/EasterEggs/KonamiDoom';
 
 export default function Home() {
   const isDevToolsOpen = useDevTools();
@@ -64,6 +65,7 @@ function HomeContent() {
       </div>
       <ProjectsSection />
       <Footer />
+      <KonamiDoom />
     </main>
   );
 }

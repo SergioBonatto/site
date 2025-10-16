@@ -1,0 +1,220 @@
+.konamiContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.85);
+  animation: fadeIn 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.konamiMessage {
+  background-color: #000;
+  color: #ff0000;
+  padding: 2rem;
+  border: 3px solid #ff6600;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 80%;
+  font-family: monospace;
+  animation: pulse 2s infinite;
+}
+
+.loadingDots {
+  height: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.loadingDots::after {
+  content: '...';
+  display: inline-block;
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+.gameModal {
+  background-color: #222;
+  border: 4px solid #444;
+  border-radius: 8px;
+  width: 800px; /* Larger size for better experience */
+  max-width: 95%;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  z-index: 10000; /* Ensure it stays above other elements */
+  transform: translateZ(0); /* Force hardware acceleration */
+  will-change: transform; /* Optimize for animations */
+}
+
+.gameHeader {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #555;
+}
+
+.gameControls {
+  display: flex;
+  align-items: center;
+}
+
+.qualitySelector {
+  display: flex;
+  margin-right: 1rem;
+}
+
+.qualityButton {
+  background: none;
+  border: 1px solid #555;
+  color: #ccc;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  margin: 0 2px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.qualityButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.qualityButton.active {
+  background-color: #ff6600;
+  color: #000;
+  border-color: #ff6600;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+.doomContainer {
+  background-color: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px; /* Altura maior para melhor experiência */
+  width: 100%;
+  overflow: hidden; /* Evita que o iframe ultrapasse os limites */
+  transform: translateZ(0); /* Força aceleração de hardware */
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ff6600;
+  z-index: 2;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 102, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: #ff6600;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+.gameInstructions {
+  background-color: #333;
+  color: #aaa;
+  padding: 0.75rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dots {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+  100% { content: ''; }
+}
+
+/* Improvements for mobile devices */
+@media (max-width: 768px) {
+  .gameModal {
+    width: 95%;
+    max-height: 80vh;
+  }
+
+  .doomContainer {
+    height: 56vw; /* Maintains 16:9 aspect ratio */
+  }
+
+  .qualityButton {
+    font-size: 0.7rem;
+    padding: 1px 4px;
+  }
+}
+
+/* Optimizations to prevent janking */
+.doomContainer iframe {
+  transition: visibility 0.1s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}

@@ -74,5 +74,15 @@
   "skills.web.label": "Web & モバイル",
   "skills.game.label": "ゲーム開発",
   "skills.tools.label": "ツール & プラクティス",
-  "skills.domains.label": "ドメイン"
+  "skills.domains.label": "ドメイン",
+  "konamiDoom.title": "DOOM (1993)",
+  "konamiDoom.loading": "DOOM を読み込み中...",
+  "konamiDoom.activated": "コナミコード発動！",
+  "konamiDoom.preparing": "DOOM の実行準備中...",
+  "konamiDoom.controls": "操作方法: ゲーム内をクリックし、矢印キーで移動、Ctrlで射撃、Altで横移動、スペースで使用。",
+  "konamiDoom.performanceTip": "パフォーマンスのヒント: ゲームが遅い場合は、低品質に切り替えてみてください。",
+  "konamiDoom.quality.low": "低",
+  "konamiDoom.quality.medium": "中",
+  "konamiDoom.quality.high": "高",
+  "konamiDoom.close": "ゲームを閉じる"
 }

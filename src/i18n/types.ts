@@ -20,6 +20,18 @@ export type TranslationKeys = {
   'about.paragraph5': string;
   'about.paragraph6': string;
 
+  // KonamiDoom Easter Egg
+  'konamiDoom.title': string;
+  'konamiDoom.loading': string;
+  'konamiDoom.activated': string;
+  'konamiDoom.preparing': string;
+  'konamiDoom.controls': string;
+  'konamiDoom.performanceTip': string;
+  'konamiDoom.quality.low': string;
+  'konamiDoom.quality.medium': string;
+  'konamiDoom.quality.high': string;
+  'konamiDoom.close': string;
+
   // Blog Section
   'blog.title': string;
   'blog.description': string;

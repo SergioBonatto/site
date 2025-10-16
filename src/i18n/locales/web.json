@@ -82,5 +82,16 @@
   "common.notFound": "虚空に消えた (Lost in the Void)",
   "theme.light": "光の章 (Light Mode - Sunrise Arc)",
   "theme.dark": "闇の章 (Dark Mode - Midnight Saga)",
-  "theme.toggle": "運命を切り替える (Switch Destiny)"
+  "theme.toggle": "運命を切り替える (Switch Destiny)",
+
+  "konamiDoom.title": "DOOM (1993) - 古代の戦場",
+  "konamiDoom.loading": "伝説の戦闘を準備中... (Loading the ancient battle...)",
+  "konamiDoom.activated": "隠密コード解放! (Secret Code Unleashed!)",
+  "konamiDoom.preparing": "地獄の門を開く準備中... (Preparing to open hell's gate...)",
+  "konamiDoom.controls": "操作: 戦場をクリックし、矢印で移動、Ctrlで攻撃、Altで側転、Spaceで使用 (Click and use arrows to move, Ctrl to attack)",
+  "konamiDoom.performanceTip": "戦術アドバイス: 戦場が遅ければ、低画質を選べ (Tactical advice: Choose Low quality if slow)",
+  "konamiDoom.quality.low": "下段の構え (Low)",
+  "konamiDoom.quality.medium": "中段の構え (Medium)",
+  "konamiDoom.quality.high": "上段の構え (High)",
+  "konamiDoom.close": "隠密に戻る (Return to shadows)"
 }

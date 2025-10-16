@@ -74,5 +74,15 @@
   "skills.web.label": "Web y Móvil",
   "skills.game.label": "Desarrollo de Videojuegos",
   "skills.tools.label": "Herramientas y Prácticas",
-  "skills.domains.label": "Dominios"
+  "skills.domains.label": "Dominios",
+  "konamiDoom.title": "DOOM (1993)",
+  "konamiDoom.loading": "Cargando DOOM...",
+  "konamiDoom.activated": "¡Código Konami Activado!",
+  "konamiDoom.preparing": "Preparando para ejecutar DOOM...",
+  "konamiDoom.controls": "Controles: Haz clic en el juego y usa las flechas para moverte, Ctrl para disparar, Alt para movimiento lateral, Espacio para usar.",
+  "konamiDoom.performanceTip": "Consejo de rendimiento: Si el juego va lento, prueba cambiar a calidad Baja.",
+  "konamiDoom.quality.low": "Baja",
+  "konamiDoom.quality.medium": "Media",
+  "konamiDoom.quality.high": "Alta",
+  "konamiDoom.close": "Cerrar juego"
 }
