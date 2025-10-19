@@ -27,7 +27,7 @@ const About: React.FC<AboutProps> = ({
   const getImageForLanguage = () => {
     // Você pode adicionar mais casos conforme necessário
     if (language === 'web') {
-      return '/web.webp'; // Imagem específica para inglês
+      return '/eutako.png'; // Imagem específica para inglês
     }
     return imageSrc; // Imagem padrão para outras linguagens
   };
