@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIA Classified Document</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: linear-gradient(180deg,#f5f5dc 0%, #efe7c8 70%);
+            max-width: 21cm;
+            margin: 0 auto;
+            line-height: 1.4;
+            color: #000;
+        }
+        .document {
+            background: linear-gradient(180deg, #fff 0%, #fbfbf6 100%);
+            filter: contrast(1.02) saturate(0.96);
+            transform: rotate(-0.6deg);
+            box-shadow: 0 24px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect filter="url(%23n)" width="100%" height="100%" opacity="0.02" fill="%23000"/></svg>');
+            pointer-events: none;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 120px;
+            color: rgba(255, 0, 0, 0.08);
+            font-weight: bold;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px double #000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .seal {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border: 3px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .classification {
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            margin: 20px -60px 20px -60px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+            text-transform: uppercase;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 14px;
+            margin: 25px 0 10px 0;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
+        .redacted {
+            display: inline-block;
+            background: #000;
+            color: #000;
+            user-select: none;
+            vertical-align: baseline;
+            border-bottom: 2px solid rgba(255,255,255,0.03); /* faint edge */
+            box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset, 0 2px 6px rgba(0,0,0,0.6);
+            border-radius: 2px;
+            }
+
+        .redacted-line {
+            background: #000;
+            height: 12px;
+            margin: 3px 0;
+            display: block;
+        }
+
+        .redacted-block {
+            background: #000;
+            height: 64px;
+            margin: 12px 0;
+            display: block;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+            border-radius: 2px;
+        }
+
+        .metadata {
+            margin: 20px 0;
+            font-size: 11px;
+        }
+
+        .metadata-row {
+            margin: 5px 0;
+        }
+
+        .content-section {
+            margin: 20px 0;
+            text-align: justify;
+        }
+
+        .bullet {
+            margin-left: 30px;
+            margin-bottom: 8px;
+        }
+
+        .warning-box {
+            border: 3px solid #000;
+            padding: 15px;
+            margin: 25px 0;
+            background: #fff9e6;
+        }
+
+        .footer {
+            margin-top: 50px;
+            border-top: 2px solid #000;
+            padding-top: 20px;
+            font-size: 10px;
+        }
+
+        .signature-line {
+            margin-top: 40px;
+            border-top: 1px solid #000;
+            width: 300px;
+            padding-top: 5px;
+            font-size: 11px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .document {
+                box-shadow: none;
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <div class="watermark">TOP SECRET</div>
+
+        <div class="header">
+            <div class="seal">CIA<br>SEAL</div>
+            <div style="font-size: 20px; font-weight: bold; margin-bottom: 5px;">CENTRAL INTELLIGENCE AGENCY</div>
+            <div style="font-size: 12px;">Directorate of Operations</div>
+        </div>
+
+        <div class="classification">
+            TOP SECRET // SPECIAL ACCESS REQUIRED // NOFORN
+        </div>
+
+        <div class="metadata">
+            <div class="metadata-row"><strong>DOCUMENT ID:</strong> DO-<span class="redacted">████████████</span>-BNT</div>
+            <div class="metadata-row"><strong>DATE OF ASSESSMENT:</strong> <span class="redacted">██</span> October 2025</div>
+            <div class="metadata-row"><strong>CONTROL NUMBER:</strong> <span class="redacted">████████████████</span></div>
+            <div class="metadata-row"><strong>ORIGINATING STATION:</strong> <span class="redacted">████████████████</span></div>
+            <div class="metadata-row"><strong>DISTRIBUTION:</strong> Eyes Only - <span class="redacted">█████████████████████</span></div>
+        </div>
+
+        <h1>Subject: Field Operative Assessment - BONATTO, Sergio</h1>
+
+        <div class="warning-box">
+            <strong>HANDLING NOTICE:</strong> This document contains sensitive intelligence concerning an active field operative. Unauthorized disclosure may compromise ongoing operations and result in <span class="redacted">██████████████████████</span>. Leak detection markers embedded. <span class="redacted">████████████████████████████████</span>.
+        </div>
+
+        <h2>I. Executive Summary</h2>
+        <div class="content-section">
+            Subject BONATTO, Sergio (Cryptonym: <span class="redacted">██████████</span>) operates as a deep-cover technical operative specializing in <span class="redacted">████████████████████████████</span> and cryptographic systems deployment. Current assignment involves <span class="redacted">████████████████████████████████████████</span> with focus on decentralized <span class="redacted">██████████</span> infrastructure penetration. Subject maintains <span class="redacted">████████████</span> operational security and demonstrates <span class="redacted">████████</span>-level technical proficiency. No compromise indicators detected as of <span class="redacted">████████████</span>.
+        </div>
+
+        <h2>II. Identifying Information</h2>
+        <div class="content-section">
+            <div class="bullet"><strong>True Name:</strong> BONATTO, Sergio <span class="redacted">████████████</span></div>
+            <div class="bullet"><strong>Cover Identity:</strong> Independent Software Developer</div>
+            <div class="bullet"><strong>Date of Birth:</strong> <span class="redacted">██/██/████</span></div>
+            <div class="bullet"><strong>Place of Birth:</strong> <span class="redacted">████████████████</span>, Brazil</div>
+            <div class="bullet"><strong>Current Location:</strong> <span class="redacted">████████████████████████</span></div>
+            <div class="bullet"><strong>Operational Area:</strong> <span class="redacted">██████████████████████████████</span></div>
+            <div class="bullet"><strong>Operational Status:</strong> Active / Non-Official Cover (NOC)</div>
+            <div class="bullet"><strong>Recruitment Date:</strong> <span class="redacted">████████████</span></div>
+            <div class="bullet"><strong>Handler:</strong> <span class="redacted">████████████████████████</span></div>
+            <div class="bullet"><strong>Contact Protocol:</strong> <span class="redacted">████████████████████████████████</span></div>
+        </div>
+
+        <h2>III. Operational Background</h2>
+        <div class="content-section">
+            Subject was identified in <span class="redacted">████</span> during technical surveillance of <span class="redacted">████████████████████████████</span> networks. Demonstrated exceptional capabilities in <span class="redacted">████████████████</span> architecture and zero-knowledge proof systems. Following <span class="redacted">████</span> months of evaluation, subject was <span class="redacted">████████████████████</span> and successfully recruited under Operation <span class="redacted">████████████████</span>.
+        </div>
+
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 97%;"></span>
+
+        <div class="content-section">
+            Primary mission objectives include:
+            <div class="bullet">• Infiltration of <span class="redacted">████████████████████████████</span> development communities</div>
+            <div class="bullet">• Technical surveillance and <span class="redacted">████████████████</span> of cryptocurrency payment systems</div>
+            <div class="bullet">• Development of <span class="redacted">████████████████████████</span> for collection purposes</div>
+            <div class="bullet">• <span class="redacted">████████████████████████████████████████████████</span></div>
+            <div class="bullet">• <span class="redacted">████████████████████████████████████████████████</span></div>
+        </div>
+
+        <h2>IV. Technical Capabilities & Assets</h2>
+        <div class="content-section">
+            <strong>Cover Project - "</strong><span class="redacted">████████████</span><strong>":</strong> Subject operates a <span class="redacted">████████████████</span> decentralized payments protocol as cover for intelligence operations. System provides <span class="redacted">████████████</span> for monitoring transaction flows across <span class="redacted">████</span> different cryptocurrency networks. Reported user base of approximately <span class="redacted">████████</span> entities, majority unaware of <span class="redacted">████████████████████</span> capabilities.
+        </div>
+
+        <span class="redacted-block"></span>
+
+        <div class="content-section">
+            <strong>Technical Skills (Classification: </strong><span class="redacted">████████████████</span><strong>):</strong>
+            <div class="bullet">• Cryptographic protocol design and <span class="redacted">████████████████</span></div>
+            <div class="bullet">• Smart contract development across <span class="redacted">████</span> blockchain platforms</div>
+            <div class="bullet">• Zero-knowledge proof systems <span class="redacted">████████████████</span></div>
+            <div class="bullet">• <span class="redacted">████████████████████████████████████████</span></div>
+            <div class="bullet">• Covert communications infrastructure</div>
+            <div class="bullet">• <span class="redacted">████████████████████████████████████████</span></div>
+        </div>
+
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 93%;"></span>
+
+        <h2>V. Current Operations</h2>
+        <div class="content-section">
+            <strong>Operation <span class="redacted">████████████</span> (Active):</strong> Subject has successfully embedded collection capabilities within <span class="redacted">████████████████</span> infrastructure used by <span class="redacted">████████████████████████████</span> organizations across <span class="redacted">████</span> countries. Monthly intelligence yield averages <span class="redacted">████████</span> actionable reports to <span class="redacted">████████████</span> and Financial Intelligence Unit.
+        </div>
+
+        <span class="redacted-block"></span>
+
+        <div class="content-section">
+            <strong>Secondary Tasking:</strong> Technical consultation on <span class="redacted">████████████████████████████████████████</span>. Subject provided critical vulnerability assessments leading to successful <span class="redacted">████████████████</span> operations in <span class="redacted">████████</span> and <span class="redacted">████████</span>.
+        </div>
+
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+
+        <h2>VI. Security Assessment</h2>
+        <div class="content-section">
+            <strong>OPSEC Rating:</strong> <span class="redacted">████████████</span><br>
+            <strong>Compromise Risk:</strong> <span class="redacted">████</span><br>
+            <strong>Reliability Score:</strong> <span class="redacted">████</span>/100<br>
+            <strong>Last Security Review:</strong> <span class="redacted">████████████</span>
+            <br><br>
+            Subject maintains rigorous operational security. No indicators of hostile surveillance detected. Cover remains intact with strong <span class="redacted">████████████████</span> standing. Communications follow established protocols with <span class="redacted">████</span> breaches recorded.
+        </div>
+
+        <span class="redacted-block"></span>
+
+        <div class="content-section">
+            <strong>Counterintelligence Notes:</strong> Subject has been approached by <span class="redacted">████████████████████</span> intelligence services on <span class="redacted">████</span> occasions. All contacts were reported and handled appropriately. <span class="redacted">████████████████████████████████████████████████████████</span>. No evidence of recruitment attempts by hostile services.
+        </div>
+
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 88%;"></span>
+
+        <h2>VII. Recommendations</h2>
+        <div class="content-section">
+            <div class="bullet">1. Continue current operational tasking <span class="redacted">████████████████████</span></div>
+            <div class="bullet">2. Approve budget increase for <span class="redacted">████████████████████████████</span> expansion</div>
+            <div class="bullet">3. <span class="redacted">████████████████████████████████████████████████████</span></div>
+            <div class="bullet">4. Maintain <span class="redacted">████████████</span> assessment schedule</div>
+            <div class="bullet">5. <span class="redacted">████████████████████████████████████████████████████████████</span></div>
+            <div class="bullet">6. <span class="redacted">████████████████████████████████████████████████████████████</span></div>
+        </div>
+
+        <h2>VIII. Threat Assessment</h2>
+        <div class="content-section">
+            Primary threat vector remains potential technical attribution through <span class="redacted">████████████████████</span> artifacts. Subject's public profile requires careful management to prevent <span class="redacted">████████████████████████</span>. Recommend continued use of <span class="redacted">████████████████████████</span> protocols and limiting direct contact to <span class="redacted">████████████████</span> situations only.
+        </div>
+
+        <span class="redacted-block"></span>
+
+        <div class="warning-box" style="margin-top: 40px;">
+            <strong>CRITICAL:</strong> Subject operates under Non-Official Cover. If compromised, Agency will disavow all knowledge. Emergency exfiltration procedures: <span class="redacted">████████████████████████████████████</span>. Contact protocols: <span class="redacted">████████████████████████████</span>. Safehouse locations: <span class="redacted">████████████████████████████████████████</span>.
+        </div>
+
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 100%;"></span>
+        <span class="redacted-line" style="width: 95%;"></span>
+
+        <div class="footer">
+            <div class="signature-line">
+                <span class="redacted">████████████████████████</span><br>
+                Chief, Technical Operations Division<br>
+                Directorate of Operations
+            </div>
+
+            <div class="signature-line">
+                <span class="redacted">████████████████████████</span><br>
+                Deputy Director for Operations
+            </div>
+
+            <div style="margin-top: 30px; font-size: 9px;">
+                <strong>DESTRUCTION NOTICE:</strong> When no longer needed, this document must be destroyed by <span class="redacted">████████████████</span>. Electronic copies must be permanently deleted using <span class="redacted">████████████████</span> approved methods.
+            </div>
+
+            <div style="margin-top: 20px; text-align: center; font-size: 10px;">
+                <strong>CLASSIFIED BY:</strong> <span class="redacted">████████████████████</span><br>
+                <strong>REASON:</strong> 1.4(a), 1.4(c), 1.4(d)<br>
+                <strong>DECLASSIFY ON:</strong> <span class="redacted">████████████████</span> or upon death of subject
+            </div>
+        </div>
+
+        <div class="classification">
+            TOP SECRET // SPECIAL ACCESS REQUIRED // NOFORN
+        </div>
+    </div>
+</body>
+</html>

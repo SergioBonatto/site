@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
     title: dictionary['blog.title'],
     description: dictionary['blog.description'],
     image: '/cards.png',
-    url: '/blog',
+    url: `/${lang}/blog`,
     keywords: ['blog', 'development', 'formal proofs', 'programming', 'tech'],
   });
 }

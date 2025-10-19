@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { Nav } from '@/components/Nav/Nav';
 import styles from './blogIndex.module.css';
 import Footer from '@/components/Footer/Footer';
@@ -16,6 +17,8 @@ interface Post {
 
 export default function BlogIndexClient({ posts }: { posts: Post[] }) {
   const { t } = useTranslation();
+  const params = useParams<{ lang: string }>();
+  const lang = params?.lang ?? 'en';
 
   return (
     <div
@@ -43,7 +46,7 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
               {posts.map(post => (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`/${lang}/blog/${post.slug}`}
                   className={`block rounded-xl group ${styles.card}`}
                   style={{ textDecoration: 'none' }}
                   tabIndex={0}

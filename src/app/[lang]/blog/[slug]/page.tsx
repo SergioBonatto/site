@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: `${dictionary['blog.notFound']} - Sergio Bonatto`,
       description: dictionary['blog.notFoundDescription'],
       image: '/cards.png',
-      url: `/blog/${slug}`,
+      url: `/${lang}/blog/${slug}`,
     });
   }
 
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${postData.data.title} - Sergio Bonatto`,
     description: postData.data.description,
     image: '/cards.png',
-    url: `/blog/${slug}`,
+    url: `/${lang}/blog/${slug}`,
     type: 'article',
     publishedTime: new Date(postData.data.date).toISOString(),
     keywords: ['blog', 'programming', 'development', 'tech'],
