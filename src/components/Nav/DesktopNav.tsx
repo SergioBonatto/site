@@ -16,7 +16,7 @@ export function DesktopNav() {
 		{ href: "/", label: t('nav.home'), isHash: false },
 		{ href: "#about", label: t('nav.about'), isHash: true },
 		{ href: "#projects", label: t('nav.projects'), isHash: true },
-		{ href: "/experiencia", label: t('nav.experience'), isHash: false },
+		// { href: "/experiencia", label: t('nav.experience'), isHash: false },
 		{ href: "/blog", label: t('nav.blog'), isHash: false },
 		{ href: "/login", label: t('nav.login'), isHash: false },
 	];
