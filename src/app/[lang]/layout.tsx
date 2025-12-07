@@ -14,7 +14,7 @@ export const metadata: Metadata = siteMetadata;
 export const viewport: Viewport = siteViewport;
 
 // Gera os parâmetros estáticos para todos os locales
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ lang: string }[]> {
   return [
     { lang: 'en' },
     { lang: 'pt-BR' },
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
     { lang: 'de' },
     { lang: 'ja' },
     { lang: 'it' },
-  ];
+  ] as const;
 }
 
 export default async function RootLayout({
@@ -30,16 +30,16 @@ export default async function RootLayout({
   params
 }: {
   children: React.ReactNode,
-  params: Promise<{ lang: LanguageCode }>
+  params: Promise<{ lang: string }>
 }) {
   const { lang } = await params;
-  const dictionary = await getDictionary(lang);
+  const dictionary = await getDictionary(lang as LanguageCode);
 
   return (
     <html lang={lang}>
       <body>
         <ThemeProvider>
-          <I18nProvider dictionary={dictionary} language={lang}>
+          <I18nProvider dictionary={dictionary} language={lang as LanguageCode}>
             <Script id="prism-preload" strategy="beforeInteractive">
               {`
                 window.Prism = window.Prism || {};
