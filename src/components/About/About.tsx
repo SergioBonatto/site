@@ -14,7 +14,7 @@ interface AboutProps extends React.HTMLAttributes<HTMLElement> {
 
 const About: React.FC<AboutProps> = ({
   className,
-  imageSrc = "/eu.webp",
+  imageSrc = "/site-perfil.webp",
   ...props
 }) => {
   const { colors } = useThemeContext();
@@ -81,10 +81,10 @@ const About: React.FC<AboutProps> = ({
               height={800}
               sizes="(max-width: 768px) 100vw, 33vw"
               priority
-              quality={75}
+              quality={100}
               placeholder="blur"
               blurDataURL={blurDataURL}
-              className="object-cover w-full h-auto"
+              className="object-cover w-full h-auto h-full"
             />
           </div>
         </div>

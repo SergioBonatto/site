@@ -33,7 +33,7 @@ const ProjectsSection: React.FC = () => {
 		},
 		{
 			title: t('projects.kind.title'),
-			description: t('projects.kind.description'),
+			description: t('projects.kin	d.description'),
 			link: 'https://sergiobonatto.github.io/Software-Foundations-in-Kind/docs/Kind-ptBR/index.html',
 			image: '/Kind.png',
 		},
@@ -46,7 +46,7 @@ const ProjectsSection: React.FC = () => {
 		{
 			title: t('projects.agoriz.title'),
 			description: t('projects.agoriz.description'),
-			link: 'https://agoriz.vercel.app',
+			link: 'https://github.com/Agoriz',
 			image: '/Agoriz.png',
 		},
 	];
