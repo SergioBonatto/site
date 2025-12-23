@@ -84,5 +84,8 @@
   "konamiDoom.quality.low": "低",
   "konamiDoom.quality.medium": "中",
   "konamiDoom.quality.high": "高",
-  "konamiDoom.close": "ゲームを閉じる"
+  "konamiDoom.close": "ゲームを閉じる",
+  "yuu.question": "あなたはゆですか？",
+  "yuu.yes": "はい",
+  "yuu.no": "いいえ"
 }

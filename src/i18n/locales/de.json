@@ -84,5 +84,8 @@
   "konamiDoom.quality.low": "Niedrig",
   "konamiDoom.quality.medium": "Mittel",
   "konamiDoom.quality.high": "Hoch",
-  "konamiDoom.close": "Spiel schließen"
+  "konamiDoom.close": "Spiel schließen",
+  "yuu.question": "Bist du Yuu?",
+  "yuu.yes": "JA",
+  "yuu.no": "NEIN"
 }

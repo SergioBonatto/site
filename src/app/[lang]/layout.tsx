@@ -36,22 +36,18 @@ export default async function RootLayout({
   const dictionary = await getDictionary(lang as LanguageCode);
 
   return (
-    <html lang={lang}>
-      <body>
-        <ThemeProvider>
-          <I18nProvider dictionary={dictionary} language={lang as LanguageCode}>
-            <Script id="prism-preload" strategy="beforeInteractive">
-              {`
-                window.Prism = window.Prism || {};
-                window.Prism.manual = true;
-              `}
-            </Script>
-            <StructuredData />
-            <FloatingGif />
-            {children}
-          </I18nProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+    <ThemeProvider>
+      <I18nProvider dictionary={dictionary} language={lang as LanguageCode}>
+        <Script id="prism-preload" strategy="beforeInteractive">
+          {`
+            window.Prism = window.Prism || {};
+            window.Prism.manual = true;
+          `}
+        </Script>
+        <StructuredData />
+        <FloatingGif />
+        {children}
+      </I18nProvider>
+    </ThemeProvider>
   );
 }

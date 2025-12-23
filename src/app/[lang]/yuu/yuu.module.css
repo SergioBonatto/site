@@ -1,0 +1,148 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--syntaxBg);
+  color: var(--mono1);
+  position: relative;
+}
+
+.catBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.catImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+.question {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--mono1);
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button {
+  padding: 1rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 150px;
+  color: white;
+}
+
+.yes {
+  background-color: var(--hue4);
+  border-color: var(--hue4);
+}
+
+.yes:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(80, 161, 79, 0.3);
+  opacity: 0.9;
+}
+
+.yes:active {
+  transform: translateY(0);
+}
+
+.no {
+  background-color: var(--hue5);
+  border-color: var(--hue5);
+}
+
+.no:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(224, 108, 117, 0.3);
+  opacity: 0.9;
+}
+
+.no:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .question {
+    font-size: 2rem;
+  }
+
+  .button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    min-width: 130px;
+  }
+
+  .buttonContainer {
+    gap: 1rem;
+  }
+
+  .container {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .question {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    min-width: 100px;
+  }
+
+  .buttonContainer {
+    gap: 0.75rem;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

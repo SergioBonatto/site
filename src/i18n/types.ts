@@ -82,6 +82,11 @@ export type TranslationKeys = {
   'theme.light': string;
   'theme.dark': string;
   'theme.toggle': string;
+
+  // Yuu Page
+  'yuu.question': string;
+  'yuu.yes': string;
+  'yuu.no': string;
 };
 
 export type Translations = {
