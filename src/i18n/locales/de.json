@@ -87,5 +87,6 @@
   "konamiDoom.close": "Spiel schließen",
   "yuu.question": "Bist du Yuu?",
   "yuu.yes": "JA",
-  "yuu.no": "NEIN"
+  "yuu.no": "NEIN",
+  "yuu.message": "Herzlichen Glückwunsch, du hast gefunden, was ich zu verbergen versuchte (oder auch nicht)."
 }

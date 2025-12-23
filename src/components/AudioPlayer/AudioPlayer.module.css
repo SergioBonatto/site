@@ -1,0 +1,306 @@
+.playerContainer {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.skipButtonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skipLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.controlButton {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.controlButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.controlButton:active {
+  transform: scale(0.95);
+}
+
+.playButton {
+  background: var(--hue2, #4078f2);
+  width: 3rem;
+  height: 3rem;
+}
+
+.playButton:hover {
+  background: var(--hue2, #4078f2);
+  opacity: 0.9;
+  transform: scale(1.15);
+}
+
+.volumeContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.volumeSliderHorizontal {
+  width: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.volumeBar {
+  width: 100%;
+}
+
+.volumeSlider {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 1rem 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+.volumeSlider input {
+  writing-mode: bt-lr;
+  -webkit-appearance: slider-vertical;
+  width: 8px;
+  height: 100px;
+}
+
+.progressContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.time {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  min-width: 40px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #555;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.progressBar {
+  flex: 1;
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+.slider::-webkit-slider-track {
+  width: 100%;
+  height: 5px;
+  background: #555;
+  border-radius: 3px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #4078f2;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #5088ff;
+  box-shadow: 0 3px 10px rgba(64, 120, 242, 0.6);
+}
+
+/* Firefox */
+.slider::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  background: #555;
+  border-radius: 3px;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #4078f2;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: #5088ff;
+  box-shadow: 0 3px 10px rgba(64, 120, 242, 0.6);
+}
+
+.slider::-moz-range-progress {
+  background: #4078f2;
+  height: 5px;
+  border-radius: 3px;
+}
+
+/* Internet Explorer/Edge fallback */
+.slider::-ms-track {
+  width: 100%;
+  height: 5px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.slider::-ms-fill-lower {
+  background: #4078f2;
+  border-radius: 3px;
+}
+
+.slider::-ms-fill-upper {
+  background: #555;
+  border-radius: 3px;
+}
+
+.slider::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  background: #4078f2;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .playerContainer {
+    padding: 1.25rem;
+  }
+
+  .controls {
+    gap: 1.5rem;
+  }
+
+  .volumeSliderHorizontal {
+    display: none;
+  }
+
+  .volumeContainer {
+    position: relative;
+    margin-left: 0;
+  }
+
+  .volumeSlider {
+    display: block;
+  }
+
+  .skipLabel {
+    font-size: 0.7rem;
+  }
+
+  .playButton {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .controlButton svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .playButton svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .playerContainer {
+    padding: 1rem;
+  }
+
+  .controls {
+    gap: 1rem;
+  }
+
+  .skipButtonWrapper {
+    gap: 0.35rem;
+  }
+
+  .skipLabel {
+    font-size: 0.65rem;
+  }
+
+  .time {
+    font-size: 0.75rem;
+    min-width: 35px;
+  }
+
+  .playButton {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .controlButton svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .playButton svg {
+    width: 22px;
+    height: 22px;
+  }
+}

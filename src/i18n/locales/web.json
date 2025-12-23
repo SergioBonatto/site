@@ -93,5 +93,9 @@
   "konamiDoom.quality.low": "下段の構え (Low)",
   "konamiDoom.quality.medium": "中段の構え (Medium)",
   "konamiDoom.quality.high": "上段の構え (High)",
-  "konamiDoom.close": "隠密に戻る (Return to shadows)"
+  "konamiDoom.close": "隠密に戻る (Return to shadows)",
+  "yuu.question": "貴様が... Yuu か？ (Are you Yuu?)",
+  "yuu.yes": "然り (YES)",
+  "yuu.no": "否 (NO)",
+  "yuu.message": "おめでとう。俺が隠そうとしていた秘技（あるいは、そうでもないもの）を見つけたな。"
 }

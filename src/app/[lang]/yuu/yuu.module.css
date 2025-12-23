@@ -126,6 +126,71 @@
   }
 }
 
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.playerWrapper {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  z-index: 100;
+  padding: 0 1rem;
+}
+
+.message {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .message {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .playerWrapper {
+    bottom: 1rem;
+    width: 95%;
+    padding: 0 0.5rem;
+  }
+}
+
 @media (max-width: 480px) {
   .question {
     font-size: 1.5rem;
@@ -144,5 +209,16 @@
 
   .button {
     width: 100%;
+  }
+
+  .message {
+    font-size: 1.25rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .playerWrapper {
+    bottom: 0.75rem;
+    width: 98%;
+    padding: 0;
   }
 }

@@ -87,5 +87,6 @@
   "konamiDoom.close": "ゲームを閉じる",
   "yuu.question": "あなたはゆですか？",
   "yuu.yes": "はい",
-  "yuu.no": "いいえ"
+  "yuu.no": "いいえ",
+  "yuu.message": "おめでとう、隠そうとしたもの（またはそれほど）を見つけました。"
 }

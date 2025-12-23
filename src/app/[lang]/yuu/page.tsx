@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useI18n } from '@/i18n/I18nProvider';
 import { Nav } from '@/components/Nav/Nav';
+import AudioPlayer from '@/components/AudioPlayer/AudioPlayer';
 import styles from './yuu.module.css';
 import Image from 'next/image';
 
@@ -64,7 +65,17 @@ export default function YuuPage() {
             </div>
           </div>
         )}
+        {showCat && (
+          <div className={styles.messageContainer}>
+            <p className={styles.message}>{t('yuu.message')}</p>
+          </div>
+        )}
       </main>
+      {showCat && (
+        <div className={styles.playerWrapper}>
+          <AudioPlayer src="/music.mp3" />
+        </div>
+      )}
     </div>
   );
 }
