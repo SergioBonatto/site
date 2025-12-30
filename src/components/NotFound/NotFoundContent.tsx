@@ -24,6 +24,9 @@ export default function NotFoundContent() {
           <h2 className="text-2xl font-bold">
             Seems like no sign of intelligent life anywhere. 🤨
           </h2>
+          <p className="mt-4 text-lg">
+            Que pena, você não vai achar nada aqui :(
+          </p>
         </div>
       </main>
     </div>
