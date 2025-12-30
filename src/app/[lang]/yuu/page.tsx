@@ -11,6 +11,9 @@ import Image from 'next/image';
 export default function YuuPage() {
   const { t, language } = useI18n();
   const [showCat, setShowCat] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
 
@@ -33,7 +36,19 @@ export default function YuuPage() {
   };
 
   const handleYes = () => {
-    setShowCat(true);
+    setShowPassword(true);
+  };
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password.toLowerCase() === 'brapao') {
+      setShowCat(true);
+      setShowPassword(false);
+      setError(false);
+    } else {
+      setError(true);
+      setPassword('');
+    }
   };
 
   return (
@@ -52,7 +67,7 @@ export default function YuuPage() {
       )}
       <Nav />
       <main className={styles.main}>
-        {!showCat && (
+        {!showCat && !showPassword && (
           <div className={styles.container}>
             <h1 className={styles.question}>{t('yuu.question')}</h1>
             <div className={styles.buttonContainer}>
@@ -63,6 +78,25 @@ export default function YuuPage() {
                 {t('yuu.no')}
               </button>
             </div>
+          </div>
+        )}
+        {showPassword && !showCat && (
+          <div className={styles.container}>
+            <h1 className={styles.question}>Digite a senha 🔐</h1>
+            <form onSubmit={handlePasswordSubmit} className={styles.passwordForm}>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className={styles.passwordInput}
+                placeholder="••••••"
+                autoFocus
+              />
+              <button type="submit" className={`${styles.button} ${styles.yes}`}>
+                Confirmar
+              </button>
+              {error && <p className={styles.error}>Senha incorreta! Tente novamente.</p>}
+            </form>
           </div>
         )}
         {showCat && (

@@ -113,6 +113,15 @@ const About: React.FC<AboutProps> = ({
                 {text}
               </p>
             ))}
+            <p
+              className="select-text"
+              style={{
+                color: colors.syntaxBg,
+                backgroundColor: colors.syntaxBg,
+              }}
+            >
+              Não é aqui, já tentou procurar por você mesma?
+            </p>
           </div>
         </div>
       </div>

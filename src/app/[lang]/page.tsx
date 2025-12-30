@@ -24,6 +24,7 @@ export default function Home() {
 
         PS: The cake is a lie! 🍰
       `);
+      console.warn(`%c⚠️ Boa tentativa, mas não é aqui!`, 'font-size: 16px; font-weight: bold; color: #ff6b6b; text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);');
     }
   }, [isDevToolsOpen]);
 

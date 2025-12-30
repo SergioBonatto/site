@@ -222,3 +222,62 @@
     padding: 0;
   }
 }
+
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+}
+
+.passwordInput {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.25rem;
+  border: 2px solid var(--mono3);
+  border-radius: 0.5rem;
+  background-color: var(--syntaxBg);
+  color: var(--mono1);
+  text-align: center;
+  letter-spacing: 0.2em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.passwordInput:focus {
+  outline: none;
+  border-color: var(--hue4);
+  box-shadow: 0 0 0 3px rgba(80, 161, 79, 0.2);
+}
+
+.passwordInput::placeholder {
+  color: var(--mono3);
+  letter-spacing: 0.1em;
+}
+
+.error {
+  color: var(--hue5);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+@media (max-width: 480px) {
+  .passwordInput {
+    font-size: 1rem;
+    padding: 0.875rem 1.25rem;
+  }
+
+  .error {
+    font-size: 0.875rem;
+  }
+}
