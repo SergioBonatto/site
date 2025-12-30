@@ -30,7 +30,7 @@ export default function MarkdownContent({ content, className }: MarkdownContentP
       className
     )}>
       <div
-        className="leading-relaxed text-base md:text-lg"
+        className="leading-relaxed text-base md:text-lg [&_p]:whitespace-pre-line"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </div>
