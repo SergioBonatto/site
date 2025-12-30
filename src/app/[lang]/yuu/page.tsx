@@ -82,7 +82,7 @@ export default function YuuPage() {
         )}
         {showPassword && !showCat && (
           <div className={styles.container}>
-            <h1 className={styles.question}>Digite a senha 🔐</h1>
+            <h1 className={styles.question}>Digite a senha</h1>
             <form onSubmit={handlePasswordSubmit} className={styles.passwordForm}>
               <input
                 type="password"
