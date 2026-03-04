@@ -74,10 +74,19 @@ html {
 body {
   background: var(--syntaxBg);
   color: var(--mono1);
+  font-family: var(--font-fira-code), monospace;
+  font-variant-ligatures: contextual;
+  font-feature-settings: "liga", "calt";
   /* Force GPU acceleration for smoother transitions */
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+code, pre {
+  font-family: var(--font-fira-code), monospace !important;
+  font-variant-ligatures: contextual;
+  font-feature-settings: "liga", "calt";
 }
 
 /* Smooth scroll animations for sections */
@@ -164,7 +173,9 @@ body {
 .stagger-delay-5 { transition-delay: 0.5s; }
 .stagger-delay-6 { transition-delay: 0.6s; }
 
-/* Smooth scale animation for cards */
+/*
+ * GENERAL BUTTON STYLES
+ */
 .scale-on-hover {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -172,100 +183,6 @@ body {
 
 .scale-on-hover:hover {
   transform: translateY(-4px) scale(1.02);
-}
-
-
-/*
- * GENERAL BUTTON STYLES
- */
-.theme-toggle {
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  background-color: var(--syntaxBg);
-  color: var(--mono1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  outline: none;
-  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-}
-
-.theme-toggle:focus-visible {
-  outline: 3px solid var(--hue1);
-  outline-offset: 2px;
-}
-
-.theme-toggle:hover {
-  transform: translateY(-1px);
-}
-
-.theme-toggle:active {
-  transform: scale(0.95);
-  transition-duration: 0.1s;
-}
-
-/* * ICON ANIMATION STYLES
- */
-
-.theme-toggle__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  /* Ensures the span is the container for animation */
-  overflow: hidden;
-}
-
-/* The SVG itself should transition to the color */
-.theme-toggle__icon svg {
-  width: 100%;
-  height: 100%;
-  /* The Transition that makes the magic happen:
-     The rotation and scale animation will be applied by the 'cubic-bezier'
-     function for a more natural movement. */
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.4, 1.2),
-              stroke 0.3s ease,
-              fill 0.3s ease;
-}
-
-/*
- * ROTATION AND SCALE EFFECT
- * * This is a modern CSS trick: when rendered, the SVG will animate.
- * When the component is mounted or the key is swapped, it applies the animation.
- */
-
-/* Initial rotation and scale (hidden) */
-.theme-toggle__icon svg {
-  transform: scale(0.8) rotate(-90deg);
-  opacity: 0;
-}
-
-/* Rotation and scale of the CURRENT icon (visible) */
-.theme-toggle:not(:active) .theme-toggle__icon svg {
-  transform: scale(1) rotate(0deg);
-  opacity: 1;
-}
-
-/* Color Transition for the Icon */
-/* Ensures the sun color adapts perfectly to the theme */
-.theme-toggle__icon svg[fill="currentColor"] {
-  fill: var(--mono1);
-  stroke: var(--mono1);
-}
-
-/* Media Query  */
-@media (max-width: 600px) {
-  .theme-toggle {
-    width: 40px;
-    height: 40px;
-  }
-  .theme-toggle__icon {
-    width: 20px;
-    height: 20px;
-  }
 }
 
 /* Adding styles for theme transition */

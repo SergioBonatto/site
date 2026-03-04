@@ -1,5 +1,3 @@
-export type LanguageCode = 'pt-BR' | 'en' | 'es' | 'de' | 'ja' | 'it' | 'web';
-
 export type TranslationKeys = {
   // Navigation
   'nav.home': string;
@@ -90,5 +88,23 @@ export type TranslationKeys = {
 };
 
 export type Translations = {
-  [K in LanguageCode]: TranslationKeys;
+  [K in Locale]: TranslationKeys;
 };
+
+export const locales = [
+  'pt-BR',
+  'en',
+  'es',
+  'de',
+  'ja',
+  'it',
+  'web'
+] as const;
+
+export type Locale = typeof locales[number];
+
+export const maxLocaleLength = Math.max(
+  ...locales.map(l => l.length)
+);
+
+export const localeWidthCh = maxLocaleLength + 4;

@@ -12,8 +12,8 @@ pre[class*="language-"] {
   line-height: 1.5 !important;
   padding: 20px !important;
   margin: 24px 0 !important;
-  border: 1px solid var(--specialGrey)  !important;
-  border-radius: 6px !important;
+  border: 1px solid var(--vertsplit) !important;
+  border-radius: 0 !important;
   overflow-x: auto !important;
   white-space: pre !important;
   display: block !important;
@@ -24,7 +24,7 @@ pre[class*="language-"] {
   word-wrap: normal !important;
   tab-size: 2 !important;
   hyphens: none !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: none !important;
 }
 
 html body div[class*="prose"] pre[class*="language-"] code,
@@ -53,8 +53,8 @@ pre[class*="language-"] {
   line-height: 1.5 !important;
   padding: 20px !important;
   margin: 24px 0 !important;
-  border: 1px solid var(--specialGrey) !important;
-  border-radius: 6px !important;
+  border: 1px solid var(--vertsplit) !important;
+  border-radius: 0 !important;
   overflow-x: auto !important;
   white-space: pre !important;
   display: block !important;
@@ -131,9 +131,9 @@ pre[class*="language-"] {
   margin: 24px 0 !important;
   overflow: auto !important;
   background: var(--syntaxBg) !important;
-  border: 1px solid var(--specialGrey) !important;
-  border-radius: 6px !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid var(--vertsplit) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   text-decoration: none !important;
   position: relative !important;
   display: block !important;
@@ -770,9 +770,9 @@ html body pre[class*="language-"] .token.important {
   color: var(--mono1) !important;
   padding: 20px !important;
   margin: 24px 0 !important;
-  border: 1px solid var(--specialGrey) !important;
-  border-radius: 6px !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid var(--vertsplit) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace !important;
   font-size: 14px !important;
   line-height: 1.5 !important;
@@ -808,9 +808,9 @@ html body div .prose pre[class*="language-"],
   padding: 20px !important;
   margin: 24px 0 !important;
   overflow: auto !important;
-  border: 1px solid var(--specialGrey) !important;
-  border-radius: 6px !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid var(--vertsplit) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   direction: ltr;
   text-align: left;
   white-space: pre;

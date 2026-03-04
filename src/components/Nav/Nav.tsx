@@ -1,6 +1,5 @@
 "use client";
 
-
 import React, { useState } from "react";
 import { useThemeContext } from "../Theme/ThemeProvider";
 import { cn } from "@/lib/utils";
@@ -29,10 +28,11 @@ export function Nav() {
         {/* Logo */}
         <Link
           href={`/${language}`}
-          className="font-bold text-3xl md:text-3xl tracking-tight mt-1 pl-4"
+          className="font-mono text-2xl md:text-2xl tracking-tight flex items-center"
           style={{ color: colors.hue2 }}
         >
-          Bonatto
+          <span className="opacity-40 mr-2">[_]</span>
+          <span>Bonatto</span>
         </Link>
 
         <div className="links">

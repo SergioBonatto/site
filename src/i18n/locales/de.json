@@ -63,5 +63,9 @@
   "yuu.question": "Bist du Yuu?",
   "yuu.yes": "JA",
   "yuu.no": "NEIN",
-  "yuu.message": "Herzlichen Glückwunsch, du hast gefunden, was ich zu verbergen versuchte (oder auch nicht)."
+  "yuu.message": "Herzlichen Glückwunsch, du hast gefunden, was ich zu verbergen versuchte (oder auch nicht).",
+  "home.greeting": "Hallo, ich bin [Bonatto]",
+  "home.description": "Senior C Spezialist, Embedded Systems & Kernel.",
+  "home.focus": "Meine Arbeit umfasst formale Methoden, funktionale Programmierung und Betriebssysteme. Meine Hauptinteressen liegen in der abhängigen Typtheorie, Beweissprachen, Sprachinterpretern, virtuellen Maschinen und minimalistischen Kerneln. Die Erfahrung reicht von Low-Level-Arbeiten in C und RISC-V bis hin zu High-Level-Funktionsabstraktionen in Haskell. Projekte betonen oft Korrektheit, explizite Semantik und einfache, aber strenge Implementierungen.",
+  "home.latestArticles": "Neueste Artikel"
 }

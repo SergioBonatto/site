@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
-import { getDictionary, LanguageCode } from '@/i18n';
+import { getDictionary, Locale } from '@/i18n';
 import { generateSEOMetadata } from '@/components/Core/SEO';
 import { Metadata } from 'next';
 import BlogPostClient from './BlogPostClient';
@@ -38,7 +38,7 @@ async function getPostData(slug: string): Promise<{ data: PostData; content: str
   }
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string; lang: LanguageCode }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; lang: Locale }> }): Promise<Metadata> {
   const { slug, lang } = await params;
   const postData = await getPostData(slug);
   const dictionary = await getDictionary(lang);
@@ -67,7 +67,7 @@ export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), 'content/blog');
   const files = fs.readdirSync(postsDirectory);
 
-  const locales: LanguageCode[] = ['pt-BR', 'en', 'es', 'de', 'ja', 'it'];
+  const locales: Locale[] = ['pt-BR', 'en', 'es', 'de', 'ja', 'it'];
   const paths = files.flatMap((filename) =>
     locales.map((locale) => ({
       slug: filename.replace(/\.md$/, ''),
@@ -78,7 +78,7 @@ export async function generateStaticParams() {
   return paths;
 }
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string; lang: LanguageCode }> }) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string; lang: Locale }> }) {
   const { slug } = await params;
   const postData = await getPostData(slug);
 

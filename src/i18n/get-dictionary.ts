@@ -1,5 +1,5 @@
-import 'server-only';
-import type { LanguageCode } from './types';
+'server-only';
+import type { Locale } from './types';
 
 const dictionaries = {
   'pt-BR': () => import('./locales/pt-BR.json').then((module) => module.default),
@@ -11,7 +11,7 @@ const dictionaries = {
   'web': () => import('./locales/web.json').then((module) => module.default),
 };
 
-export const getDictionary = async (locale: LanguageCode) => {
+export const getDictionary = async (locale: Locale) => {
     const loader = dictionaries[locale] || dictionaries['en'];
     return loader();
 }

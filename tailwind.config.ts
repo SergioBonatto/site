@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mono: ['var(--font-fira-code)', 'monospace'],
+        sans: ['var(--font-fira-code)', 'monospace'],
+      },
       colors: {
         mono1: 'var(--mono-1)',
         mono2: 'var(--mono-2)',

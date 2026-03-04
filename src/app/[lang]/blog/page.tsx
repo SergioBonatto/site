@@ -3,9 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { getDictionary } from '@/i18n/get-dictionary';
-import { LanguageCode } from '@/i18n/types';
+import { Locale } from '@/i18n/types';
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: LanguageCode }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
   return generateSEOMetadata({

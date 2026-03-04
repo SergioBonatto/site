@@ -63,5 +63,10 @@
   "yuu.question": "¿Eres tú Yuu?",
   "yuu.yes": "SÍ",
   "yuu.no": "NO",
-  "yuu.message": "Felicidades, encontraste lo que intenté esconder (o no tanto)."
+  "yuu.message": "Felicidades, encontraste lo que intenté esconder (o no tanto).",
+  "home.greeting": "Hola, soy [Bonatto]",
+  "home.description": "Especialista Senior en C, Sistemas Embebidos y Kernel.",
+  "home.focus": "Mi trabajo abarca métodos formales, programación funcional y sistemas operativos. Mis intereses principales incluyen la teoría de tipos dependientes, lenguajes de prueba, intérpretes de lenguajes, máquinas virtuales y kernels minimalistas. Mi experiencia abarca desde trabajos en sistemas de bajo nivel en C y RISC-V hasta abstracciones funcionales de alto nivel en Haskell. Los proyectos suelen enfatizar la corrección, la semántica explícita e implementaciones simples pero rigurosas.",
+  "home.latestArticles": "Últimos artículos"
 }
+

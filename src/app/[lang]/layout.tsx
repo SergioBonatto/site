@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { Fira_Code } from "next/font/google";
 import "./globals.css";
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-fira-code",
+  display: "swap",
+});
 
 import { ThemeProvider } from '@/components/Theme/ThemeProvider';
 import { I18nProvider } from '@/i18n/I18nProvider';
@@ -8,7 +15,7 @@ import { StructuredData } from '@/components/StructuredData';
 import FloatingGif from '@/components/Core/FloatingGif';
 import Script from 'next/script';
 import { getDictionary } from "@/i18n/get-dictionary";
-import { LanguageCode } from "@/i18n/types";
+import { Locale } from "@/i18n/types";
 
 export const metadata: Metadata = siteMetadata;
 export const viewport: Viewport = siteViewport;
@@ -33,21 +40,23 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>
 }) {
   const { lang } = await params;
-  const dictionary = await getDictionary(lang as LanguageCode);
+  const dictionary = await getDictionary(lang as Locale);
 
   return (
-    <ThemeProvider>
-      <I18nProvider dictionary={dictionary} language={lang as LanguageCode}>
-        <Script id="prism-preload" strategy="beforeInteractive">
-          {`
-            window.Prism = window.Prism || {};
-            window.Prism.manual = true;
-          `}
-        </Script>
-        <StructuredData />
-        <FloatingGif />
-        {children}
-      </I18nProvider>
-    </ThemeProvider>
+    <>
+      <ThemeProvider>
+        <I18nProvider dictionary={dictionary} language={lang as Locale}>
+          <Script id="prism-preload" strategy="beforeInteractive">
+            {`
+                window.Prism = window.Prism || {};
+                window.Prism.manual = true;
+              `}
+          </Script>
+          <StructuredData />
+          <FloatingGif />
+          {children}
+        </I18nProvider>
+      </ThemeProvider>
+    </>
   );
 }

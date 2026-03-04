@@ -21,15 +21,7 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
 
   const links = [
     { href: "/", label: t('nav.home'), isHash: false },
-    { href: "#about", label: t('nav.about'), isHash: true },
-    { href: "#projects", label: t('nav.projects'), isHash: true },
-    // { href: "/experiencia", label: t('nav.experience'), isHash: false },
     { href: "/blog", label: t('nav.blog'), isHash: false },
-    { href: "/login", label: t('nav.login'), isHash: false },
-    // Example external links (uncomment if needed)
-    // { href: "https://github.com/SergioBonatto", label: "GitHub", external: true },
-    // { href: "https://linkedin.com/in/sergiobonatto", label: "LinkedIn", external: true },
-    // { href: "https://instagram.com/fibonatto", label: "Instagram", external: true },
   ];
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isHash: boolean) => {
@@ -136,7 +128,7 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
                 {link.isHash ? (
                   <Link
                     href={`/${language}${link.href}`}
-                    className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                    className="block font-mono text-xl py-4 px-6 opacity-80 hover:opacity-100 transition-opacity"
                     style={{ color: colors.mono1 }}
                     onClick={(e) => handleClick(e, link.href, link.isHash)}
                   >
@@ -145,7 +137,7 @@ export function MobileNav({ open, onOpen, onClose }: MobileNavProps) {
                 ) : (
                   <Link
                     href={`/${language}${link.href}`}
-                    className="block text-xl font-medium py-4 px-6 rounded-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                    className="block font-mono text-xl py-4 px-6 opacity-80 hover:opacity-100 transition-opacity"
                     style={{ color: colors.mono1 }}
                     onClick={() => onClose()}
                   >

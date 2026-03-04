@@ -14,11 +14,7 @@ export function DesktopNav() {
 
 	const links = [
 		{ href: "/", label: t('nav.home'), isHash: false },
-		{ href: "#about", label: t('nav.about'), isHash: true },
-		{ href: "#projects", label: t('nav.projects'), isHash: true },
-		// { href: "/experiencia", label: t('nav.experience'), isHash: false },
 		{ href: "/blog", label: t('nav.blog'), isHash: false },
-		{ href: "/login", label: t('nav.login'), isHash: false },
 	];
 
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -54,7 +50,7 @@ export function DesktopNav() {
 								key={link.href}
 								href={`/${language}${link.href}`}
 								onClick={(e) => handleClick(e, link.href)}
-								className="text-base font-medium px-3 py-1 rounded hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200"
+								className="font-mono text-md px-3 py-1.5 tracking-wide opacity-70 hover:opacity-100 transition-opacity"
 								style={{ color: colors.mono1 }}
 							>
 								{link.label}
@@ -68,7 +64,7 @@ export function DesktopNav() {
 						<Link
 							key={link.href}
 							href={localizedHref}
-							className="text-base font-medium px-3 py-1 rounded hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200"
+							className="font-mono text-md px-3 py-1.5 tracking-wide opacity-70 hover:opacity-100 transition-opacity"
 							style={{ color: colors.mono1 }}
 						>
 							{link.label}
