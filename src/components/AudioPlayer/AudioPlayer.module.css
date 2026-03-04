@@ -1,88 +1,72 @@
 .playerContainer {
   width: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(20px);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background: var(--syntaxBg);
+  border: 1px solid var(--vertsplit);
+  padding: 1rem;
+  font-family: var(--font-fira-code), monospace;
 }
 
 .controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .skipButtonWrapper {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .skipLabel {
   font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  color: var(--mono3);
 }
 
 .controlButton {
   background: transparent;
-  border: none;
-  color: white;
+  border: 1px solid var(--mono3);
+  color: var(--mono1);
   cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
+  padding: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease;
   flex-shrink: 0;
 }
 
 .controlButton:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.1);
+  background: var(--mono4);
 }
 
 .controlButton:active {
-  transform: scale(0.95);
+  background: var(--mono3);
 }
 
 .playButton {
-  background: var(--hue2, #4078f2);
-  width: 3rem;
-  height: 3rem;
+  background: var(--mono3);
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--mono3);
 }
 
 .playButton:hover {
-  background: var(--hue2, #4078f2);
-  opacity: 0.9;
-  transform: scale(1.15);
+  background: var(--mono2);
 }
 
 .volumeContainer {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   margin-left: auto;
 }
 
 .volumeSliderHorizontal {
-  width: 100px;
+  width: 80px;
   display: flex;
   align-items: center;
 }
@@ -96,31 +80,30 @@
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.9);
-  padding: 1rem 0.75rem;
-  border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: var(--syntaxBg);
+  border: 1px solid var(--vertsplit);
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
   display: none;
 }
 
 .volumeSlider input {
   writing-mode: bt-lr;
   -webkit-appearance: slider-vertical;
-  width: 8px;
-  height: 100px;
+  width: 6px;
+  height: 60px;
 }
 
 .progressContainer {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .time {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 500;
+  color: var(--mono2);
+  font-weight: 400;
   min-width: 40px;
 }
 
@@ -128,9 +111,8 @@
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 5px;
-  background: #555;
-  border-radius: 3px;
+  height: 4px;
+  background: var(--mono4);
   outline: none;
   cursor: pointer;
 }
@@ -142,96 +124,82 @@
 /* WebKit browsers (Chrome, Safari, Edge) */
 .slider::-webkit-slider-track {
   width: 100%;
-  height: 5px;
-  background: #555;
-  border-radius: 3px;
+  height: 4px;
+  background: var(--mono4);
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 16px;
-  height: 16px;
-  background: #4078f2;
-  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--mono2);
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease;
 }
 
 .slider::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-  background: #5088ff;
-  box-shadow: 0 3px 10px rgba(64, 120, 242, 0.6);
+  background: var(--mono1);
 }
 
 /* Firefox */
 .slider::-moz-range-track {
   width: 100%;
-  height: 5px;
-  background: #555;
-  border-radius: 3px;
+  height: 4px;
+  background: var(--mono4);
 }
 
 .slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #4078f2;
+  width: 12px;
+  height: 12px;
+  background: var(--mono2);
   border: none;
-  border-radius: 50%;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease;
 }
 
 .slider::-moz-range-thumb:hover {
-  transform: scale(1.2);
-  background: #5088ff;
-  box-shadow: 0 3px 10px rgba(64, 120, 242, 0.6);
+  background: var(--mono1);
 }
 
 .slider::-moz-range-progress {
-  background: #4078f2;
-  height: 5px;
-  border-radius: 3px;
+  background: var(--mono2);
+  height: 4px;
 }
 
 /* Internet Explorer/Edge fallback */
 .slider::-ms-track {
   width: 100%;
-  height: 5px;
+  height: 4px;
   background: transparent;
   border-color: transparent;
   color: transparent;
 }
 
 .slider::-ms-fill-lower {
-  background: #4078f2;
-  border-radius: 3px;
+  background: var(--mono2);
 }
 
 .slider::-ms-fill-upper {
-  background: #555;
-  border-radius: 3px;
+  background: var(--mono4);
 }
 
 .slider::-ms-thumb {
-  width: 16px;
-  height: 16px;
-  background: #4078f2;
+  width: 12px;
+  height: 12px;
+  background: var(--mono2);
   border: none;
-  border-radius: 50%;
   cursor: pointer;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .playerContainer {
-    padding: 1.25rem;
+    padding: 0.75rem;
   }
 
   .controls {
-    gap: 1.5rem;
+    gap: 0.75rem;
   }
 
   .volumeSliderHorizontal {
@@ -252,32 +220,32 @@
   }
 
   .playButton {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 
   .controlButton svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 
   .playButton svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .playerContainer {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .controls {
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .skipButtonWrapper {
-    gap: 0.35rem;
+    gap: 0.2rem;
   }
 
   .skipLabel {
@@ -290,17 +258,17 @@
   }
 
   .playButton {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 
   .controlButton svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
   }
 
   .playButton svg {
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
   }
 }
