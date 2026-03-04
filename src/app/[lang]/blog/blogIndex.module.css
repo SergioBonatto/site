@@ -44,11 +44,14 @@
 .postItem {
   display: grid;
   grid-template-columns: 180px 1fr;
-  padding: 2.5rem 1rem;
+  padding: 3.5rem 1rem; 
   border-bottom: 1px solid var(--vertsplit);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none !important;
-  outline: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.postItem:first-child {
+  border-top: 1px solid var(--vertsplit);
 }
 
 .postItem:hover,
@@ -58,10 +61,11 @@
 }
 
 .postDate {
-  font-size: 0.9rem;
-  color: var(--mono3);
-  font-variant-numeric: tabular-nums;
-  padding-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--mono3); 
+  opacity: 0.6;
+  margin-top: 0.5rem;
 }
 
 .postContent {

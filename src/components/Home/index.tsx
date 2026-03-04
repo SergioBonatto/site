@@ -20,7 +20,7 @@ export async function generateMetadata({
 
   return generateSEOMetadata({
     title: `Sergio Bonatto`,
-    description: dictionary['home.description'],
+    description: dictionary['home.focus'],
     image: '/cards.png',
     url: `/${lang}`,
   });
@@ -51,22 +51,24 @@ export default async function Home({
     const dictionary = await getDictionary(lang);
 
     const codeSnippet = `
-    #include <stdio.h>
+        #include <stdio.h>
+        #include <stdlib.h>
 
-    typedef struct {
-        const char* name;
-        const char* focus;
-    } Profile;
+        typedef struct { const char *name; const char *focus; } Profile;
+        struct love { int beats; };
 
-    int main(void) {
-        Profile profile = {
-            .name = "Sergio Bonatto",
-            .focus = "programming languages, type systems, and low-level systems"
-        };
+        int main(void) {
+            const Profile p = {
+                .name  = "Sergio Bonatto",
+                .focus = "programming languages, type systems, and low-level systems",
+            };
 
-        printf("%s\\nSoftware engineer focused on %s.\\n", profile.name, profile.focus);
-        return 0;
-    }
+            struct love *heart = malloc(sizeof *heart);
+            heart = NULL;
+
+            printf("%s\\nSoftware engineer focused on %s.\\n", p.name, p.focus);
+            return EXIT_SUCCESS;
+        }
     `;
 
   const contentHtml = await renderCodeSnippet(codeSnippet);

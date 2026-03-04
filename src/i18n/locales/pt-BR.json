@@ -64,8 +64,7 @@
   "yuu.yes": "SIM",
   "yuu.no": "NÃO",
   "yuu.message": "Parabéns, você encontrou o que eu tentei esconder (ou nem tanto).",
-  "home.greeting": "Olá, eu sou [Bonatto]",
-  "home.description": "Especialista em C Sênior, Sistemas Embarcados e Kernel.",
+  "home.greeting": "whoami",
   "home.focus": "Meu trabalho abrange métodos formais, programação funcional e sistemas operacionais. Meus principais interesses incluem teoria de tipos dependentes, linguagens de prova, interpretadores de linguagens, máquinas virtuais e kernels minimalistas. A experiência varia desde o trabalho em sistemas C e RISC-V de baixo nível até abstrações funcionais de alto nível em Haskell. Os projetos geralmente enfatizam a correção, semântica explícita e implementações simples, porém rigorosas.",
   "home.latestArticles": "Últimos Artigos"
 }
