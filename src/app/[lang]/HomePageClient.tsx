@@ -55,9 +55,11 @@ export function HomePageClient({ children }: HomePageClientProps) {
   }, []);
 
   return (
-    <main className="scroll-smooth">
+    <main className="flex flex-col min-h-screen scroll-smooth">
       <Nav />
-      {children}
+      <div className="flex-1">
+        {children}
+      </div>
       <Footer />
       <KonamiDoom />
     </main>

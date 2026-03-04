@@ -22,20 +22,19 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
 
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center bg-[var(--syntaxBg)] transition-colors duration-300"
+      className="min-h-screen w-full flex flex-col items-center bg-[var(--syntaxBg)]"
       style={{ color: `var(--mono1)` }}
     >
       <Nav />
 
       <main
-        className="w-full max-w-4xl px-6 md:px-12 py-12"
+        className="w-full max-w-4xl px-6 md:px-12 py-12 flex-1"
       >
         <header className="mb-12">
-          <h1 className={styles.header}>
-            <span className="opacity-40 mr-2"></span>
-            {t('blog.postsTitle')}
+          <h1 className={styles.title}>
+            # {t('blog.postsTitle')}
           </h1>
-          <p className="font-mono text-xs opacity-50 uppercase tracking-widest">
+          <p className="font-mono text-sm opacity-70 uppercase tracking-widest">
             {t('blog.description')}
           </p>
         </header>
@@ -47,15 +46,12 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
                 key={post.slug}
                 href={`/${lang}/blog/${post.slug}`}
                 className={styles.postItem}
-                tabIndex={0}
               >
                 <div className={styles.postHeader}>
-                  <span className={styles.postDate}>
-                    <span className="opacity-50">[</span>
-                    {post.date}
-                    <span className="opacity-50">]</span>
-                  </span>
                   <h2 className={styles.postTitle}>{post.title}</h2>
+                  <span className={styles.postDate}>
+                    {post.date}
+                  </span>
                 </div>
                 {post.description && (
                   <p className={styles.postDesc}>{post.description}</p>
@@ -64,7 +60,7 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
             ))}
           </div>
         ) : (
-          <div className="font-mono text-sm opacity-50 py-10">
+          <div className="font-mono text-sm opacity-90 py-10">
             {t('blog.noPosts')}
           </div>
         )}

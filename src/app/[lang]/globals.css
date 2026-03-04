@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure full viewport height for sticky footer */
+html, body {
+  height: 100%;
+}
+
 html.light {
   --mono1: #383A42;
   --mono2: #696c77;
@@ -81,6 +86,7 @@ body {
   transform: translateZ(0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code, pre {

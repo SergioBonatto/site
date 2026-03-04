@@ -54,7 +54,7 @@ export default async function RootLayout({
           </Script>
           <StructuredData />
           <FloatingGif />
-          {children}
+          <div className={`${firaCode.variable} font-mono min-h-screen flex flex-col`}>{children}</div>
         </I18nProvider>
       </ThemeProvider>
     </>
