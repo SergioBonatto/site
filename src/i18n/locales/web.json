@@ -70,5 +70,8 @@
   "yuu.question": "貴様が... Yuu か？ (Are you Yuu?)",
   "yuu.yes": "然り (YES)",
   "yuu.no": "否 (NO)",
-  "yuu.message": "おめでとう。俺が隠そうとしていた秘技（あるいは、そうでもないもの）を見つけたな。"
+  "yuu.message": "おめでとう。俺が隠そうとしていた秘技（あるいは、そうでもないもの）を見つけたな。",
+  "home.greeting": "whoami",
+  "home.focus": "The path spans formal methods, functional programming, and operating systems. My training involves dependent type theory, proof languages, language interpreters, virtual machines, and minimalist kernels. Experience ranges from low-level C and RISC-V systems combat to high-level functional abstractions in Haskell. Each project strikes with correctness, explicit semantics, and simple but rigorous implementation.",
+  "home.latestArticles": "Latest Battle Scrolls"
 }

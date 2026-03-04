@@ -22,47 +22,48 @@ export default function BlogIndexClient({ posts }: { posts: Post[] }) {
 
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center bg-[var(--syntaxBg)] transition-colors duration-300"
+      className="min-h-screen w-full flex flex-col items-center bg-[var(--syntaxBg)]"
       style={{ color: `var(--mono1)` }}
     >
       <Nav />
 
       <main
-        className="w-full max-w-3xl px-4 sm:px-6 md:px-8 lg:px-10"
-        style={{ width: '100%', maxWidth: '80%' }}
+        className="w-full max-w-4xl px-6 md:px-12 py-12 flex-1"
       >
-        <section className="mt-8 sm:mt-10">
-          <div className="mb-6 sm:mb-8">
-            <h2 className={styles.header}>
-              {t('blog.postsTitle')}
-            </h2>
-            <p className="text-base text-[var(--mono2)] mb-4">
-              {t('blog.description')}
-            </p>
-          </div>
+        <header className="mb-12">
+          <h1 className={styles.title}>
+            # {t('blog.postsTitle')}
+          </h1>
+          <p className="font-mono text-sm opacity-70 uppercase tracking-widest">
+            {t('blog.description')}
+          </p>
+        </header>
 
-          {posts.length > 0 ? (
-            <div className="space-y-4 sm:space-y-6">
-              {posts.map(post => (
-                <Link
-                  key={post.slug}
-                  href={`/${lang}/blog/${post.slug}`}
-                  className={`block rounded-xl group ${styles.card}`}
-                  style={{ textDecoration: 'none' }}
-                  tabIndex={0}
-                >
-                  <h3 className={styles.cardTitle}>{post.title}</h3>
-                  <p className={styles.cardDate}>{post.date}</p>
-                  <p className={styles.cardDesc}>{post.description}</p>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center text-[var(--mono2)] py-10">
-              {t('blog.noPosts')}
-            </div>
-          )}
-        </section>
+        {posts.length > 0 ? (
+          <div className={styles.postsList}>
+            {posts.map(post => (
+              <Link
+                key={post.slug}
+                href={`/${lang}/blog/${post.slug}`}
+                className={styles.postItem}
+              >
+                <div className={styles.postHeader}>
+                  <h2 className={styles.postTitle}>{post.title}</h2>
+                  <span className={styles.postDate}>
+                    {post.date}
+                  </span>
+                </div>
+                {post.description && (
+                  <p className={styles.postDesc}>{post.description}</p>
+                )}
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="font-mono text-sm opacity-90 py-10">
+            {t('blog.noPosts')}
+          </div>
+        )}
       </main>
       <Footer />
     </div>

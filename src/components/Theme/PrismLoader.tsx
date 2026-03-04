@@ -27,6 +27,7 @@ export default function PrismLoader() {
         await import('prismjs/components/prism-json');
         await import('prismjs/components/prism-bash');
         await import('prismjs/components/prism-markdown');
+        await import('prismjs/components/prism-c');
 
         // Load Solidity last as it might have dependencies
         try {

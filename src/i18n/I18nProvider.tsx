@@ -1,13 +1,13 @@
 'use client';
 
 import React, { createContext, useContext, useMemo, ReactNode } from 'react';
-import { LanguageCode } from './types';
+import { Locale } from './types';
 
 // O dicionário será um objeto simples de chave/valor
 type Dictionary = Record<string, string>;
 
 interface I18nContextValue {
-  language: LanguageCode;
+  language: Locale;
   dictionary: Dictionary;
   t: (key: string) => string;
 }
@@ -16,7 +16,7 @@ const I18nContext = createContext<I18nContextValue | undefined>(undefined);
 
 interface I18nProviderProps {
   children: ReactNode;
-  language: LanguageCode;
+  language: Locale;
   dictionary: Dictionary;
 }
 

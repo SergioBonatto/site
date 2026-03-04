@@ -8,4 +8,4 @@
  */
 
 export { getDictionary } from './get-dictionary';
-export type { LanguageCode, TranslationKeys, Translations } from './types';
+export type { Locale, TranslationKeys, Translations } from './types';

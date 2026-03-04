@@ -63,5 +63,8 @@
   "yuu.question": "Sei tu Yuu?",
   "yuu.yes": "SÌ",
   "yuu.no": "NO",
-  "yuu.message": "Congratulazioni, hai trovato quello che ho cercato di nascondere (o non così tanto)."
+  "yuu.message": "Congratulazioni, hai trovato quello che ho cercato di nascondere (o non così tanto).",
+  "home.greeting": "whoami",
+  "home.focus": "Il mio lavoro spazia tra metodi formali, programmazione funzionale e sistemi operativi. I miei interessi principali includono la teoria dei tipi dipendenti, i linguaggi di prova, gli interpreti di linguaggi, le macchine virtuali e i kernel minimalistici. L'esperienza spazia dal lavoro su sistemi C e RISC-V a basso livello ad astrazioni funzionali di alto livello in Haskell. I progetti spesso enfatizzano la correttezza, la semantica esplicita e implementazioni semplici ma rigorose.",
+  "home.latestArticles": "Ultimi articoli"
 }

@@ -30,7 +30,7 @@ export default function BlogPostClient({ postData, contentHtml }: BlogPostClient
   if (!postData) {
     return (
       <div className={styles.container} style={{ color: 'var(--mono1)' }}>
-        <main className={styles.main}>
+        <main className={`${styles.main} flex-1`}>
           <Nav />
           <section>
             <div className={styles.header}>
@@ -47,7 +47,7 @@ export default function BlogPostClient({ postData, contentHtml }: BlogPostClient
   return (
     <div className={styles.container} style={{ color: 'var(--mono1)' }}>
       <Nav />
-      <main className={styles.main}>
+      <main className={`${styles.main} flex-1`}>
         <section>
           <div className={styles.header}>
             <h2 className={styles.title}>{postData.data.title}</h2>

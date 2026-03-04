@@ -3,9 +3,11 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { getDictionary } from '@/i18n/get-dictionary';
-import { LanguageCode } from '@/i18n/types';
+import { Locale } from '@/i18n/types';
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: LanguageCode }> }) {
+export const revalidate = 0; // Garante que a lista de posts não seja cacheada incorretamente
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
   return generateSEOMetadata({
@@ -32,7 +34,8 @@ async function getPosts(): Promise<Post[]> {
     return [];
   }
 
-  const filenames = fs.readdirSync(postsDirectory);
+  const filenames = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'));
+  
   const posts = filenames.map(filename => {
     const filePath = path.join(postsDirectory, filename);
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -40,13 +43,15 @@ async function getPosts(): Promise<Post[]> {
 
     return {
       slug: filename.replace(/\.md$/, ''),
-      title: data.title,
-      date: data.date,
-      description: data.description
+      title: data.title || 'Untitled',
+      date: data.date || 'No date',
+      description: data.description || ''
     };
   });
 
-  return posts.sort((a, b) => (new Date(b.date)).getTime() - (new Date(a.date)).getTime());
+  return posts
+    .filter(post => post.title !== 'Untitled')
+    .sort((a, b) => (new Date(b.date)).getTime() - (new Date(a.date)).getTime());
 }
 
 import BlogIndexClient from './BlogIndexClient';

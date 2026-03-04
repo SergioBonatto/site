@@ -63,5 +63,8 @@
   "yuu.question": "Are you Yuu?",
   "yuu.yes": "YES",
   "yuu.no": "NO",
-  "yuu.message": "Congratulations, you found what I tried to hide (or not so much)."
+  "yuu.message": "Congratulations, you found what I tried to hide (or not so much).",
+  "home.greeting": "whoami",
+  "home.focus": "Work spans formal methods, functional programming, and operating systems. Main interests include dependent type theory, proof languages, language interpreters, virtual machines, and minimalist kernels. Experience ranges from low-level C and RISC-V systems work to high-level functional abstractions in Haskell. Projects often emphasize correctness, explicit semantics, and simple but rigorous implementations.",
+  "home.latestArticles": "Latest Articles"
 }
