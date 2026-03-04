@@ -64,7 +64,7 @@ export default async function Home({
             };
 
             struct love *heart = malloc(sizeof *heart);
-            heart = NULL;
+            heart = NULL; // brapao
 
             printf("%s\\nSoftware engineer focused on %s.\\n", p.name, p.focus);
             return EXIT_SUCCESS;
