@@ -3,8 +3,8 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   const languages = ['en', 'pt-BR', 'es', 'de', 'ja', 'it'];
 
-  const yuuUrls = languages.map(lang => ({
-    url: `https://bonatto.vercel.app/${lang}/yuu`,
+  const flirtUrls = languages.map(lang => ({
+    url: `https://bonatto.vercel.app/${lang}/flirt`,
     lastModified: new Date('2025-12-30'),
     changeFrequency: 'yearly' as const,
     priority: 0.01,
@@ -29,6 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
-    ...yuuUrls,
+    ...flirtUrls,
   ]
 }

@@ -5,10 +5,10 @@ import { useRouter } from 'next/navigation';
 import { useI18n } from '@/i18n/I18nProvider';
 import { Nav } from '@/components/Nav/Nav';
 import AudioPlayer from '@/components/AudioPlayer/AudioPlayer';
-import styles from './yuu.module.css';
+import styles from './flirt.module.css';
 import Image from 'next/image';
 
-export default function YuuPage() {
+export default function flirtPage() {
   const { t, language } = useI18n();
   const [showCat, setShowCat] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -32,7 +32,7 @@ export default function YuuPage() {
 
   const handleNo = () => {
     // Redirect to a non-existent page to trigger 404
-    router.push(`/${language}/this-page-does-not-exist-yuu-only`);
+    router.push(`/${language}/this-page-does-not-exist-flirt-only`);
   };
 
   const handleYes = () => {
@@ -69,13 +69,13 @@ export default function YuuPage() {
       <main className={styles.main}>
         {!showCat && !showPassword && (
           <div className={styles.container}>
-            <h1 className={styles.question}>{t('yuu.question')}</h1>
+            <h1 className={styles.question}>{t('flirt.question')}</h1>
             <div className={styles.buttonContainer}>
               <button className={`${styles.button} ${styles.yes}`} onClick={handleYes}>
-                {t('yuu.yes')}
+                {t('flirt.yes')}
               </button>
               <button className={`${styles.button} ${styles.no}`} onClick={handleNo}>
-                {t('yuu.no')}
+                {t('flirt.no')}
               </button>
             </div>
           </div>
@@ -101,7 +101,7 @@ export default function YuuPage() {
         )}
         {showCat && (
           <div className={styles.messageContainer}>
-            <p className={styles.message}>{t('yuu.message')}</p>
+            <p className={styles.message}>{t('flirt.message')}</p>
           </div>
         )}
       </main>
