@@ -12,7 +12,7 @@
   "about.paragraph1": "Code wa ore no 密技 (himitsu waza). Each line, a strike of pure resolve slicing through the darkness of bugs.",
   "about.paragraph2": "Self-taught ronin of syntax. Faced countless stack monsters and rose again. From 無 (mu) to lambda master, I shaped systems where logic meets faith. Functional programming wa ore no 剣 (ken) against chaos.",
   "about.paragraph3": "My creed stands on 基本原理 (kihon genri): presuppositional logic, praxeology, and 改革神学 (kaikaku shingaku). Not mere words. This is my senjutsu of clarity. When I debug, I see 真理 (shinri) itself. Contradictions vanish. ୧༼ಠ益ಠ༽୨ Borrowed thoughts perish. ",
-  "about.paragraph4": "Every design is a battle kata. Decentralization means 自由 (jiyuu). Strong types mean 修練 (shūren). Formal verification is my rebellion against 'maybe safe'. When it compiles, harmony is restored.",
+  "about.paragraph4": "Every design is a battle kata. Decentralization means 自由 (jiflirt). Strong types mean 修練 (shūren). Formal verification is my rebellion against 'maybe safe'. When it compiles, harmony is restored.",
   "about.paragraph5": "I forge systems to endure beyond hype empires. Tools must obey man, not enslave him. My path rejects 便利 (benri), embraces 深淵 (shin'en). True devs own their code. No corporation, no mercy.",
   "about.paragraph6": "I drift across DeFi, logic, and 哲学 (tetsugaku). Writing scrolls about technology, faith, and the eternal struggle between man and his own abstraction.",
 
@@ -39,7 +39,7 @@
   "projects.agdavim.title": "アグダヴィム (Agda-vim)",
   "projects.agdavim.description": "Syntax no jutsu for Agda. Rendering keywords as 光 (hikari). A tool for those walking the path of pure logic.",
   "projects.agoriz.title": "アゴリズ (Agoriz)",
-  "projects.agoriz.description": "Built to bring blockchain payments to humanity. Scalable. Secure. Unbound. A protocol that moves like 流星 (ryuusei).",
+  "projects.agoriz.description": "Built to bring blockchain payments to humanity. Scalable. Secure. Unbound. A protocol that moves like 流星 (rflirtsei).",
 
   "skills.functional.label": "関数型・形式言語 (Functional & Formal Arts)",
   "skills.blockchain.label": "ブロックチェーン術 (Blockchain & Web3 Techniques)",
@@ -67,10 +67,10 @@
   "konamiDoom.quality.medium": "中段の構え (Medium)",
   "konamiDoom.quality.high": "上段の構え (High)",
   "konamiDoom.close": "隠密に戻る (Return to shadows)",
-  "yuu.question": "貴様が... Yuu か？ (Are you Yuu?)",
-  "yuu.yes": "然り (YES)",
-  "yuu.no": "否 (NO)",
-  "yuu.message": "おめでとう。俺が隠そうとしていた秘技（あるいは、そうでもないもの）を見つけたな。",
+  "flirt.question": "貴様はパスワードを知っているか？ (Do you know the password?)",
+  "flirt.yes": "然り (YES)",
+  "flirt.no": "否 (NO)",
+  "flirt.message": "おめでとう。俺が隠そうとしていた秘技（あるいは、そうでもないもの）を見つけたな。",
   "home.greeting": "whoami",
   "home.focus": "The path spans formal methods, functional programming, and operating systems. My training involves dependent type theory, proof languages, language interpreters, virtual machines, and minimalist kernels. Experience ranges from low-level C and RISC-V systems combat to high-level functional abstractions in Haskell. Each project strikes with correctness, explicit semantics, and simple but rigorous implementation.",
   "home.latestArticles": "Latest Battle Scrolls"

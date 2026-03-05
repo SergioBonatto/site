@@ -81,10 +81,10 @@ export type TranslationKeys = {
   'theme.dark': string;
   'theme.toggle': string;
 
-  // Yuu Page
-  'yuu.question': string;
-  'yuu.yes': string;
-  'yuu.no': string;
+  // flirt Page
+  'flirt.question': string;
+  'flirt.yes': string;
+  'flirt.no': string;
 };
 
 export type Translations = {

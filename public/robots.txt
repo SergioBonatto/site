@@ -2,6 +2,6 @@ User-agent: *
 Allow: /
 
 # Y-U-U curious?
-Disallow: /*/yuu/
+Disallow: /*/flirt/
 
 Sitemap: https://bonatto.vercel.app/sitemap.xml
