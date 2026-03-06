@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import SocialLinks from './SocialLinks';
 import { useThemeContext } from '../Theme/ThemeProvider';
-import { useTranslation } from '@/i18n/client';
 import { cn } from '@/lib/utils';
+import Walker from '../gb';
 
 interface FooterProps {
   className?: string;
@@ -12,7 +11,6 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
   const { colors } = useThemeContext();
-  const { t } = useTranslation();
   const [currentYear, setCurrentYear] = useState('');
 
   useEffect(() => {
@@ -22,7 +20,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
   return (
     <footer
       className={cn(
-        "w-full py-10 transition-colors duration-300",
+        "w-full py-6 items-center flex flex-col items-center justify-between ",
         className
       )}
       style={{
@@ -30,8 +28,9 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
         color: colors.mono2,
       }}
     >
+      < Walker />
       <div className="container mx-auto px-2">
-        <div className="flex flex-col  items-center justify-between gap-4">
+        <div className="flex flex-col items-center justify-between gap-4">
           {/* Branding and Copyright */}
           <div className="flex items-center md:items-start gap-3">
             <div className="text-sm flex items-center gap-2">

@@ -1,9 +1,7 @@
 .walker-wrapper {
   position: fixed;
-  bottom: 40px;
   left: 0;
-
-  animation: walk-across 14s linear infinite;
+  animation: walk-across 28s linear infinite;
 }
 
 @keyframes walk-across {
