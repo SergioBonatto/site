@@ -74,7 +74,7 @@ export default async function Home({
   const contentHtml = await renderCodeSnippet(codeSnippet);
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-16">
+<main className="max-w-5xl mx-auto px-6 pt-16 pb-0">
       <PrismLoader />
       <h1 className="text-4xl mb-8">
         {dictionary['home.greeting']}
